@@ -1,0 +1,25 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body{
+    background-color: lavenderblush;
+    font-family: "Roboto", sans-serif;
+}
+main{
+    background-color: #ffffff;
+    width:80vw;
+    text-align:center;
+    margin-top: 40px;
+    margin-right: auto;
+    margin-bottom: 40px;
+    margin-left: auto; 
+    /* Shorthand */
+    margin: 40px auto;
+    margin: 40px auto 40px auto;
+    border: 2px dotted purple;
+    border-radius: 5px;
+}
