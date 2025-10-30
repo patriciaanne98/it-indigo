@@ -5,6 +5,12 @@ html {
   box-sizing: inherit;
 }
 
+/* ----------- Utility Classes ------------- */
+.container{
+  margin:auto;
+  padding: 40px;
+}
+
 body{
     background-color: lavenderblush;
     font-family: "Roboto", sans-serif;
@@ -12,6 +18,7 @@ body{
 main{
     background-color: #ffffff;
     width:80vw;
+    max-width:980px;
     text-align:center;
     margin-top: 40px;
     margin-right: auto;
@@ -22,4 +29,51 @@ main{
     margin: 40px auto 40px auto;
     border: 2px dotted purple;
     border-radius: 5px;
+}
+
+header.primary{
+  background-color: lightcyan;
+  padding: 20px;
+  background-image: url("../img/bg_1.png");
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-position: center;
+  border: 3px solid lavender;
+  display:flex; 
+}
+header.primary nav{
+  justify-content:space-between;
+  width:30%;  
+}
+
+div.hgroup{
+text-align:left;
+width:70%;
+}
+
+div.hgroup h1 a{
+  color:#ffffff;
+  text-decoration: none;
+  font-size:2.5rem;
+  text-shadow: 2px 2px #000;
+}
+
+div.hgroup h2{
+  color:#ffffff;
+  text-shadow: 2px 2px #000;
+}
+
+.hgroup h1, .hgroup h2{
+  margin:0;
+}
+
+/* Make navigation text white */
+nav a {
+  color: white;
+  text-decoration: none;
+}
+
+/* Optional hover effect */
+nav a:hover {
+  color: #ddd;
 }
