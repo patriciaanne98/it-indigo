@@ -19,7 +19,7 @@ main{
     background-color: #ffffff;
     width:80vw;
     max-width:980px;
-    text-align:center;
+    /* text-align:center; for the quick type is command slash */
     margin-top: 40px;
     margin-right: auto;
     margin-bottom: 40px;
@@ -44,6 +44,33 @@ header.primary{
 header.primary nav{
   justify-content:space-between;
   width:30%;  
+}
+
+header.primary nav ul{
+  list-style-type:none;
+  margin:0;
+  padding:0;
+}
+
+header.primary nav ul li a{
+  color:#ffffff;
+  background: rgba(0,0,0,.6);
+  display:block;
+  margin-bottom:10px;
+  border:1px solid #cc3a67;
+  border-right:10px solid #cc3a67;
+  border-radius:20px;
+  padding: 10px 10px 10px 0; /* top, right, bottom, left */
+  text-align: right;
+  font-size: .9rem;
+  text-decoration: none;
+  text-shadow:2px 1px #000;
+  transition:.5s;
+}
+
+header.primary nav ul li a:hover{
+  text-decoration: underline;
+  background: rgba(68,201,33,.9)
 }
 
 div.hgroup{
@@ -76,4 +103,15 @@ nav a {
 /* Optional hover effect */
 nav a:hover {
   color: #ddd;
+}
+
+#content{
+line-height:1.4;
+}
+
+#content h2{
+color:#161A59;
+border-left: 7.5px solid #d94179;
+border-radius: 15px 0;
+padding: 5px 7.5px 5px 5px;
 }
