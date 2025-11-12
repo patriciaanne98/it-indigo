@@ -1,7 +1,157 @@
 .formlabel {
         display: inline-block;
-        width: 150px;
+        width: 200px;
         text-align: right;
         padding: 5px;
         font-weight: bold;
     }
+
+body {
+    font-family: Georgia, serif;
+    background-color: #ddd;
+    padding: 10px;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #e8e8e8;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+h1 {
+    text-align: center;
+    color: #000;
+    margin-bottom: 10px;
+    font-size: 28px;
+    font-weight: bold;
+    background-color: white;
+    padding: 20px;
+    margin: 0;
+}
+
+.subtitle {
+    text-align: left;
+    margin-bottom: 0;
+    margin-top: 0;
+    color: #000;
+    font-size: 15px;
+    background-color: white;
+    padding: 20px 20px;
+    padding-top: 10px;
+    padding-bottom: 25px;
+}
+
+.formlabel {
+    display: inline-block;
+    width: 180px;
+    text-align: right;
+    padding-right: 10px;
+    font-weight: bold;
+    vertical-align: middle;
+    font-size: 16px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea {
+    padding: 7px;
+    border: 1px solid #999;
+    border-radius: 3px;
+    font-size: 14px;
+}
+
+input[type="text"] {
+    width: 270px;
+}
+
+input[type="email"] {
+    width: 270px;
+}
+
+input[type="tel"] {
+    width: 150px;
+}
+
+input[name="MiddleInitial"] {
+    width: 50px;
+}
+
+input[name="Birthday"] {
+    width: 100px;
+}
+
+input[name="Height"] {
+    width: 70px;
+}
+
+input[name="Weight"] {
+    width: 70px;
+}
+
+input[name="City"] {
+    width: 270px;
+}
+
+input[name="Zip"] {
+    width: 80px;
+}
+
+textarea {
+    width: 290px;
+    height: 60px;
+    vertical-align: top;
+    font-family: Arial, sans-serif;
+}
+
+.form-row {
+    margin-bottom: 5px;
+    clear: both;
+    background-color: white;
+    padding: 15px 20px;
+}
+
+.radio-group {
+    display: inline;
+    vertical-align: middle;
+}
+
+.radio-group label {
+    font-weight: normal;
+    margin-right: 15px;
+}
+
+.divider {
+    border-top: 2px solid #999;
+    margin: 25px 0;
+    margin-left: 110px;
+    margin-right: 20px;
+    background-color: white;
+    padding: 0 20px;
+}
+
+.submit-btn {
+    text-align: left;
+    margin-top: 20px;
+    margin-left: 0;
+    background-color: white;
+    padding: 25px 20px;
+}
+
+button {
+    padding: 6px 18px;
+    background-color: #ddd;
+    border: 1px solid #999;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 13px;
+    font-family: Georgia, serif;
+    margin-left: 110px;
+}
+
+button:hover {
+    background-color: #ccc;
+}
