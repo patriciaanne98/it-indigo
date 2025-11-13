@@ -5,6 +5,11 @@ html {
   box-sizing: inherit;
 }
 
+/* ----------- Responsive Image ------------- */
+img {
+  max-width:100%;
+}
+
 /* ----------- Utility Classes ------------- */
 .container{
   margin:auto;
@@ -109,9 +114,72 @@ nav a:hover {
 line-height:1.4;
 }
 
-#content h2{
+#content h2, #content h3, .widget header h2{
 color:#161A59;
 border-left: 7.5px solid #d94179;
 border-radius: 15px 0;
-padding: 5px 7.5px 5px 5px;
+padding: 5px 7.5px 0px 5px;
 }
+
+#blog{
+  background-color:#104d73;
+  padding:20px 0;
+  border-top:6px double #0a96a6;
+  border-bottom:6px double #0a96a6;
+}
+
+#blog > h2{
+  color:#ffffff;
+  text-shadow: 2px 2px #000000;
+  margin-left:20px;
+}
+
+#blog .post{
+  display:grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-areas: 
+  "figure header"
+  "figure post-content"
+  "figure footer";
+  margin:20px;
+  padding:20px;
+  background-color: white;
+}
+
+.post figure{
+   grid-area: figure;
+   background:rgba(0,0,0,.2);
+   margin:0 20px 0 0;
+}
+
+.post header{
+  grid-area: header;
+  background:rgba(0,0,0,.2);
+}
+
+.post .post-content{
+  grid-area: post-content;
+  background:rgba(0,0,0,.4);
+}
+
+.post .post-meta{
+  grid-area: footer;
+  background:rgba(0,0,0,.6);
+}
+
+aside .container{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+#colophon{
+  background-image: url("../img/bg_1.png");
+  background-repeat: no-repeat;
+  background-size:cover;
+  padding:1px;
+  text-align:center;
+  color:white;
+}
+
+
