@@ -1,185 +1,524 @@
 html {
   box-sizing: border-box;
 }
-*, *:before, *:after {
+
+*,
+*::before,
+*::after {
   box-sizing: inherit;
 }
 
-/* ----------- Responsive Image ------------- */
 img {
-  max-width:100%;
+  max-width: 100%;
+  display: block;
 }
 
-/* ----------- Utility Classes ------------- */
-.container{
-  margin:auto;
-  padding: 40px;
+/* Wes Anderson color palette */
+:root {
+  --wa-cream: #f8f2e7;
+  --wa-paper: #f5e3c8;
+  --wa-light: #fdf7ec;
+  --wa-teal: #4a8a8f;
+  --wa-teal-dark: #2f5c61;
+  --wa-rust: #c06b4e;
+  --wa-gold: #d8b25c;
+  --wa-green: #3b6b4c;
+  --wa-ink: #363534;
+  --wa-muted: #857a6b;
+  --border-strong: #b9824c;
 }
 
-body{
-    background-color: lavenderblush;
-    font-family: "Roboto", sans-serif;
-}
-main{
-    background-color: #ffffff;
-    width:80vw;
-    max-width:980px;
-    /* text-align:center; for the quick type is command slash */
-    margin-top: 40px;
-    margin-right: auto;
-    margin-bottom: 40px;
-    margin-left: auto; 
-    /* Shorthand */
-    margin: 40px auto;
-    margin: 40px auto 40px auto;
-    border: 2px dotted purple;
-    border-radius: 5px;
+/* =========================
+   Base Layout & Typography
+   ========================= */
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Source Sans 3", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      #f6ebd7 0,
+      #f6ebd7 12px,
+      #f9f1e3 12px,
+      #f9f1e3 24px
+    );
+  color: var(--wa-ink);
+  display: flex;
+  justify-content: center;
 }
 
-header.primary{
-  background-color: lightcyan;
-  padding: 20px;
-  background-image: url("../img/bg_1.png");
-  background-repeat: no-repeat;
-  background-size:cover;
-  background-position: center;
-  border: 3px solid lavender;
-  display:flex; 
-}
-header.primary nav{
-  justify-content:space-between;
-  width:30%;  
+main {
+  width: min(980px, 92vw);
+  margin: 48px auto;
+  background-color: var(--wa-cream);
+  border-radius: 18px;
+  border: 4px solid var(--border-strong);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
 }
 
-header.primary nav ul{
-  list-style-type:none;
-  margin:0;
-  padding:0;
+/* Utility container */
+.container {
+  margin: 0 auto;
+  padding: 32px 40px;
 }
 
-header.primary nav ul li a{
-  color:#ffffff;
-  background: rgba(0,0,0,.6);
-  display:block;
-  margin-bottom:10px;
-  border:1px solid #cc3a67;
-  border-right:10px solid #cc3a67;
-  border-radius:20px;
-  padding: 10px 10px 10px 0; /* top, right, bottom, left */
-  text-align: right;
-  font-size: .9rem;
+/* =========================
+   Header (Intro Template)
+   ========================= */
+
+header.primary {
+  display: flex;
+  align-items: stretch;
+  gap: 28px;
+  padding: 28px 40px;
+  background:
+    linear-gradient(
+      90deg,
+      #f2d7a4 0,
+      #f2d7a4 55%,
+      #d6e3dc 55%,
+      #d6e3dc 100%
+    );
+  border-bottom: 3px double var(--wa-teal-dark);
+}
+
+/* Decorative line across top of header */
+header.primary::before {
+  content: "";
+  position: absolute;
+}
+
+/* Heading block */
+.hgroup {
+  width: 65%;
+  border-right: 3px solid var(--wa-teal-dark);
+  padding-right: 28px;
+}
+
+.hgroup h1,
+.hgroup h2 {
+  margin: 0;
+}
+
+.hgroup h1 a {
+  font-family: "Roboto Slab", "Georgia", serif;
   text-decoration: none;
-  text-shadow:2px 1px #000;
-  transition:.5s;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: clamp(1.8rem, 3vw, 2.2rem);
+  color: var(--wa-teal-dark);
 }
 
-header.primary nav ul li a:hover{
-  text-decoration: underline;
-  background: rgba(68,201,33,.9)
+.hgroup h2 {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--wa-muted);
 }
 
-div.hgroup{
-text-align:left;
-width:70%;
+/* Nav column */
+header.primary nav {
+  width: 35%;
 }
 
-div.hgroup h1 a{
-  color:#ffffff;
+header.primary nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+/* Ticket-style nav buttons */
+header.primary nav a {
+  display: block;
   text-decoration: none;
-  font-size:2.5rem;
-  text-shadow: 2px 2px #000;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  padding: 10px 14px;
+  background-color: #faf2dd;
+  border-radius: 999px;
+  border: 2px solid var(--wa-teal-dark);
+  color: var(--wa-teal-dark);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 150ms ease-out,
+    box-shadow 150ms ease-out,
+    background-color 150ms ease-out,
+    color 150ms ease-out;
 }
 
-div.hgroup h2{
-  color:#ffffff;
-  text-shadow: 2px 2px #000;
+/* punch holes: faux ticket edges */
+header.primary nav a::before,
+header.primary nav a::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 2px solid var(--wa-teal-dark);
+  background-color: var(--wa-cream);
+  transform: translateY(-50%);
 }
 
-.hgroup h1, .hgroup h2{
-  margin:0;
+header.primary nav a::before {
+  left: -6px;
 }
 
-/* Make navigation text white */
+header.primary nav a::after {
+  right: -6px;
+}
+
+header.primary nav a:hover,
+header.primary nav a:focus-visible {
+  transform: translateY(-2px);
+  background-color: var(--wa-teal-dark);
+  color: #fefcf6;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.18);
+  outline: none;
+}
+
+/* generic nav color fallback */
 nav a {
-  color: white;
+  color: inherit;
+}
+
+/* =========================
+   Content Section
+   ========================= */
+
+#content {
+  line-height: 1.6;
+  background-color: var(--wa-light);
+  border-bottom: 3px double #d7c4a6;
+}
+
+#content h2,
+#content h3 {
+  font-family: "Roboto Slab", "Georgia", serif;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.9rem;
+  color: var(--wa-rust);
+  margin-top: 0;
+  margin-bottom: 0.7rem;
+  position: relative;
+  padding-bottom: 0.3rem;
+}
+
+/* thin accent rule under headings */
+#content h2::after,
+#content h3::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 70px;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    var(--wa-rust),
+    var(--wa-gold)
+  );
+}
+
+#content p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: var(--wa-muted);
+}
+
+/* =========================
+   Blog Section – Grid Layout
+   ========================= */
+
+#blog {
+  background-color: var(--wa-paper);
+  border-top: 4px solid var(--wa-gold);
+  border-bottom: 4px solid var(--wa-gold);
+  padding: 30px 0 36px;
+}
+
+#blog > h2 {
+  margin: 0 0 16px;
+  padding: 0 40px;
+  font-family: "Roboto Slab", "Georgia", serif;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.8rem;
+  color: var(--wa-green);
+}
+
+/* Post card */
+#blog .post {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 2fr);
+  grid-template-areas:
+    "figure header"
+    "figure post-content"
+    "figure footer";
+  gap: 16px;
+  margin: 16px 40px;
+  padding: 18px 18px 14px;
+  border-radius: 12px;
+  background-color: #fdf7ec;
+  border: 2px solid #d6b78f;
+  outline: 4px solid rgba(214, 183, 143, 0.45);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+  transition:
+    transform 160ms ease-out,
+    box-shadow 160ms ease-out,
+    background-color 160ms ease-out;
+}
+
+#blog .post:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.12);
+  background-color: #fffaf1;
+}
+
+/* Figure */
+.post figure {
+  grid-area: figure;
+  margin: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 2px solid var(--wa-gold);
+  background-color: #f2ddc3;
+}
+
+.post figure img {
+  filter: sepia(0.4) saturate(1.1);
+  transition: transform 220ms ease-out;
+}
+
+.post:hover figure img {
+  transform: scale(1.03);
+}
+
+.post figure figcaption {
+  font-size: 0.75rem;
+  text-align: center;
+  padding: 4px 6px;
+  background-color: rgba(0, 0, 0, 0.06);
+}
+
+/* Post header */
+.post header {
+  grid-area: header;
+  align-self: end;
+}
+
+.post header h2 {
+  margin: 4px 0 2px;
+  font-family: "Roboto Slab", "Georgia", serif;
+  font-size: 1.05rem;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--wa-ink);
+}
+
+.post header h2 a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.post header h2 a:hover {
+  text-decoration: underline;
+}
+
+/* Date */
+.post-date {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--wa-teal-dark);
+}
+
+/* Post content */
+.post .post-content {
+  grid-area: post-content;
+  font-size: 0.93rem;
+  color: var(--wa-muted);
+}
+
+/* Meta/footer */
+.post .post-meta {
+  grid-area: footer;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--wa-green);
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  padding-top: 6px;
+}
+
+.post .post-meta a {
+  color: var(--wa-rust);
   text-decoration: none;
 }
 
-/* Optional hover effect */
-nav a:hover {
-  color: #ddd;
+.post .post-meta a:hover {
+  text-decoration: underline;
 }
 
-#content{
-line-height:1.4;
+/* =========================
+   Sidebar Widgets
+   ========================= */
+
+aside {
+  background-color: #f3e0c1;
 }
 
-#content h2, #content h3, .widget header h2{
-color:#161A59;
-border-left: 7.5px solid #d94179;
-border-radius: 15px 0;
-padding: 5px 7.5px 0px 5px;
-}
-
-#blog{
-  background-color:#104d73;
-  padding:20px 0;
-  border-top:6px double #0a96a6;
-  border-bottom:6px double #0a96a6;
-}
-
-#blog > h2{
-  color:#ffffff;
-  text-shadow: 2px 2px #000000;
-  margin-left:20px;
-}
-
-#blog .post{
-  display:grid;
-  grid-template-columns: 1fr 3fr;
-  grid-template-areas: 
-  "figure header"
-  "figure post-content"
-  "figure footer";
-  margin:20px;
-  padding:20px;
-  background-color: white;
-}
-
-.post figure{
-   grid-area: figure;
-   background:rgba(0,0,0,.2);
-   margin:0 20px 0 0;
-}
-
-.post header{
-  grid-area: header;
-  background:rgba(0,0,0,.2);
-}
-
-.post .post-content{
-  grid-area: post-content;
-  background:rgba(0,0,0,.4);
-}
-
-.post .post-meta{
-  grid-area: footer;
-  background:rgba(0,0,0,.6);
-}
-
-aside .container{
-  display:grid;
+aside .container {
+  display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 40px;
+  gap: 28px;
 }
 
-#colophon{
-  background-image: url("../img/bg_1.png");
-  background-repeat: no-repeat;
-  background-size:cover;
-  padding:1px;
-  text-align:center;
-  color:white;
+.widget {
+  background:
+    linear-gradient(
+      135deg,
+      #fcebd3 0,
+      #f7dfc1 40%,
+      #f0d2b2 100%
+    );
+  border-radius: 14px;
+  border: 2px solid #cfaa7b;
+  padding: 16px 18px 12px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
+.widget header h2 {
+  margin: 0 0 4px;
+  font-family: "Roboto Slab", "Georgia", serif;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.8rem;
+  color: var(--wa-teal-dark);
+}
 
+.widget p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--wa-muted);
+}
+
+.widget p a {
+  color: var(--wa-rust);
+  text-decoration: none;
+}
+
+.widget p a:hover {
+  text-decoration: underline;
+}
+
+.widget footer {
+  margin-top: 8px;
+  padding-top: 6px;
+  border-top: 1px dashed rgba(0, 0, 0, 0.25);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--wa-muted);
+}
+
+/* =========================
+   Colophon / Footer
+   ========================= */
+
+#colophon {
+  padding: 10px 24px 16px;
+  text-align: center;
+  background-color: #d4d3c7;
+  border-top: 3px solid var(--wa-teal-dark);
+}
+
+#colophon h6 {
+  margin: 0;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-family: "Alumni Sans Pinstripe", system-ui;
+  color: var(--wa-teal-dark);
+}
+
+/* =========================
+   Responsive Tweaks
+   ========================= */
+
+@media (max-width: 880px) {
+  header.primary {
+    flex-direction: column;
+    padding: 24px 24px 20px;
+    background: linear-gradient(
+      180deg,
+      #f2d7a4 0,
+      #f2d7a4 60%,
+      #d6e3dc 60%,
+      #d6e3dc 100%
+    );
+  }
+
+  .hgroup {
+    width: 100%;
+    border-right: none;
+    border-bottom: 3px solid var(--wa-teal-dark);
+    padding-right: 0;
+    padding-bottom: 18px;
+    margin-bottom: 12px;
+  }
+
+  header.primary nav {
+    width: 100%;
+  }
+
+  #blog .post {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "figure"
+      "header"
+      "post-content"
+      "footer";
+  }
+
+  .post figure {
+    max-width: 340px;
+  }
+}
+
+@media (max-width: 640px) {
+  main {
+    width: 96vw;
+    margin: 28px auto;
+  }
+
+  .container {
+    padding-inline: 22px;
+  }
+
+  header.primary {
+    padding-inline: 22px;
+  }
+
+  #blog .post {
+    margin-inline: 22px;
+  }
+
+  aside .container {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,21 +1,58 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <title>IT Indigo | Patricia Frogoso</title>
-        <meta charset="utf-8" />
-        <meta name="description" content="Short keyword rich narrative of the site purpose" />
-        <meta name="author" content="Patricia Frogoso" />
-        <link href="assets/css/style.css" rel="stylesheet">
-    </head>
-    <body>
-        <h1>IT Indigo | Patricia Frogoso</h1>
-        <nav>
-            <ul>
-                <li><a href="cheatsheet/index.html">HTML Cheatsheet</a></li>
-                <li><a href="html-demo/index.html">Prototype HTML5 Assignment</a></li>
-                <li><a href="css-demo/index.html">CSS Demo</a></li>
-                 <li><a href="validation/index.html">Bruce's Form Validation</a></li>
-            </ul>
-        </nav>
-    </body>
+<head>
+  <meta charset="utf-8" />
+  <title>IT Indigo | Patricia Frogoso</title>
+  <meta name="description" content="IT Indigo | Web design, HTML, CSS, and validation demos by Patricia Frogoso." />
+  <meta name="author" content="Patricia Frogoso" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="assets/css/style.css" rel="stylesheet">
+</head>
+<body>
+  <div class="background-gradient"></div>
+  <div class="cosmic-bg">
+  <div class="cosmic-stars"></div>
+  <div class="shooting-star shooting-star--1"></div>
+  <div class="shooting-star shooting-star--2"></div>
+  <div class="shooting-star shooting-star--3"></div>
+</div>
+
+  <main class="page-shell">
+    <header class="site-header">
+      <h1 class="site-title">IT Indigo</h1>
+      <p class="site-subtitle">by Patricia Frogoso</p>
+    </header>
+
+    <nav class="nav-grid" aria-label="IT Indigo navigation">
+      <a class="nav-card" href="cheatsheet/index.html">
+        <span class="nav-card-label">HTML Cheatsheet</span>
+        <span class="nav-card-meta">Quick reference guide</span>
+      </a>
+
+      <a class="nav-card" href="html-demo/index.html">
+        <span class="nav-card-label">Prototype HTML5 Assignment</span>
+        <span class="nav-card-meta">Semantic structure & layout</span>
+      </a>
+
+      <a class="nav-card" href="css-demo/index.html">
+        <span class="nav-card-label">CSS Demo</span>
+        <span class="nav-card-meta">Styling & visual systems</span>
+      </a>
+
+      <a class="nav-card" href="validation/index.html">
+        <span class="nav-card-label">Bruce's Form Validation</span>
+        <span class="nav-card-meta">Client-side form checks</span>
+      </a>
+    </nav>
+
+    <footer class="site-footer">
+      <p>© <span id="year"></span> IT Indigo · Patricia Frogoso</p>
+    </footer>
+  </main>
+
+  <script>
+    // Optional: dynamic year without needing extra files
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
 </html>
