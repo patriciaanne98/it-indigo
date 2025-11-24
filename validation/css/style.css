@@ -1,157 +1,100 @@
-.formlabel {
-        display: inline-block;
-        width: 150px;
-        text-align: right;
-        padding: 5px;
-        font-weight: bold;
-    }
-
+/* General Body Styling */
 body {
-    font-family: Georgia, serif;
-    background-color: #ddd;
-    padding: 10px;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
 }
 
+/* Container for the form */
 .container {
-    max-width: 900px;
+    max-width: 700px;
     margin: 0 auto;
-    background-color: #e8e8e8;
-    padding: 10px;
-    border-radius: 5px;
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Heading */
 h1 {
     text-align: center;
-    color: #000;
-    margin-bottom: 10px;
-    font-size: 28px;
-    font-weight: bold;
-    background-color: white;
-    padding: 20px;
-    margin: 0;
+    color: #333;
+    margin-bottom: 30px;
 }
 
-.subtitle {
-    text-align: left;
-    margin-bottom: 0;
-    margin-top: 0;
-    color: #000;
-    font-size: 15px;
-    background-color: white;
-    padding: 20px 20px;
-    padding-top: 10px;
-    padding-bottom: 25px;
+/* Form Group - each field row */
+.form-group {
+    margin-bottom: 15px;
+    clear: both;
 }
 
+/* Form Label Styling - Right Justified */
 .formlabel {
     display: inline-block;
-    width: 180px;
+    width: 150px;
     text-align: right;
-    padding-right: 10px;
+    padding: 5px;
     font-weight: bold;
-    vertical-align: middle;
-    font-size: 16px;
+    vertical-align: top;
 }
 
+/* Input Fields */
 input[type="text"],
-input[type="email"],
-input[type="tel"],
 select,
 textarea {
-    padding: 7px;
-    border: 1px solid #999;
-    border-radius: 3px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
     font-size: 14px;
 }
 
-input[type="text"] {
-    width: 270px;
-}
-
-input[type="email"] {
-    width: 270px;
-}
-
-input[type="tel"] {
-    width: 150px;
-}
-
-input[name="MiddleInitial"] {
-    width: 50px;
-}
-
-input[name="Birthday"] {
-    width: 100px;
-}
-
-input[name="Height"] {
-    width: 70px;
-}
-
-input[name="Weight"] {
-    width: 70px;
-}
-
-input[name="City"] {
-    width: 270px;
-}
-
-input[name="Zip"] {
-    width: 80px;
-}
-
+/* Textarea specific */
 textarea {
-    width: 290px;
-    height: 60px;
-    vertical-align: top;
     font-family: Arial, sans-serif;
+    resize: vertical;
 }
 
-.form-row {
-    margin-bottom: 5px;
-    clear: both;
-    background-color: white;
-    padding: 15px 20px;
+/* Radio Button Labels */
+input[type="radio"] {
+    margin-left: 10px;
+    margin-right: 5px;
 }
 
-.radio-group {
-    display: inline;
-    vertical-align: middle;
+/* Select Dropdown */
+select {
+    padding: 5px;
 }
 
-.radio-group label {
-    font-weight: normal;
-    margin-right: 15px;
-}
-
-.divider {
-    border-top: 2px solid #999;
-    margin: 25px 0;
-    margin-left: 110px;
-    margin-right: 20px;
-    background-color: white;
-    padding: 0 20px;
-}
-
-.submit-btn {
-    text-align: left;
-    margin-top: 20px;
-    margin-left: 0;
-    background-color: white;
-    padding: 25px 20px;
-}
-
-button {
-    padding: 6px 18px;
-    background-color: #ddd;
-    border: 1px solid #999;
-    border-radius: 3px;
+/* Submit and Reset Buttons */
+input[type="submit"],
+input[type="reset"] {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
-    font-size: 13px;
-    font-family: Georgia, serif;
-    margin-left: 110px;
+    font-size: 14px;
+    margin-right: 10px;
 }
 
-button:hover {
-    background-color: #ccc;
+input[type="reset"] {
+    background-color: #f44336;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+input[type="reset"]:hover {
+    background-color: #da190b;
+}
+
+/* Error Message Styling */
+.error {
+    color: red;
+    padding-left: 5px;
+    font-size: 13px;
+    display: inline-block;
 }

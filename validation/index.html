@@ -3,94 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Patient Registration</title>
+    <title>New Patient Registration Form</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/additional-methods.min.js"></script>
 </head>
 <body>
     <div class="container">
-        <h1>New Patient Registration</h1>
-        <p class="subtitle">Please fill out the form below</p>
+        <h1>New Patient Registration Form</h1>
         
-        <form id="SubmitExampleForm" action="https://brucebauer.info/assets/ITEC3650/datadump.php" method="post">
+        <form id="PatientRegistrationForm" action="https://brucebauer.info/assets/ITEC3650/datadump.php" method="post">
             
-            <div class="form-row">
-                <label class="formlabel" for="FirstName">First Name:</label>
-                <input type="text" id="FirstName" name="FirstName" size="30" maxlength="30" required>
+            <!-- First Name -->
+            <div class="form-group">
+                <label for="FirstName" class="formlabel">First Name:</label>
+                <input type="text" id="FirstName" name="FirstName" size="30" maxlength="30"
+                       data-rule-required="true" data-msg-required="First Name is Required">
+                <label for="FirstName" class="error"></label>
             </div>
-            
-            <div class="form-row">
-                <label class="formlabel" for="MiddleInitial">Middle Initial:</label>
+
+            <!-- Middle Initial -->
+            <div class="form-group">
+                <label for="MiddleInitial" class="formlabel">Middle Initial:</label>
                 <input type="text" id="MiddleInitial" name="MiddleInitial" size="1" maxlength="1">
             </div>
-            
-            <div class="form-row">
-                <label class="formlabel" for="LastName">Last Name:</label>
-                <input type="text" id="LastName" name="LastName" size="30" maxlength="30" required>
+
+            <!-- Last Name -->
+            <div class="form-group">
+                <label for="LastName" class="formlabel">Last Name:</label>
+                <input type="text" id="LastName" name="LastName" size="30" maxlength="30"
+                       data-rule-required="true" data-msg-required="Last Name is Required">
+                <label for="LastName" class="error"></label>
             </div>
-            
-            <div class="form-row">
-                <label class="formlabel" for="Email">Email:</label>
-                <input type="email" id="Email" name="Email" size="30" maxlength="30" required>
+
+            <!-- Email -->
+            <div class="form-group">
+                <label for="Email" class="formlabel">Email:</label>
+                <input type="text" id="Email" name="Email" size="30" maxlength="30"
+                       data-rule-required="true" data-msg-required="Email is Required"
+                       data-rule-email="true" data-msg-email="Invalid Email">
+                <label for="Email" class="error"></label>
             </div>
-            
-            <div class="form-row">
+
+            <!-- Sex -->
+            <div class="form-group">
                 <label class="formlabel">Sex:</label>
-                <div class="radio-group">
-                    <input type="radio" id="Male" name="Sex" value="M">
-                    <label for="Male">Male</label>
-                    
-                    <input type="radio" id="Female" name="Sex" value="F">
-                    <label for="Female">Female</label>
-                    
-                    <input type="radio" id="NA" name="Sex" value="N">
-                    <label for="NA">N/A</label>
-                </div>
+                <label for="Male"><input type="radio" name="Sex" id="Male" value="M"
+                       data-rule-required="true" data-msg-required="Sex is Required">Male</label>
+                <label for="Female"><input type="radio" name="Sex" id="Female" value="F">Female</label>
+                <label for="NA"><input type="radio" name="Sex" id="NA" value="N">N/A</label>
+                <label for="Sex" class="error"></label>
             </div>
-            
-            <div class="form-row">
-                <label class="formlabel" for="Birthday">Birthday:</label>
-                <input type="text" id="Birthday" name="Birthday" size="8" maxlength="8" placeholder="MM/DD/YY">
+
+            <!-- Birthday -->
+            <div class="form-group">
+                <label for="Birthday" class="formlabel">Birthday:</label>
+                <input type="text" id="Birthday" name="Birthday" size="8" maxlength="8"
+                       data-rule-required="true" data-msg-required="Birthday is Required"
+                       data-rule-date="true" data-msg-date="Date must be MM/DD/YYYY format">
+                <label for="Birthday" class="error"></label>
             </div>
-            
-            <div class="form-row">
-                <label class="formlabel" for="Height">Height (inches):</label>
-                <input type="text" id="Height" name="Height" size="3" maxlength="3">
+
+            <!-- Height -->
+            <div class="form-group">
+                <label for="Height" class="formlabel">Height (inches):</label>
+                <input type="text" id="Height" name="Height" size="3" maxlength="3"
+                       data-rule-required="true" data-msg-required="Height is Required"
+                       data-rule-number="true" data-msg-number="Height must be a number"
+                       data-rule-min="12" data-msg-min="Height must be at least 12 inches"
+                       data-rule-max="120" data-msg-max="Height must be less than or equal to 120 inches">
+                <label for="Height" class="error"></label>
             </div>
-            
-            <div class="form-row">
-                <label class="formlabel" for="Weight">Weight (pounds):</label>
-                <input type="text" id="Weight" name="Weight" size="3" maxlength="3">
+
+            <!-- Weight -->
+            <div class="form-group">
+                <label for="Weight" class="formlabel">Weight (lbs):</label>
+                <input type="text" id="Weight" name="Weight" size="3" maxlength="3"
+                       data-rule-required="true" data-msg-required="Weight is Required"
+                       data-rule-number="true" data-msg-number="Weight must be a number"
+                       data-rule-min="10" data-msg-min="Weight must be at least 10 lbs"
+                       data-rule-max="500" data-msg-max="Weight must be less than or equal to 500 lbs">
+                <label for="Weight" class="error"></label>
             </div>
-            
-            <div class="divider"></div>
-            
-            <div class="form-row">
-                <label class="formlabel" for="PhoneNumber">Phone Number:</label>
-                <input type="tel" id="PhoneNumber" name="PhoneNumber" size="14" maxlength="14">
+
+            <!-- Phone Number -->
+            <div class="form-group">
+                <label for="PhoneNumber" class="formlabel">Phone Number:</label>
+                <input type="text" id="PhoneNumber" name="PhoneNumber" size="14" maxlength="14"
+                       data-rule-required="true" data-msg-required="Phone Number is Required"
+                       data-rule-phoneUS="true" data-msg-phoneUS="Invalid Phone Number">
+                <label for="PhoneNumber" class="error"></label>
             </div>
-            
-            <div class="form-row">
-                <label class="formlabel" for="MaritalStatus">Marital Status:</label>
-                <select id="MaritalStatus" name="MaritalStatus">
-                    <option value="">Select a Status...</option>
+
+            <!-- Marital Status -->
+            <div class="form-group">
+                <label for="MaritalStatus" class="formlabel">Marital Status:</label>
+                <select name="MaritalStatus" id="MaritalStatus"
+                        data-rule-required="true" data-msg-required="Marital Status is Required">
+                    <option value="">Select Marital Status...</option>
                     <option value="S">Single</option>
                     <option value="M">Married</option>
                     <option value="D">Divorced</option>
                     <option value="L">Legally Separated</option>
                     <option value="W">Widowed</option>
                 </select>
+                <label for="MaritalStatus" class="error"></label>
             </div>
-            
-            <div class="form-row">
-                <label class="formlabel" for="Address">Address:</label>
-                <input type="text" id="Address" name="Address" size="30" maxlength="30">
+
+            <!-- Address -->
+            <div class="form-group">
+                <label for="Address" class="formlabel">Address:</label>
+                <input type="text" id="Address" name="Address" size="30" maxlength="30"
+                       data-rule-required="true" data-msg-required="Address is Required">
+                <label for="Address" class="error"></label>
             </div>
-            
-            <div class="form-row">
-                <label class="formlabel" for="City">City/State/Zip:</label>
-                <input type="text" id="City" name="City" size="30" maxlength="30">
-                <select id="State" name="State">
-                    <option value="">Select a State...</option>
+
+            <!-- City -->
+            <div class="form-group">
+                <label for="City" class="formlabel">City:</label>
+                <input type="text" id="City" name="City" size="30" maxlength="30"
+                       data-rule-required="true" data-msg-required="City is Required">
+                <label for="City" class="error"></label>
+            </div>
+
+            <!-- State -->
+            <div class="form-group">
+                <label for="State" class="formlabel">State:</label>
+                <select name="State" id="State" size="3"
+                        data-rule-required="true" data-msg-required="State is Required">
+                    <option value="">Select State...</option>
                     <option value="AL">Alabama</option>
                     <option value="AK">Alaska</option>
                     <option value="AZ">Arizona</option>
@@ -142,32 +184,49 @@
                     <option value="WI">Wisconsin</option>
                     <option value="WY">Wyoming</option>
                 </select>
-                <input type="text" id="Zip" name="Zip" size="5" maxlength="5">
+                <label for="State" class="error"></label>
             </div>
-            
-            <div class="divider"></div>
-            
-            <div class="form-row">
+
+            <!-- Zip -->
+            <div class="form-group">
+                <label for="Zip" class="formlabel">Zip:</label>
+                <input type="text" id="Zip" name="Zip" size="5" maxlength="5"
+                       data-rule-required="true" data-msg-required="Zip is Required"
+                       data-rule-digits="true" data-msg-digits="Zip must be 5 digits">
+                <label for="Zip" class="error"></label>
+            </div>
+
+            <!-- Taking Medications -->
+            <div class="form-group">
                 <label class="formlabel">Taking Medications:</label>
-                <div class="radio-group">
-                    <input type="radio" id="MedYes" name="Medications" value="Y">
-                    <label for="MedYes">Yes</label>
-                    
-                    <input type="radio" id="MedNo" name="Medications" value="N">
-                    <label for="MedNo">No</label>
-                </div>
+                <label for="MedYes"><input type="radio" name="Medications" id="MedYes" value="Y"
+                       data-rule-required="true" data-msg-required="Medications field is Required">Yes</label>
+                <label for="MedNo"><input type="radio" name="Medications" id="MedNo" value="N">No</label>
+                <label for="Medications" class="error"></label>
             </div>
-            
-            <div class="form-row">
-                <label class="formlabel" for="MedicationsList">If yes, list medications here:</label>
+
+            <!-- Medications List -->
+            <div class="form-group">
+                <label for="MedicationsList" class="formlabel">Medications:</label>
                 <textarea id="MedicationsList" name="MedicationsList" rows="3" cols="30"></textarea>
             </div>
-            
-            <div class="submit-btn">
-                <button type="submit">Submit Patient Form</button>
+
+            <!-- Submit Button -->
+            <div class="form-group">
+                <label class="formlabel"></label>
+                <input type="submit" value="Submit Form" name="SubmitButton">
+                <input type="reset" value="Reset Form" name="ResetButton">
             </div>
-            
+
         </form>
     </div>
+
+    <script>
+    $(document).ready(function() {
+        $("#PatientRegistrationForm").validate({
+            
+        });
+    });
+    </script>
 </body>
 </html>
