@@ -21,7 +21,7 @@
 
   <main class="page-shell">
     <header class="site-header">
-      <h1 class="site-title">IT Indigo</h1>
+      <h1 id="menu" class="site-title">IT Indigo</h1>
       <p class="site-subtitle">by Patricia Frogoso</p>
     </header>
 
@@ -52,20 +52,10 @@
       </a>
     </nav>
 
-    <div class="scroll-hint">Scroll</div>
-
     <footer class="site-footer">
       <p>© <span id="year"></span> IT Indigo · Patricia Frogoso</p>
     </footer>
   </main>
-
-  <div class="scroll-hint" aria-hidden="true">Scroll</div>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 10) document.body.classList.add('scrolled');
-    }, { passive: true });
-  </script>
+  <a class="scroll-hint" href="#menu" aria-label="Scroll to navigation">⌄</a>
 </body>
 </html>

@@ -397,39 +397,32 @@ body {
   }
 
   /* Scroll pill (mobile-only) */
-  .scroll-hint {
+   .scroll-hint {
     display: block;
     position: fixed;
     left: 50%;
     bottom: 18px;
     transform: translateX(-50%);
     z-index: 9999;
+    pointer-events: auto;
 
-    padding: 10px 14px;
-    border-radius: 999px;
+    font-size: 2rem;
+    font-weight: bold;
+    color: rgba(245,245,255,0.85);
+    text-shadow: 0 0 12px rgba(127,93,255,0.6);
 
-    font-size: 0.75rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-
-    color: rgba(245, 245, 255, 0.9);
-    background: rgba(0, 0, 0, 0.38);
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-
-    box-shadow: 0 10px 30px rgba(0,0,0,0.35);
-    animation: hintFloat 1.8s ease-in-out infinite;
-    pointer-events: none;
+    animation: bounce 1.5s ease-in-out infinite;
   }
 
-  @keyframes hintFloat {
-    0%,100% { transform: translateX(-50%) translateY(0); opacity: 0.9; }
-    50% { transform: translateX(-50%) translateY(-4px); opacity: 1; }
+  @keyframes bounce {
+    0%,100% { transform: translateX(-50%) translateY(0); opacity: 0.6; }
+    50% { transform: translateX(-50%) translateY(6px); opacity: 1; }
   }
 
   body.scrolled .scroll-hint {
-    opacity: 0;
-    transition: opacity 250ms ease;
+    display: none;
   }
+
+  html { scroll-behavior: smooth; }
 }
+
