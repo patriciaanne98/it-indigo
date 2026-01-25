@@ -146,10 +146,11 @@ body {
    Nav Grid
    ============= */
 
-.nav-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 columns */
+.nav-grid{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.3rem;
+  align-items: stretch;
 }
 
 /* Cards: flexbox + grid feel */
@@ -157,6 +158,7 @@ body {
 .nav-card {
   position: relative;
   min-height: 140px;
+  width: 100%;
   padding: 1.2rem 1.3rem;
   border-radius: var(--radius-lg);
   background: radial-gradient(
@@ -410,6 +412,13 @@ body {
 /* =============
    Responsive
    ============= */
+
+/* Desktop: use 3 columns so 5 cards look balanced */
+@media (min-width: 1040px) {
+  .nav-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
 
 @media (max-width: 720px) {
   .page-shell {
