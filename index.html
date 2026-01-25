@@ -6,16 +6,18 @@
   <meta name="description" content="IT Indigo | Web design, HTML, CSS, and validation demos by Patricia Frogoso." />
   <meta name="author" content="Patricia Frogoso" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="assets/css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
+
 <body>
   <div class="background-gradient"></div>
-  <div class="cosmic-bg">
-  <div class="cosmic-stars"></div>
-  <div class="shooting-star shooting-star--1"></div>
-  <div class="shooting-star shooting-star--2"></div>
-  <div class="shooting-star shooting-star--3"></div>
-</div>
+
+  <div class="cosmic-bg" aria-hidden="true">
+    <div class="cosmic-stars"></div>
+    <div class="shooting-star shooting-star--1"></div>
+    <div class="shooting-star shooting-star--2"></div>
+    <div class="shooting-star shooting-star--3"></div>
+  </div>
 
   <main class="page-shell">
     <header class="site-header">
@@ -44,20 +46,26 @@
         <span class="nav-card-meta">Client-side form checks</span>
       </a>
 
-     <a class="nav-card" href="html-cheatsheet/index.html">
+      <a class="nav-card" href="html-cheatsheet/index.html">
         <span class="nav-card-label">HTML Cheatsheet Activity</span>
         <span class="nav-card-meta">HTML5 Reference Document</span>
       </a>
     </nav>
+
+    <div class="scroll-hint">Scroll</div>
 
     <footer class="site-footer">
       <p>© <span id="year"></span> IT Indigo · Patricia Frogoso</p>
     </footer>
   </main>
 
+  <div class="scroll-hint" aria-hidden="true">Scroll</div>
+
   <script>
-    // Optional: dynamic year without needing extra files
     document.getElementById('year').textContent = new Date().getFullYear();
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 10) document.body.classList.add('scrolled');
+    }, { passive: true });
   </script>
 </body>
 </html>
