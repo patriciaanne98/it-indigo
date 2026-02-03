@@ -1,0 +1,48 @@
+<h1>Circle Calculations</h1>
+
+<label><strong>Enter radius of a circle:</strong></label>
+<input type="text" id="radius">
+
+<p><strong>Diameter:</strong> <span id="diameterOut"></span></p>
+<p><strong>Circumference:</strong> <span id="circumferenceOut"></span></p>
+<p><strong>Area:</strong> <span id="areaOut"></span></p>
+
+<br>
+<br>
+
+<input type="button" id="calculateBtn" value="Calculate">
+<input type="button" id="clearBtn" value="Clear">
+
+<script>
+  function calcDiameter(radius) {
+    return 2 * radius;
+  }
+
+  function calcCircumference(radius) {
+    return 2 * Math.PI * radius;
+  }
+
+  function calcArea(radius) {
+    return Math.PI * radius * radius;
+  }
+
+  // STEP 3: button logic
+  document.getElementById("calculateBtn").onclick = function () {
+    // get value from textbox (string)
+    let radiusString = document.getElementById("radius").value;
+
+    // convert string to number
+    let radius = parseFloat(radiusString);
+
+    // calculate using functions
+    let diameter = calcDiameter(radius);
+    let circumference = calcCircumference(radius);
+    let area = calcArea(radius);
+
+    // display results
+    document.getElementById("diameterOut").textContent = diameter;
+    document.getElementById("circumferenceOut").textContent = circumference;
+    document.getElementById("areaOut").textContent = area;
+  };
+</script>
+

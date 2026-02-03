@@ -1,0 +1,3 @@
+document.getElementById("radius")
+
+document.getElementById("diameterOut").textContent = ...
