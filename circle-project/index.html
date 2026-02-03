@@ -1,48 +1,27 @@
-<h1>Circle Calculations</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Circle Calculations</title>
+</head>
 
-<label><strong>Enter radius of a circle:</strong></label>
-<input type="text" id="radius">
+<body>
+  <h1>Circle Calculations</h1>
 
-<p><strong>Diameter:</strong> <span id="diameterOut"></span></p>
-<p><strong>Circumference:</strong> <span id="circumferenceOut"></span></p>
-<p><strong>Area:</strong> <span id="areaOut"></span></p>
+  <label><strong>Enter radius of a circle:</strong></label>
+  <input type="text" id="radius">
 
-<br>
-<br>
+  <p><strong>Diameter:</strong> <span id="diameterOut"></span></p>
+  <p><strong>Circumference:</strong> <span id="circumferenceOut"></span></p>
+  <p><strong>Area:</strong> <span id="areaOut"></span></p>
 
-<input type="button" id="calculateBtn" value="Calculate">
-<input type="button" id="clearBtn" value="Clear">
+  <br>
 
-<script>
-  function calcDiameter(radius) {
-    return 2 * radius;
-  }
+  <input type="button" id="calculateBtn" value="Calculate">
+  <input type="button" id="clearBtn" value="Clear">
 
-  function calcCircumference(radius) {
-    return 2 * Math.PI * radius;
-  }
-
-  function calcArea(radius) {
-    return Math.PI * radius * radius;
-  }
-
-  // STEP 3: button logic
-  document.getElementById("calculateBtn").onclick = function () {
-    // get value from textbox (string)
-    let radiusString = document.getElementById("radius").value;
-
-    // convert string to number
-    let radius = parseFloat(radiusString);
-
-    // calculate using functions
-    let diameter = calcDiameter(radius);
-    let circumference = calcCircumference(radius);
-    let area = calcArea(radius);
-
-    // display results
-    document.getElementById("diameterOut").textContent = diameter;
-    document.getElementById("circumferenceOut").textContent = circumference;
-    document.getElementById("areaOut").textContent = area;
-  };
-</script>
+  <!-- connect JavaScript -->
+  <script src="js/script.js"></script>
+</body>
+</html>
 
