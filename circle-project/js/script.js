@@ -10,7 +10,24 @@ function calcArea(radius) {
   return Math.PI * radius * radius;
 }
 
-document.getElementById("calculateBtn").onclick = function () {
+function clearForm() {
+  document.getElementById("radius").value = "";
+  document.getElementById("diameter").textContent = "";
+  document.getElementById("circumference").textContent = "";
+  document.getElementById("area").textContent = "";
+
+  // Clear validation messages (if validate() is running)
+  if (window.jQuery && $("#CircleForm").data("validator")) {
+    $("#CircleForm").validate().resetForm();
+  }
+}
+
+document.getElementById("btnSubmitCalculate").onclick = function () {
+  // Only calculate if the form is valid (jQuery Validation)
+  if (window.jQuery && $("#CircleForm").length && !$("#CircleForm").valid()) {
+    return;
+  }
+
   let radiusString = document.getElementById("radius").value;
   let radius = parseFloat(radiusString);
 
@@ -18,14 +35,12 @@ document.getElementById("calculateBtn").onclick = function () {
   let circumference = calcCircumference(radius);
   let area = calcArea(radius);
 
-  document.getElementById("diameterOut").textContent = diameter;
-  document.getElementById("circumferenceOut").textContent = circumference;
-  document.getElementById("areaOut").textContent = area;
+  // Optional: format to 4 decimals
+  document.getElementById("diameter").textContent = diameter.toFixed(4);
+  document.getElementById("circumference").textContent = circumference.toFixed(4);
+  document.getElementById("area").textContent = area.toFixed(4);
 };
 
-document.getElementById("clearBtn").onclick = function () {
-  document.getElementById("radius").value = "";
-  document.getElementById("diameterOut").textContent = "";
-  document.getElementById("circumferenceOut").textContent = "";
-  document.getElementById("areaOut").textContent = "";
+document.getElementById("btnSubmitClear").onclick = function () {
+  clearForm();
 };

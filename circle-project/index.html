@@ -3,25 +3,59 @@
 <head>
   <meta charset="UTF-8">
   <title>Circle Calculations</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-  <h1>Circle Calculations</h1>
+  <form id="CircleForm" onsubmit="return false;">
+    <h2>Circle Calculations</h2>
 
-  <label><strong>Enter radius of a circle:</strong></label>
-  <input type="text" id="radius">
+    <label for="radius" class="formlabel"><strong>Enter radius of a circle:</strong></label>
+    <input type="text" id="radius" name="radius"
+      data-rule-required="true"  data-msg-required="Radius is required"
+      data-rule-number="true"    data-msg-number="Radius must be a number"
+      data-rule-min="0.0000001"  data-msg-min="Radius must be greater than zero">
 
-  <p><strong>Diameter:</strong> <span id="diameterOut"></span></p>
-  <p><strong>Circumference:</strong> <span id="circumferenceOut"></span></p>
-  <p><strong>Area:</strong> <span id="areaOut"></span></p>
+    <label for="radius" class="error" id="radiuserror"></label>
 
-  <br>
+    <br>
 
-  <input type="button" id="calculateBtn" value="Calculate">
-  <input type="button" id="clearBtn" value="Clear">
+    <label class="formlabel"><strong>Diameter:</strong></label> <span id="diameter"></span><br>
+    <label class="formlabel"><strong>Circumference:</strong></label> <span id="circumference"></span><br>
+    <label class="formlabel"><strong>Area:</strong></label> <span id="area"></span><br>
 
-  <!-- connect JavaScript -->
+    <br><br>
+
+    <input type="button" value="Calculate" id="btnSubmitCalculate">
+    <input type="button" value="Clear" id="btnSubmitClear">
+  </form>
+
+  <!-- Load libraries first -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+
+  <!-- Your external JS file -->
   <script src="js/script.js"></script>
+
+  <!-- Validation setup -->
+   <script>
+  $(function () {
+    $("#CircleForm").validate({
+      errorPlacement: function(error, element) {
+        // puts error message in your label#radiuserror
+        if (element.attr("id") === "radius") {
+          $("#radiuserror").text(error.text());
+        } else {
+          error.insertAfter(element);
+        }
+      },
+      success: function(label, element) {
+        if ($(element).attr("id") === "radius") {
+          $("#radiuserror").text("");
+        }
+      }
+    });
+  });
+</script>
 </body>
 </html>
-
