@@ -1,0 +1,90 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Calculator</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <form id="CalcForm" onsubmit="return false;">
+        <h2>JavaScript Calculator</h2>
+        <br>
+        <!-- Operand 1 -->
+         <label for="op1" class="formlabel"><strong>Operand 1:</strong></label>
+         <input type="text" id="op1" name="op1"
+         data-rule-required="true" data-msg-required="Operand 1 is Required"
+         data-rule-number="true" data-msg-number="Operand 1 must be a number" />
+         <label for="op1" class="error" id="operror1"></label>
+
+         <br><br>
+         <!-- Operator (radio group) -->
+    <label class="formlabel"><strong>Operator:</strong></label>
+
+    <label for="opAdd"><input type="radio" id="opAdd" name="operator" value="+" 
+      data-rule-required="true" data-msg-required="Operator is Required" /> + </label>
+
+    <label for="opSub"><input type="radio" id="opSub" name="operator" value="-" /> - </label>
+
+    <label for="opMul"><input type="radio" id="opMul" name="operator" value="*" /> * </label>
+
+    <label for="opDiv"><input type="radio" id="opDiv" name="operator" value="/" /> / </label>
+
+    <label for="operator" class="error" id="operatorerror"></label>
+
+    <br><br>
+
+    <!-- Operand 2 -->
+    <label for="op2" class="formlabel"><strong>Operand 2:</strong></label>
+    <input type="text" id="op2" name="op2"
+      data-rule-required="true" data-msg-required="Operand 2 is Required"
+      data-rule-number="true"   data-msg-number="Operand 2 must be a number" />
+    <label for="op2" class="error" id="op2error"></label>
+
+    <br><br>
+
+    <!-- Result -->
+    <label class="formlabel"><strong>Result:</strong></label>
+    <span id="result"></span>
+
+    <br><br>
+
+    <input type="button" value="Calculate" id="btnCalc">
+    <input type="button" value="Clear" id="btnClear">
+  </form>
+
+  <!-- jQuery + jQuery Validation -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+
+  <!-- Your JS -->
+  <script src="js/script.js"></script>
+
+  <!-- Validation setup -->
+  <script>
+    $(function () {
+      $("#CalcForm").validate({
+        errorPlacement: function (error, element) {
+          const id = element.attr("id");
+
+          if (id === "op1") {
+            $("#op1error").text(error.text());
+          } else if (id === "op2") {
+            $("#op2error").text(error.text());
+          } else if (element.attr("name") === "operator") {
+            $("#operatorerror").text(error.text());
+          } else {
+            error.insertAfter(element);
+          }
+        },
+        success: function (label, element) {
+          const id = element.id;
+          if (id === "op1") $("#op1error").text("");
+          if (id === "op2") $("#op2error").text("");
+          if (element.name === "operator") $("#operatorerror").text("");
+        }
+      });
+    });
+  </script>
+</body>
+</html>

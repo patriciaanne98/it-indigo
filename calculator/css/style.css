@@ -1,0 +1,134 @@
+/* Page background + general font */
+body {
+  font-family: Georgia, "Times New Roman", serif;
+  background: #f3f3f3;
+  margin: 0;
+  padding: 40px 0;
+  color: #222;
+}
+
+/* Outer white card like the screenshot */
+form#CalcForm {
+  width: 860px;
+  margin: 0 auto;
+  background: #ffffff;
+  border: 2px solid #666;
+  padding: 28px 34px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+/* Big title */
+form#CalcForm h2 {
+  margin: 0 0 10px 0;
+  font-size: 46px;
+  font-weight: 700;
+  color: #a87412; /* gold/brown */
+  letter-spacing: 0.5px;
+}
+
+/* Gold line under the title */
+form#CalcForm h2::after {
+  content: "";
+  display: block;
+  margin-top: 10px;
+  height: 5px;
+  background: #d3a23a;
+  width: 100%;
+}
+
+/* Create an inner “Calculator” panel feel */
+form#CalcForm {
+  position: relative;
+}
+
+form#CalcForm::before {
+  content: "Calculator";
+  position: absolute;
+  top: 100px;            /* placement of the small word */
+  left: 54px;
+  background: #fff;
+  padding: 0 8px;
+  color: #555;
+  font-size: 20px;
+}
+
+form#CalcForm::after {
+  content: "";
+  position: absolute;
+  top: 125px;            /* top edge of inner box */
+  left: 50px;
+  right: 50px;
+  bottom: 15px;
+  border: 2px solid #888;
+  pointer-events: none;
+}
+
+/* Layout: label column + input column */
+.formlabel {
+  display: inline-block;
+  width: 150px;
+  font-size: 22px;
+  margin: 20px 30px 18px 55px;
+  vertical-align: middle;
+}
+
+/* Inputs like the screenshot */
+input[type="text"] {
+  width: 260px;
+  padding: 8px 10px;
+  font-size: 18px;
+  border: 2px solid #999;
+  border-radius: 2px;
+  outline: none;
+  vertical-align: middle;
+  background: #fff;
+}
+
+input[type="text"]:focus {
+  border-color: #6d6d6d;
+}
+
+/* Radio row spacing */
+label input[type="radio"] {
+  transform: scale(1.1);
+  margin-right: 8px;
+}
+
+label {
+  font-size: 20px;
+  margin-right: 14px;
+}
+
+/* Red error text like the screenshot */
+.error {
+  color: #d10000;
+  font-size: 20px;
+  font-weight: 600;
+  margin-left: 14px;
+  vertical-align: middle;
+}
+
+/* Result styling */
+#result {
+  display: inline-block;
+  min-width: 260px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #222;
+  padding-left: 6px;
+}
+
+/* Buttons bottom-left */
+#btnCalc, #btnClear {
+  font-size: 18px;
+  padding: 4px 14px;
+  border: 2px solid #888;
+  background: #efefef;
+  cursor: pointer;
+  margin-left: 25px;
+  margin-right: 14px;
+}
+
+#btnCalc:hover, #btnClear:hover {
+  background: #e2e2e2;
+}
