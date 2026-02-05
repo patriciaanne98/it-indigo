@@ -21,13 +21,17 @@
       line-height: 24px;
     }
     #wrapper {
-        position: relative;     /* ✅ makes a reference box for absolute children */
       background-color: #ECECEC;
-      border: 1px solid #c0c0c0;
-      width: 1100px;
+      width: 800px;
       height: 560px;
       margin: 0 auto;
       text-shadow: 2px 2px #000;
+    }
+
+    #wrapper > div {
+      position:absolute;
+      height: 125px;
+      width: 125px;
     }
     #navy {
       background-color: #001f3f;
