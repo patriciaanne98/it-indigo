@@ -1,0 +1,98 @@
+   /* ---------------Box Sizing----------------- */
+    html {
+      box-sizing: border-box;
+    }
+    *,
+    *:before,
+    *:after {
+      box-sizing: inherit;
+    }
+    body {
+      background-color: #ECECEC;
+      font-weight: bold;
+      font-family: Tahoma, Geneva, sans-serif;
+      color: #FFF;
+      text-align: center;
+      line-height: 24px;
+    }
+    #wrapper {
+  position: relative;
+  width: 900px;
+  height: 900px;
+  margin: 0 auto;
+  background: #ECECEC;
+  border: 1px solid #c0c0c0;
+}
+    #navy {
+      background-color: #001f3f;
+    }
+    #teal {
+      background-color: #39CCCC;
+    }
+    #blue {
+      background-color: #0074D9;
+    }
+    #aqua {
+      background-color: #7FDBFF;
+    }
+    #footer {
+  width: 130px;
+  height: 130px;
+  background: #666;
+  color: #fff;
+  font-weight: bold;
+  text-shadow: 2px 2px #000;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 10px;
+  box-sizing: border-box;
+}
+
+    h1 {
+      color: #000;
+      font-weight: normal;
+      padding: 50px;
+    }
+
+    #wrapper::before {
+  content: "";
+  position: absolute;
+  top: 60px;
+  left: 60px;
+  right: 60px;
+  bottom: 60px;
+
+  background: #FFF;
+  border: 1px solid #c0c0c0;
+} /* Now have a white box inset from all sides. This matches the screenshot exactly */
+
+#wrapper > div {
+  position: absolute;
+}
+
+#navy, #teal, #blue, #aqua {
+  width: 130px;
+  height: 130px;
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+  box-sizing: border-box;
+  font-weight: bold;
+  text-shadow: 2px 2px #000;
+}
+
+#navy { background: #001f3f; }
+#teal { background: #39CCCC; }
+#blue { background: #0074D9; }
+#aqua { background: #7FDBFF; }
+
+#navy { top: 60px; left: 60px; }
+#teal { top: 60px; right: 60px; }
+#blue { bottom: 60px; left: 60px; }
+#aqua { bottom: 60px; right: 60px; }

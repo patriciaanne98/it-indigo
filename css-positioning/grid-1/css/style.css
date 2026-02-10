@@ -1,0 +1,92 @@
+/* ---------------Box Sizing----------------- */
+    html {
+      box-sizing: border-box;
+    }
+
+
+    *,
+    *:before,
+    *:after {
+      box-sizing: inherit;
+    }
+
+
+    body {
+      background-color: #ECECEC;
+      font-weight: bold;
+      font-family: Tahoma, Geneva, sans-serif;
+      color: #FFF;
+      text-align: center;
+      line-height: 24px;
+    }
+
+
+    #wrapper {
+      background-color: #FFF;
+      border: 1px solid #c0c0c0;
+      width: 800px;
+      margin-right: auto;
+      margin-left: auto;
+      text-shadow: 2px 2px #000;
+      padding: 20px;
+    }
+ 
+    #navy {
+      background-color: #001f3f;
+      float:left;
+      width: 49%;
+      margin-bottom: 20px;
+    }
+
+
+    #teal {
+      background-color: #39CCCC;
+      float:right;
+      margin-bottom: 20px;
+      width:49%;
+    }
+
+
+    #blue {
+      background-color: #0074D9;
+      clear: both; /* Tell Blue: “Start on a new line under the floats.” */
+      float: left;
+      width: 49%;
+    }
+
+
+    #aqua {
+      background-color: #7FDBFF;
+      float: right;
+      width: 49%;
+    }
+
+
+    #footer {
+      background-color: #666;
+      clear:both;
+      height: 25px;
+      line-height: 25px;
+      margin-top: 30px;
+    }
+
+
+    h1 {
+      color: #000;
+      font-weight: normal;
+      padding: 50px;
+    }
+
+
+/* Make all the blocks visible */
+#navy, #teal, #blue, #aqua {
+  height: 180px;
+}
+
+#navy, #blue {
+  margin-right: 2%;
+}
+
+#blue, #aqua {
+    margin-bottom: 2%;
+}

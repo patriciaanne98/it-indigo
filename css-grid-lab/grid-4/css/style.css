@@ -1,0 +1,84 @@
+ /* -----------------------------
+   GRID 4: grid-two-col-equal
+   Desktop: 2 equal columns
+   Row 1: Site Header (full width)
+   Row 2: Content (left) + Blog (right)
+   Row 3: Aside (full width)
+   Row 4: Site Footer (full width)
+-------------------------------- */
+
+/* Box sizing = padding doesn’t break widths */
+    html {
+      box-sizing: border-box;
+    }
+
+    *,
+    *:before,
+    *:after {
+      box-sizing: inherit;
+    }
+/* Make every direct child of <main> look like a “card” */
+    main>* {
+      font-family: Avenir, Montserrat, Corbel, "URW Gothic", source-sans-pro,
+        sans-serif;
+      font-weight: normal;
+      background-color: #c0c0c0;
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+    /* MAIN GRID LAYOUT (Desktop) */
+    main {
+      display: grid;
+      gap: 20px;
+      max-width: 80vw;
+      margin: 20px auto;
+
+      grid-template-columns: 1fr 1fr;
+    }
+
+    /* Header spans across both columns */
+header.primary {
+  grid-column: 1 / -1;         /* start at col 1, end at last column */
+}
+
+/* Content goes in the left column */
+#content {
+  grid-column: 1;
+}
+
+/* Blog goes in the right column */
+#blog {
+  grid-column: 2;
+}
+
+/* Aside spans across both columns */
+aside {
+  grid-column: 1 / -1;
+}
+
+/* Footer spans across both columns */
+footer.primary {
+  grid-column: 1 / -1;
+}
+
+/* -----------------------------
+   MOBILE VERSION
+   When screen is small:
+   stack everything in one column
+-------------------------------- */
+@media (max-width: 900px) {
+  main {
+    grid-template-columns: 1fr;  /* one column */
+    max-width: 92vw;             /* a little wider on mobile */
+  }
+
+  /* reset everything to single column */
+  header.primary,
+  #content,
+  #blog,
+  aside,
+  footer.primary {
+    grid-column: 1;
+  }
+}

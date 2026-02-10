@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSS Grid Labs</title>
+
+  <style>
+    html { box-sizing: border-box; }
+    *, *::before, *::after { box-sizing: inherit; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: #ECECEC;
+      padding: 60px 20px;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #fff;
+      border: 1px solid #c0c0c0;
+      border-radius: 14px;
+      padding: 40px;
+    }
+
+    h1 { margin: 0 0 10px; font-weight: 700; }
+    p { margin: 0 0 24px; color: #444; line-height: 1.4; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    a.card {
+      display: block;
+      text-decoration: none;
+      color: #111;
+      background: #f6f6f6;
+      border: 1px solid #d0d0d0;
+      border-radius: 12px;
+      padding: 18px;
+      transition: transform 120ms ease, background 120ms ease;
+    }
+
+    a.card:hover { background: #e9f2ff; transform: translateY(-2px); }
+
+    .title { font-weight: 700; margin: 0 0 6px; font-size: 18px; }
+    .desc { margin: 0; color: #555; font-size: 14px; }
+
+    footer { margin-top: 26px; color: #666; font-size: 13px; }
+
+    @media (max-width: 640px) {
+      .grid { grid-template-columns: 1fr; }
+      main { padding: 26px; }
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <h1>CSS Grid Labs</h1>
+    <p>Click an exercise to open it.</p>
+
+    <section class="grid" aria-label="Exercise links">
+      <a class="card" href="./grid-1/grid-two-col-left.html">
+        <h2 class="title">Grid 1</h2>
+        <p class="desc">Two columns + aside on the left.</p>
+      </a>
+
+      <a class="card" href="./grid-2/grid-two-col-right.html">
+        <h2 class="title">Grid 2</h2>
+        <p class="desc">Two columns + aside on the right.</p>
+      </a>
+
+      <a class="card" href="./grid-3/grid-two-col-stacked.html">
+        <h2 class="title">Grid 3</h2>
+        <p class="desc">Stacked layout variant.</p>
+      </a>
+
+      <a class="card" href="./grid-4/grid-two-col-equal.html">
+        <h2 class="title">Grid 4</h2>
+        <p class="desc">Two equal columns + full-width aside.</p>
+      </a>
+    </section>
+
+    <footer>
+      <p>© <span id="year"></span> IT Indigo · Patricia Frogoso</p>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

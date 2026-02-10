@@ -1,0 +1,82 @@
+    /*  ---------------Box Sizing-----------------  */
+    html {
+      box-sizing: border-box;
+    }
+
+    *,
+    *:before,
+    *:after {
+      box-sizing: inherit;
+    }
+
+    /* Starter */
+    main>* {
+      font-family: Avenir, Montserrat, Corbel, "URW Gothic", source-sans-pro,
+        sans-serif;
+      font-weight: normal;
+      background-color: #c0c0c0;
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+    main {
+      display: grid;
+      gap: 20px;
+      max-width: 80vw;
+      margin: 20px auto;
+
+  /* 2 columns: content + aside */
+  grid-template-columns: 2fr 1fr;
+
+  /* rows grow based on content */
+  grid-auto-rows: min-content;
+
+  /* space between items */
+  gap: 20px;
+
+  max-width: 80vw;
+  margin: 20px auto;
+
+  /* NAME the layout */
+  grid-template-areas:
+    "header header"
+    "content aside"
+    "blog aside"
+    "footer footer";
+    }
+
+    header.primary {
+  grid-area: header;
+}
+
+#content {
+  grid-area: content;
+}
+
+#blog {
+  grid-area: blog;
+}
+
+aside {
+  grid-area: aside;
+}
+
+footer.primary {
+  grid-area: footer;
+}
+
+
+
+
+
+@media (max-width: 900px) {
+  main {
+    grid-template-columns: 2fr 2fr; /* two equal-ish columns */
+
+    grid-template-areas:
+      "header header"
+      "content blog"
+      "content aside"
+      "footer footer";
+  }
+}
