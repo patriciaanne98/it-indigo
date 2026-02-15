@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bank Roast Simulator™</title>
+  <meta name="description" content="A quirky one-page interactive site about avoiding interest and using rewards like a grown-up." />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <script src="assets/js/script.js" defer></script>
+</head>
+
+<body>
+  <div class="progress" aria-hidden="true"><div class="bar" id="bar"></div></div>
+  <canvas id="sparkles"></canvas>
+
+  <header id="top">
+    <div class="blobs" aria-hidden="true">
+      <span class="blob b1"></span>
+      <span class="blob b2"></span>
+      <span class="blob b3"></span>
+    </div>
+
+    <nav class="nav">
+      <a class="brand" href="#top">Bank Roast Simulator™</a>
+      <div class="links">
+        <a href="#vibe">Pick a vibe</a>
+        <a href="#monster">Interest monster</a>
+        <a href="#oath">Oath</a>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <span class="tag">one page • chaotic good • finance but make it funny</span>
+      <h1>The bank wants you stressed. I want you paid. 💸</h1>
+      <p class="subhead">
+        Welcome to the Bank Roast Simulator™ — where we bully bad money habits (gently)
+        and give you a cheat code that actually works: <strong>don’t pay interest.</strong>
+      </p>
+      <div class="actions">
+        <a class="btn" href="#vibe">Roast me (respectfully)</a>
+        <a class="btn ghost" href="#monster">Show the monster 👀</a>
+      </div>
+
+      <div class="stats">
+        <div class="stat">
+          <div class="num" data-count="0">0</div>
+          <div class="lab">times you need to pay interest</div>
+        </div>
+        <div class="stat">
+          <div class="num" data-count="1">0</div>
+          <div class="lab">rule that fixes everything</div>
+        </div>
+        <div class="stat">
+          <div class="num" data-count="100">0</div>
+          <div class="lab">percent more peace</div>
+        </div>
+      </div>
+    </section>
+  </header>
+
+  <main>
+    <div class="wrap">
+
+      <!-- VIBE PICKER -->
+      <section class="section reveal" id="vibe">
+        <h2>Pick your financial personality</h2>
+        <p class="muted">Be honest. This is a safe space… kinda.</p>
+
+        <div class="grid3">
+          <article class="card vibe" data-vibe="gremlin">
+            <div class="pill">chaotic</div>
+            <h3>✨ The Gremlin ✨</h3>
+            <p>Orders DoorDash, forgets due dates, thinks “minimum payment” sounds responsible.</p>
+            <button class="btn mini" type="button">That’s me</button>
+          </article>
+
+          <article class="card vibe spotlight" data-vibe="main">
+            <div class="pill">dramatic</div>
+            <h3>🎬 Main Character</h3>
+            <p>Wants travel points, a cute budget spreadsheet, and a soft life. (Valid.)</p>
+            <button class="btn mini" type="button">That’s me</button>
+          </article>
+
+          <article class="card vibe" data-vibe="queen">
+            <div class="pill">stable</div>
+            <h3>👑 Responsible Queen</h3>
+            <p>Autopay on. Utilization low. Credit score climbing. Unbothered.</p>
+            <button class="btn mini" type="button">That’s me</button>
+          </article>
+        </div>
+
+        <div class="card result-card" style="margin-top:12px;">
+          <h3>Your roast + cheat code:</h3>
+          <p class="muted" id="roastOut">Pick a personality above to unlock your roast.</p>
+          <div class="chips" style="margin-top:10px;">
+            <button class="chip" id="newRoast" type="button">Give me another roast 🔥</button>
+            <button class="chip" id="calmMode" type="button">Switch to supportive mode 🤝</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- INTEREST MONSTER -->
+      <section class="section reveal" id="monster">
+        <h2>Interest Monster Simulator 😭</h2>
+        <p class="muted">
+          Slide how much you carry month-to-month. Watch the monster grow. (This is why we pay in full.)
+        </p>
+
+        <div class="grid2">
+          <div class="card">
+            <label for="balance"><strong>Balance you carry:</strong> <span id="balOut">$250</span></label>
+            <input id="balance" type="range" min="0" max="2000" step="50" value="250" />
+            <div class="mini-grid">
+              <div class="mini">
+                <div class="mini-top">Estimated interest</div>
+                <div class="mini-big" id="interestOut">$5</div>
+                <div class="mini-sub muted">Assumes ~24% APR</div>
+              </div>
+              <div class="mini">
+                <div class="mini-top">“Rewards” you earned</div>
+                <div class="mini-big" id="rewardsOut">$5</div>
+                <div class="mini-sub muted">Assumes 2% cash back</div>
+              </div>
+              <div class="mini">
+                <div class="mini-top">Reality</div>
+                <div class="mini-big" id="netOut">$0</div>
+                <div class="mini-sub muted" id="netText">Breaking even… barely.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card monster-card">
+            <div class="monster-wrap">
+              <div class="monster" id="monsterFace" aria-hidden="true">👹</div>
+              <div class="monster-meter">
+                <div class="meter-label">Monster level:</div>
+                <div class="meter-bar"><div class="meter-fill" id="meterFill"></div></div>
+                <div class="meter-text muted" id="monsterLine">It’s small… for now.</div>
+              </div>
+            </div>
+            <p class="muted" style="margin-top:10px;">
+              Pro tip: turning on autopay is basically a spell that banishes this thing.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- OATH -->
+      <section class="section reveal" id="oath">
+        <h2>Take the Oath 🫡</h2>
+        <p class="muted">Press the button. Become unstoppable. (Or at least… consistent.)</p>
+
+        <div class="card oath-card">
+          <p class="oath-text" id="oathText">
+            “I, a grown adult-ish person, hereby swear to stop paying interest for no reason.
+            Autopay will be on. My future self will be calm. Amen.”
+          </p>
+          <div class="actions" style="margin-top:12px;">
+            <button class="btn" id="oathBtn" type="button">I WILL STOP CARRYING A BALANCE ✅</button>
+            <a class="btn ghost" href="#top">Back to top ↑</a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    Built by <strong>Patricia Frogoso</strong> • one-page interactive microsite • GitHub Pages
+  </footer>
+</body>
+</html>
