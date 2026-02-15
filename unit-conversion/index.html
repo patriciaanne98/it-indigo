@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Unit Converter (AJAX)</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+  <main class="page">
+    <h1 class="title">Unit Converter (AJAX)</h1>
+    <div class="gold-rule" aria-hidden="true"></div>
+
+    <form id="converterForm" class="card" novalidate>
+      <fieldset class="fieldset">
+        <legend>Unit Converter (AJAX)</legend>
+
+        <!-- From Value -->
+        <div class="row">
+          <label for="fromValue" class="label">From Value:</label>
+          <input
+            id="fromValue"
+            name="FromValue"
+            class="text"
+            type="text"
+            inputmode="decimal"
+            autocomplete="off"
+          />
+          <span id="fromValueError" class="error" role="alert" aria-live="polite"></span>
+        </div>
+
+        <!-- From Unit -->
+        <div class="row">
+          <div class="label">From Unit:</div>
+          <div class="radios" role="radiogroup" aria-label="From Unit">
+            <label><input type="radio" name="FromUnit" value="cm"> centimeters</label>
+            <label><input type="radio" name="FromUnit" value="m"> meters</label>
+            <label><input type="radio" name="FromUnit" value="km"> kilometers</label>
+            <label><input type="radio" name="FromUnit" value="in"> inches</label>
+            <label><input type="radio" name="FromUnit" value="ft"> feet</label>
+            <label><input type="radio" name="FromUnit" value="yd"> yards</label>
+            <label><input type="radio" name="FromUnit" value="mi"> miles</label>
+          </div>
+          <span id="fromUnitError" class="error" role="alert" aria-live="polite"></span>
+        </div>
+
+        <!-- To Unit -->
+        <div class="row">
+          <div class="label">To Unit:</div>
+          <div class="radios" role="radiogroup" aria-label="To Unit">
+            <label><input type="radio" name="ToUnit" value="cm"> centimeters</label>
+            <label><input type="radio" name="ToUnit" value="m"> meters</label>
+            <label><input type="radio" name="ToUnit" value="km"> kilometers</label>
+            <label><input type="radio" name="ToUnit" value="in"> inches</label>
+            <label><input type="radio" name="ToUnit" value="ft"> feet</label>
+            <label><input type="radio" name="ToUnit" value="yd"> yards</label>
+            <label><input type="radio" name="ToUnit" value="mi"> miles</label>
+          </div>
+          <span id="toUnitError" class="error" role="alert" aria-live="polite"></span>
+        </div>
+
+        <!-- To Value -->
+        <div class="row">
+          <label for="toValue" class="label">To Value:</label>
+          <input
+            id="toValue"
+            class="text"
+            type="text"
+            readonly
+            aria-readonly="true"
+          />
+          <span id="resultError" class="error" role="alert" aria-live="polite"></span>
+        </div>
+
+        <!-- Buttons -->
+        <div class="buttons">
+          <button type="button" id="btnCalc">Calculate</button>
+          <button type="button" id="btnClear">Clear</button>
+        </div>
+
+      </fieldset>
+    </form>
+  </main>
+
+  <script src="assets/js/script.js"></script>
+</body>
+</html>

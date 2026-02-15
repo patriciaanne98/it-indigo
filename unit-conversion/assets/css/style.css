@@ -1,0 +1,102 @@
+/* Basic page */
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  color: #222;
+  background: #fff;
+}
+
+.page {
+  max-width: 980px;
+  margin: 24px auto;
+  padding: 0 18px;
+}
+
+/* Title like screenshot */
+.title {
+  margin: 0 0 6px;
+  font-size: 44px;
+  font-weight: 700;
+  color: #9b7a00; /* gold-ish */
+}
+
+.gold-rule {
+  height: 4px;
+  background: #9b7a00;
+  margin-bottom: 22px;
+}
+
+/* Card/fieldset look */
+.card {
+  border: 1px solid #cfcfcf;
+  padding: 14px;
+  border-radius: 2px;
+}
+
+.fieldset {
+  border: 2px solid #6e6e6e;
+  padding: 18px 18px 14px;
+}
+
+.fieldset legend {
+  padding: 0 10px;
+}
+
+/* Layout rows */
+.row {
+  display: grid;
+  grid-template-columns: 140px 1fr 220px;
+  gap: 12px;
+  align-items: center;
+  margin: 18px 0;
+}
+
+.label {
+  font-weight: 600;
+}
+
+/* Inputs */
+.text {
+  width: 160px;
+  padding: 6px 8px;
+  border: 1px solid #bdbdbd;
+  background: #fff;
+}
+
+/* Radio rows */
+.radios {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.radios label {
+  white-space: nowrap;
+}
+
+/* Errors in red like screenshot */
+.error {
+  color: #c40000;
+  font-weight: 700;
+  min-height: 1em; /* keeps spacing even when empty */
+}
+
+/* Buttons */
+.buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+button {
+  padding: 4px 10px;
+  border: 1px solid #8d8d8d;
+  background: #efefef;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #e6e6e6;
+}
