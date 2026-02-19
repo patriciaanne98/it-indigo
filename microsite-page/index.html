@@ -3,170 +3,222 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Bank Roast Simulator™</title>
-  <meta name="description" content="A quirky one-page interactive site about avoiding interest and using rewards like a grown-up." />
+  <title>Attention Economy — You Are the Product</title>
+  <meta name="description" content="An interactive independent study site explaining how apps compete for attention using slot-machine-like reward patterns." />
   <link rel="stylesheet" href="assets/css/style.css" />
   <script src="assets/js/script.js" defer></script>
 </head>
 
 <body>
   <div class="progress" aria-hidden="true"><div class="bar" id="bar"></div></div>
-  <canvas id="sparkles"></canvas>
 
-  <header id="top">
-    <div class="blobs" aria-hidden="true">
-      <span class="blob b1"></span>
-      <span class="blob b2"></span>
-      <span class="blob b3"></span>
-    </div>
-
-    <nav class="nav">
-      <a class="brand" href="#top">Bank Roast Simulator™</a>
+  <header class="top" id="top">
+    <nav class="nav" aria-label="Primary">
+      <a class="brand" href="#top">Attention Economy</a>
       <div class="links">
-        <a href="#vibe">Pick a vibe</a>
-        <a href="#monster">Interest monster</a>
-        <a href="#oath">Oath</a>
+        <a href="#what">What it means</a>
+        <a href="#demo">Interactive demo</a>
+        <a href="#compare">Phone vs. Slots</a>
+        <a href="#tools">What to do</a>
+        <a href="#sources">Sources</a>
       </div>
     </nav>
 
     <section class="hero">
-      <span class="tag">one page • chaotic good • finance but make it funny</span>
-      <h1>The bank wants you stressed. I want you paid. 💸</h1>
-      <p class="subhead">
-        Welcome to the Bank Roast Simulator™ — where we bully bad money habits (gently)
-        and give you a cheat code that actually works: <strong>don’t pay interest.</strong>
-      </p>
-      <div class="actions">
-        <a class="btn" href="#vibe">Roast me (respectfully)</a>
-        <a class="btn ghost" href="#monster">Show the monster 👀</a>
+      <div class="hero-copy">
+        <p class="kicker">Independent Study • Humans + Technology</p>
+        <h1>You are the product. Attention is the currency.</h1>
+        <p class="lead">
+          Many free apps make money by keeping you on-screen longer. One reason they work so well is simple:
+          they use <strong>surprise rewards</strong> — the same idea that makes slot machines hard to stop.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn" href="#demo">Try the demo</a>
+          <a class="btn ghost" href="#tools">Skip to solutions</a>
+        </div>
+
+        <div class="quick">
+          <div class="quick-item">
+            <div class="quick-num" id="statPulls">0</div>
+            <div class="quick-label">pulls</div>
+          </div>
+          <div class="quick-item">
+            <div class="quick-num" id="statWins">0</div>
+            <div class="quick-label">wins</div>
+          </div>
+          <div class="quick-item">
+            <div class="quick-num" id="statTime">0s</div>
+            <div class="quick-label">time</div>
+          </div>
+        </div>
       </div>
 
-      <div class="stats">
-        <div class="stat">
-          <div class="num" data-count="0">0</div>
-          <div class="lab">times you need to pay interest</div>
-        </div>
-        <div class="stat">
-          <div class="num" data-count="1">0</div>
-          <div class="lab">rule that fixes everything</div>
-        </div>
-        <div class="stat">
-          <div class="num" data-count="100">0</div>
-          <div class="lab">percent more peace</div>
-        </div>
+      <div class="hero-media">
+        <img
+          src="images/hero-phone.jpg"
+          alt="A person scrolling on a smartphone"
+          loading="lazy"
+        />
+        <p class="caption">Apps compete for time the way casinos compete for pulls.</p>
       </div>
     </section>
   </header>
 
-  <main>
-    <div class="wrap">
+  <main class="wrap">
 
-      <!-- VIBE PICKER -->
-      <section class="section reveal" id="vibe">
-        <h2>Pick your financial personality</h2>
-        <p class="muted">Be honest. This is a safe space… kinda.</p>
-
-        <div class="grid3">
-          <article class="card vibe" data-vibe="gremlin">
-            <div class="pill">chaotic</div>
-            <h3>✨ The Gremlin ✨</h3>
-            <p>Orders DoorDash, forgets due dates, thinks “minimum payment” sounds responsible.</p>
-            <button class="btn mini" type="button">That’s me</button>
-          </article>
-
-          <article class="card vibe spotlight" data-vibe="main">
-            <div class="pill">dramatic</div>
-            <h3>🎬 Main Character</h3>
-            <p>Wants travel points, a cute budget spreadsheet, and a soft life. (Valid.)</p>
-            <button class="btn mini" type="button">That’s me</button>
-          </article>
-
-          <article class="card vibe" data-vibe="queen">
-            <div class="pill">stable</div>
-            <h3>👑 Responsible Queen</h3>
-            <p>Autopay on. Utilization low. Credit score climbing. Unbothered.</p>
-            <button class="btn mini" type="button">That’s me</button>
-          </article>
-        </div>
-
-        <div class="card result-card" style="margin-top:12px;">
-          <h3>Your roast + cheat code:</h3>
-          <p class="muted" id="roastOut">Pick a personality above to unlock your roast.</p>
-          <div class="chips" style="margin-top:10px;">
-            <button class="chip" id="newRoast" type="button">Give me another roast 🔥</button>
-            <button class="chip" id="calmMode" type="button">Switch to supportive mode 🤝</button>
-          </div>
-        </div>
-      </section>
-
-      <!-- INTEREST MONSTER -->
-      <section class="section reveal" id="monster">
-        <h2>Interest Monster Simulator 😭</h2>
+    <section class="section" id="what">
+      <div class="section-head">
+        <h2>What this means (in plain language)</h2>
         <p class="muted">
-          Slide how much you carry month-to-month. Watch the monster grow. (This is why we pay in full.)
+          If something is “free,” the business still needs revenue. A common model is ads.
+          Ads pay more when people spend more time inside the app.
         </p>
+      </div>
 
-        <div class="grid2">
-          <div class="card">
-            <label for="balance"><strong>Balance you carry:</strong> <span id="balOut">$250</span></label>
-            <input id="balance" type="range" min="0" max="2000" step="50" value="250" />
-            <div class="mini-grid">
-              <div class="mini">
-                <div class="mini-top">Estimated interest</div>
-                <div class="mini-big" id="interestOut">$5</div>
-                <div class="mini-sub muted">Assumes ~24% APR</div>
-              </div>
-              <div class="mini">
-                <div class="mini-top">“Rewards” you earned</div>
-                <div class="mini-big" id="rewardsOut">$5</div>
-                <div class="mini-sub muted">Assumes 2% cash back</div>
-              </div>
-              <div class="mini">
-                <div class="mini-top">Reality</div>
-                <div class="mini-big" id="netOut">$0</div>
-                <div class="mini-sub muted" id="netText">Breaking even… barely.</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="card monster-card">
-            <div class="monster-wrap">
-              <div class="monster" id="monsterFace" aria-hidden="true">👹</div>
-              <div class="monster-meter">
-                <div class="meter-label">Monster level:</div>
-                <div class="meter-bar"><div class="meter-fill" id="meterFill"></div></div>
-                <div class="meter-text muted" id="monsterLine">It’s small… for now.</div>
-              </div>
-            </div>
-            <p class="muted" style="margin-top:10px;">
-              Pro tip: turning on autopay is basically a spell that banishes this thing.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- OATH -->
-      <section class="section reveal" id="oath">
-        <h2>Take the Oath 🫡</h2>
-        <p class="muted">Press the button. Become unstoppable. (Or at least… consistent.)</p>
-
-        <div class="card oath-card">
-          <p class="oath-text" id="oathText">
-            “I, a grown adult-ish person, hereby swear to stop paying interest for no reason.
-            Autopay will be on. My future self will be calm. Amen.”
+      <div class="grid2">
+        <article class="card">
+          <h3>So what’s the “attention economy”?</h3>
+          <p>
+            It’s the idea that human attention is limited — and companies compete to capture it.
+            The more time you spend, the more opportunities they have to show ads or influence what you see.
           </p>
-          <div class="actions" style="margin-top:12px;">
-            <button class="btn" id="oathBtn" type="button">I WILL STOP CARRYING A BALANCE ✅</button>
-            <a class="btn ghost" href="#top">Back to top ↑</a>
-          </div>
-        </div>
-      </section>
+        </article>
 
-    </div>
+        <article class="card">
+          <h3>Why slot machines are a good example</h3>
+          <p>
+            Slot machines don’t reward you every time. They reward you <em>sometimes</em>.
+            That “maybe this time” feeling is powerful — and many apps copy it with refresh, scroll, and notifications.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="demo">
+      <div class="section-head">
+        <h2>Interactive demo: a real-looking slot machine</h2>
+        <p class="muted">Pull the lever. Watch how the “maybe I’ll win” loop works.</p>
+      </div>
+
+      <div class="grid2 align-start">
+        <article class="slot-card">
+          <div class="slot-header">
+            <div class="slot-title">Lucky Loop</div>
+            <div class="slot-lights" aria-hidden="true">
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+
+          <div class="slot-body">
+            <div class="reels" aria-label="Slot machine reels">
+              <div class="reel" id="reel1"><div class="strip"></div></div>
+              <div class="reel" id="reel2"><div class="strip"></div></div>
+              <div class="reel" id="reel3"><div class="strip"></div></div>
+            </div>
+
+            <div class="winline" id="winline" aria-live="polite">Pull to begin.</div>
+
+            <div class="controls">
+              <button class="lever" id="pullBtn" type="button">Pull</button>
+              <button class="chip" id="autoBtn" type="button" aria-pressed="false">Auto: Off</button>
+              <button class="chip" id="resetBtn" type="button">Reset</button>
+            </div>
+
+            <div class="slot-stats">
+              <div><strong>Pulls:</strong> <span id="pulls">0</span></div>
+              <div><strong>Wins:</strong> <span id="wins">0</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>What to notice</h3>
+          <ul>
+            <li>You don’t win most of the time.</li>
+            <li>But the <strong>chance</strong> of winning makes you want to try again.</li>
+            <li>Apps create the same feeling with “refresh,” “swipe,” and “new notifications.”</li>
+          </ul>
+
+          <div class="callout">
+            <strong>Key point:</strong> unpredictable rewards keep people coming back.
+          </div>
+
+          <div class="img-card">
+            <img src="images/slots.jpg" alt="A close-up of a slot machine" loading="lazy" />
+            <p class="caption">Slots are built to keep you pulling. Many feeds are built to keep you scrolling.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="compare">
+      <div class="section-head">
+        <h2>Casino design vs. app design</h2>
+        <p class="muted">Different products, similar pattern.</p>
+      </div>
+
+      <div class="grid3">
+        <article class="card">
+          <h3>Trigger</h3>
+          <p class="muted">Casino: lights & sounds • Phone: pings, badges, boredom</p>
+        </article>
+        <article class="card">
+          <h3>Action</h3>
+          <p class="muted">Casino: pull lever • Phone: scroll, refresh, swipe</p>
+        </article>
+        <article class="card">
+          <h3>Reward</h3>
+          <p class="muted">Casino: small win sometimes • Phone: like, post, message sometimes</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="tools">
+      <div class="section-head">
+        <h2>What you can do (simple, realistic)</h2>
+        <p class="muted">You don’t need to delete everything. Add friction.</p>
+      </div>
+
+      <div class="grid2">
+        <article class="card">
+          <h3>3 friction moves</h3>
+          <ol>
+            <li>Turn off non-human notifications (likes, “suggested,” streaks).</li>
+            <li>Set a timer <strong>before</strong> you open an app.</li>
+            <li>Move apps off your home screen (make them harder to reach).</li>
+          </ol>
+        </article>
+
+        <article class="card">
+          <h3>Quick reflection</h3>
+          <p class="muted">Next time you catch yourself scrolling, ask:</p>
+          <ul>
+            <li>What did I open this app for?</li>
+            <li>Did I get what I needed?</li>
+            <li>What do I actually want to do next?</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="sources">
+      <div class="section-head">
+        <h2>Sources</h2>
+        <p class="muted">Add the sources you used for your research notes.</p>
+      </div>
+
+      <ul class="sources">
+        <li><a href="https://courses.lumenlearning.com/waymaker-psychology/chapter/reading-reinforcement-schedules/" target="_blank" rel="noreferrer">Reinforcement schedules (variable ratio)</a></li>
+        <li><a href="https://ihpi.umich.edu/news/social-media-copies-gambling-methods-create-psychological-cravings" target="_blank" rel="noreferrer">University of Michigan: social media + gambling methods</a></li>
+      </ul>
+      <p class="small muted">Tip: only link sources you actually read and used.</p>
+    </section>
+
   </main>
 
-  <footer>
-    Built by <strong>Patricia Frogoso</strong> • one-page interactive microsite • GitHub Pages
+  <footer class="footer">
+    Built by <strong>Patricia Frogoso</strong> • Independent Study Microsite • GitHub Pages
   </footer>
 </body>
 </html>

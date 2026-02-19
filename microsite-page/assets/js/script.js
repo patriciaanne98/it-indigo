@@ -6,276 +6,184 @@ window.addEventListener("scroll", () => {
   bar.style.width = `${scrolled}%`;
 });
 
-// ===== reveal on scroll =====
-const reveals = document.querySelectorAll(".reveal");
-const io = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add("in"); });
-}, { threshold: 0.12 });
-reveals.forEach(r => io.observe(r));
+// ===== slot machine logic (FIXED) =====
+const reelEls = [
+  document.querySelector("#reel1 .strip"),
+  document.querySelector("#reel2 .strip"),
+  document.querySelector("#reel3 .strip"),
+];
 
-// ===== card tilt + glow =====
-document.querySelectorAll(".card").forEach(card => {
-  card.addEventListener("mousemove", (e) => {
-    const r = card.getBoundingClientRect();
-    const x = e.clientX - r.left;
-    const y = e.clientY - r.top;
-    const cx = x / r.width - 0.5;
-    const cy = y / r.height - 0.5;
+const pullBtn = document.getElementById("pullBtn");
+const autoBtn = document.getElementById("autoBtn");
+const resetBtn = document.getElementById("resetBtn");
 
-    card.style.setProperty("--mx", `${(x / r.width) * 100}%`);
-    card.style.setProperty("--my", `${(y / r.height) * 100}%`);
-    card.style.transform =
-      `perspective(900px) rotateX(${(-cy * 8).toFixed(2)}deg) rotateY(${(cx * 10).toFixed(2)}deg) translateY(-2px)`;
-  });
-  card.addEventListener("mouseleave", () => { card.style.transform = ""; });
-});
+const winline = document.getElementById("winline");
+const pullsEl = document.getElementById("pulls");
+const winsEl = document.getElementById("wins");
+const statPulls = document.getElementById("statPulls");
+const statWins = document.getElementById("statWins");
+const statTime = document.getElementById("statTime");
 
-// ===== button glow follow mouse =====
-document.querySelectorAll(".btn").forEach(btn => {
-  btn.addEventListener("mousemove", (e) => {
-    const r = btn.getBoundingClientRect();
-    const x = e.clientX - r.left;
-    const y = e.clientY - r.top;
-    btn.style.setProperty("--mx", `${(x / r.width) * 100}%`);
-    btn.style.setProperty("--my", `${(y / r.height) * 100}%`);
-  });
-});
+let pulls = 0;
+let wins = 0;
+let auto = false;
+let autoTimer = null;
 
-// ===== animated counters =====
-function animateCount(el, target){
-  const duration = 800;
-  const t0 = performance.now();
-  const step = (t) => {
-    const p = Math.min(1, (t - t0) / duration);
-    const v = Math.round(target * (1 - Math.pow(1 - p, 3)));
-    el.textContent = v;
-    if (p < 1) requestAnimationFrame(step);
-  };
-  requestAnimationFrame(step);
-}
-document.querySelectorAll("[data-count]").forEach(el => {
-  animateCount(el, Number(el.dataset.count));
-});
+let startTime = null;
+let timeTimer = null;
 
-// ===== toast =====
-function toast(msg){
-  const t = document.createElement("div");
-  t.className = "toast";
-  t.textContent = msg;
-  document.body.appendChild(t);
-  setTimeout(() => t.remove(), 1500);
+const SYMBOLS = ["🍒","🍋","🔔","⭐️","💎","7️⃣"];
+const REEL_HEIGHT = 120; // must match .symbol height in CSS
+const SPIN_MS = 900;
+const WIN_RATE = 0.30;
+
+// IMPORTANT FIX:
+// Make the strip long enough for multiple loops.
+// 12 loops worth of symbols = 12 * 6 = 72 items (plenty)
+const LOOPS_IN_STRIP = 12;
+const ITEM_COUNT = LOOPS_IN_STRIP * SYMBOLS.length;
+
+function setReelContent(stripEl){
+  const items = [];
+  for (let i = 0; i < ITEM_COUNT; i++){
+    const sym = SYMBOLS[i % SYMBOLS.length];
+    items.push(`<div class="symbol">${sym}</div>`);
+  }
+  stripEl.innerHTML = items.join("");
+  stripEl.style.transform = "translateY(0px)";
 }
 
-// ===== ROAST ENGINE =====
-let mode = "roast"; // roast | calm
-let selectedVibe = null;
+reelEls.forEach(setReelContent);
 
-const roastOut = document.getElementById("roastOut");
-const newRoast = document.getElementById("newRoast");
-const calmMode = document.getElementById("calmMode");
-
-const ROASTS = {
-  gremlin: [
-    "You said “minimum payment” with your whole chest 😭 — autopay the statement balance, bestie.",
-    "Your budget is vibes. Your bank account is screaming. We can fix this. ✅",
-    "If late fees were a personality trait, you’d be famous."
-  ],
-  main: [
-    "Main character energy is great, but interest charges are literally the villain arc. 👹",
-    "Yes you can have travel points. No you cannot carry a balance for them. 😤",
-    "You want a soft life? Autopay is the soft life starter pack."
-  ],
-  queen: [
-    "Responsible Queen detected 👑. The bank hates to see you coming.",
-    "Autopay on? Utilization low? Calm money energy? Iconic.",
-    "You’re so stable the interest monster is unemployed."
-  ]
-};
-
-const CALM = {
-  gremlin: [
-    "No shame — habits are built, not born. Start with autopay for the statement balance.",
-    "You’re not bad with money. You just need a system that runs itself.",
-    "One card. One autopay. One weekly check-in. That’s enough."
-  ],
-  main: [
-    "Your goals are valid. Let’s build a simple setup that earns points without stress.",
-    "Pick one points card + one backup card and keep it consistent.",
-    "You can be the main character and still be responsible. Promise."
-  ],
-  queen: [
-    "Keep doing what you’re doing — you’re building long-term freedom.",
-    "You’re proof money can feel calm and intentional.",
-    "Small consistent habits > complicated strategies."
-  ]
-};
-
-function pickLine(){
-  if (!selectedVibe) return "Pick a personality above to unlock your roast.";
-  const pool = mode === "roast" ? ROASTS[selectedVibe] : CALM[selectedVibe];
-  return pool[Math.floor(Math.random()*pool.length)];
+function startClock(){
+  if (startTime) return;
+  startTime = Date.now();
+  timeTimer = setInterval(() => {
+    const s = Math.floor((Date.now() - startTime) / 1000);
+    statTime.textContent = `${s}s`;
+  }, 250);
 }
 
-document.querySelectorAll(".vibe").forEach(card => {
-  card.addEventListener("click", (e) => {
-    selectedVibe = card.dataset.vibe;
-    roastOut.textContent = pickLine();
-    toast(mode === "roast" ? "Roast delivered 🔥" : "Support delivered 🤝");
-    confettiBurst(60);
+function resetClock(){
+  if (timeTimer) clearInterval(timeTimer);
+  timeTimer = null;
+  startTime = null;
+  statTime.textContent = "0s";
+}
+
+function updateStats(){
+  pullsEl.textContent = pulls;
+  winsEl.textContent = wins;
+  statPulls.textContent = pulls;
+  statWins.textContent = wins;
+}
+
+function randIndex(){
+  return Math.floor(Math.random() * SYMBOLS.length);
+}
+
+function spinReel(stripEl, targetIndex, delay){
+  // Keep loops small enough to never exceed our strip length.
+  // With ITEM_COUNT = 72, loops up to 6 is safe:
+  const loops = 5 + Math.floor(Math.random() * 2); // 5–6 loops
+
+  // total steps we move down the strip
+  const steps = loops * SYMBOLS.length + targetIndex;
+
+  // safety clamp (shouldn't be needed, but prevents blanks forever)
+  const maxSteps = ITEM_COUNT - 1;
+  const safeSteps = Math.min(steps, maxSteps);
+
+  const targetOffset = safeSteps * REEL_HEIGHT;
+
+  stripEl.style.transition = "none";
+  stripEl.style.transform = "translateY(0px)";
+  stripEl.getBoundingClientRect(); // force reflow
+
+  setTimeout(() => {
+    stripEl.style.transition = `transform ${SPIN_MS}ms cubic-bezier(.2,.9,.2,1)`;
+    stripEl.style.transform = `translateY(-${targetOffset}px)`;
+  }, delay);
+
+  return new Promise((resolve) => {
+    setTimeout(() => resolve(), delay + SPIN_MS + 30);
   });
-});
+}
 
-newRoast.addEventListener("click", () => {
-  roastOut.textContent = pickLine();
-  toast("Another one 😭");
-});
+function outcomeMessage(isWin, symbols){
+  if (isWin) return `Win! ${symbols.join(" ")} — reward hit.`;
+  return `No win (${symbols.join(" ")}). Notice how you still want “one more pull.”`;
+}
 
-calmMode.addEventListener("click", () => {
-  mode = (mode === "roast") ? "calm" : "roast";
-  calmMode.textContent = mode === "roast" ? "Switch to supportive mode 🤝" : "Switch to roast mode 🔥";
-  roastOut.textContent = pickLine();
-  toast(mode === "roast" ? "Roast Mode ON 🔥" : "Calm Mode ON 🤝");
-});
+async function pull(){
+  startClock();
 
-// ===== INTEREST MONSTER =====
-const balance = document.getElementById("balance");
-const balOut = document.getElementById("balOut");
-const interestOut = document.getElementById("interestOut");
-const rewardsOut = document.getElementById("rewardsOut");
-const netOut = document.getElementById("netOut");
-const netText = document.getElementById("netText");
+  pulls++;
+  updateStats();
+  pullBtn.disabled = true;
 
-const monsterFace = document.getElementById("monsterFace");
-const meterFill = document.getElementById("meterFill");
-const monsterLine = document.getElementById("monsterLine");
+  // Choose final symbols (win = all match)
+  const win = Math.random() < WIN_RATE;
+  let a = randIndex(), b = randIndex(), c = randIndex();
 
-function fmt(n){ return `$${Math.round(n)}`; }
-const APR = 0.24;
-const CASHBACK = 0.02;
+  if (win){
+    a = randIndex();
+    b = a;
+    c = a;
+  }
 
-function updateMonster(val){
-  const b = Number(val);
-  const monthlyInterest = b * (APR / 12);
-  const rewards = b * CASHBACK;
-  const net = rewards - monthlyInterest;
+  const final = [SYMBOLS[a], SYMBOLS[b], SYMBOLS[c]];
 
-  balOut.textContent = fmt(b);
-  interestOut.textContent = fmt(monthlyInterest);
-  rewardsOut.textContent = fmt(rewards);
-  netOut.textContent = (net >= 0 ? "+" : "") + fmt(net);
+  await Promise.all([
+    spinReel(reelEls[0], a, 0),
+    spinReel(reelEls[1], b, 140),
+    spinReel(reelEls[2], c, 280),
+  ]);
 
-  // monster level 0–100
-  const level = Math.min(100, Math.round((b / 2000) * 100));
-  meterFill.style.width = `${Math.max(6, level)}%`;
+  if (win) wins++;
+  updateStats();
+  winline.textContent = outcomeMessage(win, final);
 
-  // face + message
-  if (b === 0){
-    monsterFace.textContent = "😴";
-    monsterLine.textContent = "Monster is asleep. You’re free. 🫡";
-    netText.textContent = "Elite behavior. Zero balance carried.";
-  } else if (net < 0){
-    monsterFace.textContent = level > 65 ? "👹" : "😈";
-    monsterLine.textContent = "It’s getting fed. Please stop. 😭";
-    netText.textContent = "Congrats, the bank is eating your rewards.";
+  pullBtn.disabled = false;
+}
+
+pullBtn.addEventListener("click", pull);
+
+autoBtn.addEventListener("click", () => {
+  auto = !auto;
+  autoBtn.classList.toggle("on", auto);
+  autoBtn.textContent = auto ? "Auto: On" : "Auto: Off";
+  autoBtn.setAttribute("aria-pressed", auto ? "true" : "false");
+
+  if (auto){
+    autoTimer = setInterval(() => {
+      if (!pullBtn.disabled) pull();
+    }, 1200);
   } else {
-    monsterFace.textContent = "😏";
-    monsterLine.textContent = "You’re surviving… but don’t get comfortable. 😤";
-    netText.textContent = "Breaking even-ish. Pay it off anyway.";
-  }
-
-  // tiny shake when big
-  monsterFace.style.transform = `scale(${1 + level/180}) rotate(${(level/18)-2}deg)`;
-}
-
-updateMonster(balance.value);
-balance.addEventListener("input", (e) => updateMonster(e.target.value));
-
-// ===== OATH BUTTON =====
-document.getElementById("oathBtn").addEventListener("click", () => {
-  toast("Oath accepted ✅");
-  confettiBurst(160);
-});
-
-// ===== confetti =====
-function confettiBurst(n = 120){
-  for (let i = 0; i < n; i++){
-    const p = document.createElement("span");
-    p.style.position = "fixed";
-    p.style.left = "50%";
-    p.style.top = "55%";
-    p.style.width = "8px";
-    p.style.height = "8px";
-    p.style.borderRadius = "2px";
-    p.style.background = `hsl(${Math.random()*360}, 90%, 60%)`;
-    p.style.zIndex = "99999";
-    p.style.pointerEvents = "none";
-    document.body.appendChild(p);
-
-    const angle = Math.random() * Math.PI * 2;
-    const speed = 6 + Math.random() * 10;
-    const vx = Math.cos(angle) * speed;
-    const vy = Math.sin(angle) * speed - 8;
-
-    let x = 0, y = 0, t = 0;
-    const tick = () => {
-      t += 1;
-      x += vx;
-      y += vy + t * 0.22;
-      p.style.transform = `translate(${x}px, ${y}px) rotate(${t*10}deg)`;
-      p.style.opacity = `${1 - t / 55}`;
-      if (t < 55) requestAnimationFrame(tick);
-      else p.remove();
-    };
-    requestAnimationFrame(tick);
-  }
-}
-
-// ===== canvas sparkles =====
-const canvas = document.getElementById("sparkles");
-const ctx = canvas.getContext("2d");
-let W, H;
-
-function resize(){
-  W = canvas.width = window.innerWidth;
-  H = canvas.height = window.innerHeight;
-}
-window.addEventListener("resize", resize);
-resize();
-
-const particles = [];
-let mouse = { x: W/2, y: H/2 };
-
-window.addEventListener("mousemove", (e) => {
-  mouse.x = e.clientX;
-  mouse.y = e.clientY;
-  for (let i=0; i<3; i++){
-    particles.push({
-      x: mouse.x,
-      y: mouse.y,
-      vx: (Math.random()-0.5)*1.6,
-      vy: (Math.random()-0.5)*1.6,
-      life: 60 + Math.random()*20,
-      r: 1.5 + Math.random()*2.5,
-      hue: Math.random()*360
-    });
+    clearInterval(autoTimer);
+    autoTimer = null;
   }
 });
 
-function draw(){
-  ctx.clearRect(0,0,W,H);
-  for (let i=particles.length-1; i>=0; i--){
-    const p = particles[i];
-    p.x += p.vx;
-    p.y += p.vy;
-    p.life -= 1;
+resetBtn.addEventListener("click", () => {
+  pulls = 0;
+  wins = 0;
+  updateStats();
+  winline.textContent = "Pull to begin.";
 
-    ctx.beginPath();
-    ctx.fillStyle = `hsla(${p.hue}, 90%, 60%, ${Math.max(0,p.life/80)})`;
-    ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
-    ctx.fill();
-
-    if (p.life <= 0) particles.splice(i,1);
+  if (auto){
+    auto = false;
+    autoBtn.classList.remove("on");
+    autoBtn.textContent = "Auto: Off";
+    autoBtn.setAttribute("aria-pressed","false");
+    clearInterval(autoTimer);
+    autoTimer = null;
   }
-  requestAnimationFrame(draw);
-}
-draw();
+
+  reelEls.forEach(strip => {
+    strip.style.transition = "none";
+    strip.style.transform = "translateY(0px)";
+  });
+
+  resetClock();
+});
