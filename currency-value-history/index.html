@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Currency Value History</title>
+
+  <link rel="stylesheet" href="assets/css/style.css" />
+
+  <!-- Chart.js (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+  <main class="wrap">
+    <section class="card">
+      <h1>Currency Value History</h1>
+
+      <form id="fxForm" novalidate>
+        <div class="row">
+          <label for="base">Base Currency:</label>
+          <select id="base" name="base">
+            <option value="">Select an Currency…</option>
+          </select>
+          <span class="err" id="errBase"></span>
+        </div>
+
+        <div class="row">
+          <label for="quote">Convert to Currency:</label>
+          <select id="quote" name="quote">
+            <option value="">Select an Currency…</option>
+          </select>
+          <span class="err" id="errQuote"></span>
+        </div>
+
+        <div class="row">
+          <label for="fromDate">From Date:</label>
+          <input id="fromDate" name="fromDate" type="text" placeholder="mm/dd/yyyy" />
+          <span class="err" id="errFrom"></span>
+        </div>
+
+        <div class="row">
+          <label for="toDate">To Date:</label>
+          <input id="toDate" name="toDate" type="text" placeholder="mm/dd/yyyy" />
+          <span class="err" id="errTo"></span>
+        </div>
+
+        <div class="btnRow">
+          <button type="submit">Show Results</button>
+          <button type="button" id="btnClear">Clear</button>
+        </div>
+      </form>
+
+      <hr />
+
+      <h2 id="chartTitle" class="chartTitle"></h2>
+
+      <div class="chartWrap">
+        <canvas id="chartjs-0" width="650" height="420"></canvas>
+      </div>
+
+      <p class="err global" id="errGlobal"></p>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
