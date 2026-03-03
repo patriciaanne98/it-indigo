@@ -1,16 +1,21 @@
 // ========================
 // CONFIG (edit these)
 // ========================
-const API_KEY = "PASTE_YOUR_TOKEN_HERE"; // <-- PUT YOUR KEY HERE
+const API_KEY = "PASTE_YOUR_TOKEN_HERE"; // <-- paste your Massive key
 
-// Massive conversion endpoint from your screenshot:
-// https://api.massive.com/v1/conversion/AUD/USD?amount=100&precision=2&apiKey=YOUR_API_KEY
-function buildMassiveConversionUrl({ base, quote, amount, precision }) {
-  return `https://api.massive.com/v1/conversion/${encodeURIComponent(base)}/${encodeURIComponent(
-    quote
-  )}?amount=${encodeURIComponent(amount)}&precision=${encodeURIComponent(
-    precision
-  )}&apiKey=${encodeURIComponent(API_KEY)}`;
+// Build the Massive Forex Aggregates URL (from your screenshot):
+// https://api.massive.com/v2/aggs/ticker/C:EURUSD/range/1/day/2025-11-03/2025-11-28?adjusted=true&sort=asc&limit=120&apiKey=YOUR_API_KEY
+function buildMassiveForexAggUrl({ base, quote, fromISO, toISO }) {
+  const ticker = `C:${base}${quote}`; // ex: C:EURUSD
+  const multiplier = 1;
+  const timespan = "day";
+  const limit = 120;
+
+  return `https://api.massive.com/v2/aggs/ticker/${encodeURIComponent(
+    ticker
+  )}/range/${multiplier}/${timespan}/${encodeURIComponent(fromISO)}/${encodeURIComponent(
+    toISO
+  )}?adjusted=true&sort=asc&limit=${limit}&apiKey=${encodeURIComponent(API_KEY)}`;
 }
 
 // At least 5 currencies
@@ -22,10 +27,6 @@ const CURRENCIES = [
   { code: "CAD", label: "Canadian Dollar" },
   { code: "AUD", label: "Australian Dollar" }
 ];
-
-// We’ll always chart "1 base currency to quote currency"
-const AMOUNT = 1;
-const PRECISION = 6;
 
 // ========================
 // DOM
@@ -127,23 +128,9 @@ function validateInputs() {
   return { ok, base: baseSel.value, quote: quoteSel.value, fromISO, toISO };
 }
 
-function daysBetweenInclusive(startISO, endISO) {
-  const start = new Date(startISO + "T00:00:00Z");
-  const end = new Date(endISO + "T00:00:00Z");
-  const diffMs = end - start;
-  const diffDays = Math.floor(diffMs / (24 * 60 * 60 * 1000));
-  return diffDays + 1;
-}
-
-function buildDateLabels(startISO, count) {
-  const labels = [];
-  const start = new Date(startISO + "T00:00:00Z");
-  for (let i = 0; i < count; i++) {
-    const d = new Date(start);
-    d.setUTCDate(start.getUTCDate() + i);
-    labels.push(d.toLocaleString("en-US", { month: "short", day: "2-digit" }));
-  }
-  return labels;
+function prettyDateFromMillis(ms) {
+  const d = new Date(ms);
+  return d.toLocaleString("en-US", { month: "short", day: "2-digit" });
 }
 
 // ========================
@@ -174,12 +161,11 @@ async function onSubmit(e) {
   errGlobal.textContent = "";
   chartTitle.textContent = `${v.base} to ${v.quote}`;
 
-  // Build Massive conversion URL
-  const url = buildMassiveConversionUrl({
+  const url = buildMassiveForexAggUrl({
     base: v.base,
     quote: v.quote,
-    amount: AMOUNT,
-    precision: PRECISION
+    fromISO: v.fromISO,
+    toISO: v.toISO
   });
 
   try {
@@ -187,26 +173,30 @@ async function onSubmit(e) {
     if (!res.ok) throw new Error(`API error: ${res.status} ${res.statusText}`);
 
     const json = await res.json();
-    console.log("MASSIVE JSON:", json);
+    console.log("MASSIVE AGGS JSON:", json);
 
-    // Try common field names (we'll lock it once you see console output)
-    const rate =
-      json?.rate ??
-      json?.result ??
-      json?.value ??
-      json?.conversion ??
-      json?.data?.rate ??
-      json?.data?.value;
+    // Massive aggregates usually returns { results: [ ... ] }
+    // Each result often has:
+    // t = timestamp (ms)
+    // c = close
+    // o = open, h = high, l = low, v = volume
+    const rows = Array.isArray(json.results) ? json.results : [];
 
-    if (rate == null) {
-      throw new Error("Could not find the conversion rate in the API response. Check console log.");
+    if (!rows.length) throw new Error("No data returned for that date range.");
+
+    const labels = [];
+    const values = [];
+
+    for (const r of rows) {
+      const ts = r.t;      // timestamp in ms
+      const close = r.c;   // close value
+      if (ts != null && close != null) {
+        labels.push(prettyDateFromMillis(ts));
+        values.push(Number(close));
+      }
     }
 
-    // Because this endpoint is NOT historical, we "fake" a series by repeating the same rate
-    // across the date range so your chart draws.
-    const n = daysBetweenInclusive(v.fromISO, v.toISO);
-    const labels = buildDateLabels(v.fromISO, n);
-    const values = Array(n).fill(Number(rate));
+    if (!labels.length) throw new Error("No usable chart points found in API response.");
 
     drawChart(labels, values, `One ${v.base} to ${v.quote}`, v.quote);
   } catch (err) {
