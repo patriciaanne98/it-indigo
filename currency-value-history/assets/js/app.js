@@ -1,10 +1,10 @@
 // ========================
 // CONFIG (edit these)
 // ========================
-const API_KEY = "PASTE_YOUR_TOKEN_HERE"; // <-- paste your Massive key
+const API_KEY = "QpZpT9tDYBd7qk9PE4rVnI5VvmOF1Jr2"; // <-- paste your Massive key
 
 // Build the Massive Forex Aggregates URL (from your screenshot):
-// https://api.massive.com/v2/aggs/ticker/C:EURUSD/range/1/day/2025-11-03/2025-11-28?adjusted=true&sort=asc&limit=120&apiKey=YOUR_API_KEY
+// https://api.massive.com/v2/aggs/ticker/C:EURUSD/range/1/day/2025-11-03/2025-11-28?adjusted=true&sort=asc&limit=120&apiKey=QpZpT9tDYBd7qk9PE4rVnI5VvmOF1Jr2
 function buildMassiveForexAggUrl({ base, quote, fromISO, toISO }) {
   const ticker = `C:${base}${quote}`; // ex: C:EURUSD
   const multiplier = 1;
