@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Pilates with Patricia</title>
+  <meta
+    name="description"
+    content="Contact Pilates with Patricia for questions about classes, private sessions, bookings, and wellness support."
+  />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="site-wrapper">
+    <header class="navbar">
+      <div class="nav-left">
+        <a href="index.html" class="logo">Pilates with Patricia</a>
+      </div>
+
+      <nav class="nav-center" aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="classes.html">Classes</a></li>
+          <li><a href="videos.html">Videos</a></li>
+          <li><a href="wellness.html">Wellness</a></li>
+          <li><a href="contact.html" class="active" aria-current="page">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-right">
+        <button
+          class="hamburger"
+          type="button"
+          onclick="toggleMenu()"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+        >
+          ☰
+        </button>
+        <a href="book.html" class="book-btn">Book a Class</a>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="contact-hero">
+        <div class="hero-text">
+          <h1>Contact Patricia</h1>
+          <p>
+            Have a question about classes, private sessions, or scheduling?
+            I’d love to hear from you.
+          </p>
+        </div>
+      </section>
+
+      <section class="contact-section">
+        <div class="contact-form-container">
+          <form
+            class="contact-form"
+            action="https://formspree.io/f/xojkjvka"
+            method="post"
+          >
+            <input
+              type="hidden"
+              name="_subject"
+              value="New Contact Form Submission - Pilates with Patricia"
+            />
+
+            <label for="name">Full Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Your full name"
+              autocomplete="name"
+              required
+            />
+
+            <label for="email">Email Address</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="you@example.com"
+              autocomplete="email"
+              required
+            />
+
+            <label for="topic">What are you reaching out about?</label>
+            <select id="topic" name="topic" required>
+              <option value="">Select one</option>
+              <option value="mat-pilates">Mat Pilates</option>
+              <option value="reformer-pilates">Reformer Pilates</option>
+              <option value="private-session">Private Session</option>
+              <option value="booking-question">Booking Question</option>
+              <option value="general-question">General Question</option>
+            </select>
+
+            <label for="message">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="6"
+              placeholder="Tell me a little about what you need help with."
+              required
+            ></textarea>
+
+            <button type="submit">Send Message</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; 2026 Pilates with Patricia. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+  function toggleMenu() {
+    const nav = document.querySelector(".nav-center");
+    const button = document.querySelector(".hamburger");
+
+    nav.classList.toggle("active");
+
+    const isOpen = nav.classList.contains("active");
+    button.setAttribute("aria-expanded", isOpen);
+  }
+
+  const params = new URLSearchParams(window.location.search);
+  const topic = params.get("topic");
+  const topicSelect = document.getElementById("topic");
+
+  if (topic && topicSelect) {
+    topicSelect.value = topic;
+  }
+</script>
+</body>
+</html>

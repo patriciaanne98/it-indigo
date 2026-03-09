@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Videos | Pilates with Patricia</title>
+  <meta
+    name="description"
+    content="Explore featured Pilates videos and browse categories like booty, abs, stretching, arms, full body, and beginner Pilates."
+  />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="site-wrapper">
+    <header class="navbar">
+      <div class="nav-left">
+        <a href="index.html" class="logo">Pilates with Patricia</a>
+      </div>
+
+      <nav class="nav-center" aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="classes.html">Classes</a></li>
+          <li><a href="videos.html" class="active" aria-current="page">Videos</a></li>
+          <li><a href="wellness.html">Wellness</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-right">
+        <button
+          class="hamburger"
+          type="button"
+          onclick="toggleMenu()"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+        >
+          ☰
+        </button>
+        <a href="book.html" class="book-btn">Book a Class</a>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="class-hero">
+        <div class="hero-text">
+          <h1>Pilates Video Library</h1>
+          <p>
+            Explore featured workouts and browse Pilates videos by category,
+            whether you want booty, abs, stretching, arms, full body, or beginner flows.
+          </p>
+        </div>
+      </section>
+
+      <section class="featured-carousel-section">
+        <div class="featured-carousel-header">
+          <h2>Featured Videos</h2>
+          <p>Start with a few favorite workout categories and explore from there.</p>
+        </div>
+
+        <div class="featured-carousel">
+          <button class="featured-btn prev" type="button" aria-label="Previous featured video">
+            &#10094;
+          </button>
+
+          <div class="featured-track-container">
+            <div class="featured-track" id="featuredTrack">
+              <article class="featured-slide">
+                <div class="featured-content">
+                  <h3>Booty & Glutes Focus</h3>
+                  <p>
+                    Sculpt your lower body with targeted Pilates workouts designed
+                    to activate glutes, strengthen legs, and build control.
+                  </p>
+                  <p class="video-meta">Category focus: glutes, lower body, sculpt</p>
+                  <a
+                    href="https://www.youtube.com/results?search_query=pilates+booty+glutes+workout"
+                    target="_blank"
+                    rel="noopener"
+                    class="book-now"
+                  >
+                    Watch Booty Videos
+                  </a>
+                </div>
+              </article>
+
+              <article class="featured-slide">
+                <div class="featured-content">
+                  <h3>Abs & Core Strength</h3>
+                  <p>
+                    Build deep core strength, improve posture, and support better
+                    balance with focused ab and core Pilates sessions.
+                  </p>
+                  <p class="video-meta">Category focus: core, abs, posture</p>
+                  <a
+                    href="https://www.youtube.com/results?search_query=pilates+abs+core+workout"
+                    target="_blank"
+                    rel="noopener"
+                    class="book-now"
+                  >
+                    Watch Core Videos
+                  </a>
+                </div>
+              </article>
+
+              <article class="featured-slide">
+                <div class="featured-content">
+                  <h3>Stretching & Mobility</h3>
+                  <p>
+                    Choose restorative Pilates stretching routines for flexibility,
+                    recovery, and gentle movement on lower-energy days.
+                  </p>
+                  <p class="video-meta">Category focus: mobility, recovery, stretch</p>
+                  <a
+                    href="https://www.youtube.com/results?search_query=pilates+stretching+mobility+workout"
+                    target="_blank"
+                    rel="noopener"
+                    class="book-now"
+                  >
+                    Watch Stretch Videos
+                  </a>
+                </div>
+              </article>
+
+              <article class="featured-slide">
+                <div class="featured-content">
+                  <h3>Arms & Upper Body</h3>
+                  <p>
+                    Tone your upper body and improve posture with Pilates workouts
+                    for arms, shoulders, chest, and back.
+                  </p>
+                  <p class="video-meta">Category focus: arms, posture, upper body</p>
+                  <a
+                    href="https://www.youtube.com/results?search_query=pilates+arms+upper+body+workout"
+                    target="_blank"
+                    rel="noopener"
+                    class="book-now"
+                  >
+                    Watch Arm Videos
+                  </a>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <button class="featured-btn next" type="button" aria-label="Next featured video">
+            &#10095;
+          </button>
+        </div>
+      </section>
+
+      <section class="video-layout">
+        <aside class="video-sidebar" aria-label="Video categories">
+          <h2>Browse Categories</h2>
+          <nav class="video-sidebar-nav">
+            <a href="#booty">Booty & Glutes</a>
+            <a href="#abs">Abs & Core</a>
+            <a href="#stretch">Stretching & Mobility</a>
+            <a href="#arms">Arms & Upper Body</a>
+            <a href="#fullbody">Full Body</a>
+            <a href="#beginner">Beginner Pilates</a>
+          </nav>
+        </aside>
+
+        <div class="video-sections">
+          <section id="booty" class="video-category-section">
+            <h2>Booty & Glutes</h2>
+            <p class="video-category-intro">
+              Target your lower body with Pilates workouts focused on glute activation,
+              sculpting, and leg strength.
+            </p>
+
+            <div class="video-library">
+              <article class="video-category-card">
+                <h3>Pilates Booty Burn</h3>
+                <p>Find glute-focused Pilates workouts for strength and sculpting.</p>
+                <p class="video-meta">Popular search: booty, glutes, lower body</p>
+                <a href="https://www.youtube.com/results?search_query=pilates+booty+burn" target="_blank" rel="noopener" class="book-now">Watch</a>
+              </article>
+
+              <article class="video-category-card">
+                <h3>Glute Activation Flow</h3>
+                <p>Great before leg day or for a focused lower-body Pilates session.</p>
+                <p class="video-meta">Best for: activation and toning</p>
+                <a href="https://www.youtube.com/results?search_query=pilates+glute+activation" target="_blank" rel="noopener" class="book-now">Watch</a>
+              </article>
+
+              <article class="video-category-card">
+                <h3>Lower Body Sculpt</h3>
+                <p>Build endurance and control through a full lower-body flow.</p>
+                <p class="video-meta">Best for: sculpting and control</p>
+                <a href="https://www.youtube.com/results?search_query=lower+body+pilates+workout" target="_blank" rel="noopener" class="book-now">Watch</a>
+              </article>
+            </div>
+          </section>
+
+          <section id="abs" class="video-category-section">
+            <h2>Abs & Core</h2>
+            <p class="video-category-intro">
+              Strengthen your center with deep core and ab-focused Pilates routines.
+            </p>
+
+            <div class="video-library">
+              <article class="video-category-card">
+                <h3>Deep Core Pilates</h3>
+                <p>Focus on stability, breathing, and controlled abdominal work.</p>
+                <p class="video-meta">Best for: foundational core strength</p>
+                <a href="https://www.youtube.com/results?search_query=deep+core+pilates+workout" target="_blank" rel="noopener" class="book-now">Watch</a>
+              </article>
+
+              <article class="video-category-card">
+                <h3>Abs & Waist Pilates</h3>
+                <p>Find sessions targeting abs, obliques, and posture support.</p>
+                <p class="video-meta">Best for: abs and waistline focus</p>
+                <a href="https://www.youtube.com/results?search_query=pilates+abs+waist+workout" target="_blank" rel="noopener" class="book-now">Watch</a>
+              </article>
+
+              <article class="video-category-card">
+                <h3>10-Minute Core Reset</h3>
+                <p>Perfect for quick movement days when you still want core work.</p>
+                <p class="video-meta">Best for: short, effective routines</p>
+                <a href="https://www.youtube.com/results?search_query=10+minute+pilates+core+workout" target="_blank" rel="noopener" class="book-now">Watch</a>
+              </article>
+            </div>
+          </section>
+
+          <section id="stretch" class="video-category-section">
+            <h2>Stretching & Mobility</h2>
+            <p class="video-category-intro">
+              Loosen up tight muscles and improve flexibility with restorative Pilates flows.
+            </p>
+
+            <div class="video-library">
+              <article class="video-category-card">
+                <h3>Full Body Stretch</h3>
+                <p>Ideal for recovery, flexibility, and low-impact movement.</p>
+                <p class="video-meta">Best for: full body reset</p>
+                <a href="https://www.youtube.com/results?search_query=full+body+pilates+stretch" target="_blank" rel="noopener" class="book-now">Watch</a>
+              </article>
+
+              <article class="video-category-card">
+                <h3>Hip Mobility Pilates</h3>
+                <p>Find flows that open the hips and reduce lower-body tightness.</p>
+                <p class="video-meta">Best for: hips and mobility</p>
+                <a href="https://www.youtube.com/results?search_query=pilates+hip+mobility+stretch" target="_blank" rel="noopener" class="book-now">Watch</a>
+              </article>
+
+              <article class="video-category-card">
+                <h3>Morning Stretch Flow</h3>
+                <p>Start the day with a gentle Pilates mobility routine.</p>
+                <p class="video-meta">Best for: easy morning movement</p>
+                <a href="https://www.youtube.com/results?search_query=morning+pilates+stretch+routine" target="_blank" rel="noopener" class="book-now">Watch</a>
+              </article>
+            </div>
+          </section>
+
+          <section id="arms" class="video-category-section">
+            <h2>Arms & Upper Body</h2>
+            <p class="video-category-intro">
+              Improve upper-body strength, posture, and arm endurance through controlled Pilates movement.
+            </p>
+
+            <div class="video-library">
+              <article class="video-category-card">
+                <h3>Pilates Arms Workout</h3>
+                <p>Find arm-focused routines with toning and posture benefits.</p>
+                <p class="video-meta">Best for: arms and shoulders</p>
+                <a href="https://www.youtube.com/results?search_query=pilates+arms+workout" target="_blank" rel="noopener" class="book-now">Watch</a>
+              </article>
+
+              <article class="video-category-card">
+                <h3>Upper Body Posture Flow</h3>
+                <p>Support a stronger back, shoulders, and better alignment.</p>
+                <p class="video-meta">Best for: posture and upper body</p>
+                <a href="https://www.youtube.com/results?search_query=pilates+upper+body+posture+workout" target="_blank" rel="noopener" class="book-now">Watch</a>
+              </article>
+
+              <article class="video-category-card">
+                <h3>Light Weights Pilates Arms</h3>
+                <p>Add extra challenge with upper-body Pilates routines using light weights.</p>
+                <p class="video-meta">Best for: arm toning</p>
+                <a href="https://www.youtube.com/results?search_query=pilates+arms+light+weights" target="_blank" rel="noopener" class="book-now">Watch</a>
+              </article>
+            </div>
+          </section>
+
+          <section id="fullbody" class="video-category-section">
+            <h2>Full Body Pilates</h2>
+            <p class="video-category-intro">
+              Choose full-body workouts when you want a balanced Pilates session from head to toe.
+            </p>
+
+            <div class="video-library">
+              <article class="video-category-card">
+                <h3>Classic Full Body Flow</h3>
+                <p>Balanced Pilates routines for strength, mobility, and control.</p>
+                <p class="video-meta">Best for: all-around training</p>
+                <a href="https://www.youtube.com/results?search_query=full+body+pilates+workout" target="_blank" rel="noopener" class="book-now">Watch</a>
+              </article>
+
+              <article class="video-category-card">
+                <h3>30-Minute Full Body Pilates</h3>
+                <p>A solid medium-length option when you want a complete workout.</p>
+                <p class="video-meta">Best for: moderate workout days</p>
+                <a href="https://www.youtube.com/results?search_query=30+minute+full+body+pilates" target="_blank" rel="noopener" class="book-now">Watch</a>
+              </article>
+
+              <article class="video-category-card">
+                <h3>Low-Impact Full Body</h3>
+                <p>Gentler movement with total-body benefits and less strain.</p>
+                <p class="video-meta">Best for: low-impact training</p>
+                <a href="https://www.youtube.com/results?search_query=low+impact+full+body+pilates" target="_blank" rel="noopener" class="book-now">Watch</a>
+              </article>
+            </div>
+          </section>
+
+          <section id="beginner" class="video-category-section">
+            <h2>Beginner Pilates</h2>
+            <p class="video-category-intro">
+              Start here if you are new to Pilates or want slower, more approachable movement.
+            </p>
+
+            <div class="video-library">
+              <article class="video-category-card">
+                <h3>Beginner Pilates Basics</h3>
+                <p>Learn breath, alignment, and foundational Pilates movement.</p>
+                <p class="video-meta">Best for: new clients and refreshers</p>
+                <a href="https://www.youtube.com/results?search_query=beginner+pilates+basics" target="_blank" rel="noopener" class="book-now">Watch</a>
+              </article>
+
+              <article class="video-category-card">
+                <h3>Gentle Beginner Flow</h3>
+                <p>Slow-paced workouts to build confidence and body awareness.</p>
+                <p class="video-meta">Best for: low-pressure movement</p>
+                <a href="https://www.youtube.com/results?search_query=gentle+beginner+pilates" target="_blank" rel="noopener" class="book-now">Watch</a>
+              </article>
+
+              <article class="video-category-card">
+                <h3>Intro to Mat Pilates</h3>
+                <p>Explore mat-based Pilates with beginner-friendly guidance.</p>
+                <p class="video-meta">Best for: learning mat fundamentals</p>
+                <a href="https://www.youtube.com/results?search_query=intro+to+mat+pilates" target="_blank" rel="noopener" class="book-now">Watch</a>
+              </article>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; 2026 Pilates with Patricia. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.querySelector(".nav-center");
+      const button = document.querySelector(".hamburger");
+
+      nav.classList.toggle("active");
+
+      const isOpen = nav.classList.contains("active");
+      button.setAttribute("aria-expanded", isOpen);
+    }
+
+    const track = document.getElementById("featuredTrack");
+    const slides = document.querySelectorAll(".featured-slide");
+    const nextBtn = document.querySelector(".featured-btn.next");
+    const prevBtn = document.querySelector(".featured-btn.prev");
+
+    let currentIndex = 0;
+
+    function updateCarousel() {
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    nextBtn.addEventListener("click", () => {
+      currentIndex = (currentIndex + 1) % slides.length;
+      updateCarousel();
+    });
+
+    prevBtn.addEventListener("click", () => {
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+      updateCarousel();
+    });
+  </script>
+</body>
+</html>

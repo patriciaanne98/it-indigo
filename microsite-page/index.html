@@ -1,114 +1,148 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>You’re the Product</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pilates with Patricia</title>
+  <meta
+    name="description"
+    content="Pilates with Patricia offers mindful movement, private sessions, mat Pilates, and reformer classes designed to help you feel stronger and more connected to your body."
+  />
   <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
 </head>
-
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <div class="site-wrapper">
 
-<div class="progress" aria-hidden="true"><div class="bar" id="bar"></div></div>
-
-<header class="site-header">
-  <div class="navbar">
-    <a class="brand" href="index.html">
-      <span class="brand-mark" aria-hidden="true"></span>
-      YOU’RE THE PRODUCT
-    </a>
-
-    <!-- Desktop nav -->
-    <nav class="navlinks" aria-label="Primary">
-      <div class="navitem"><a href="how-it-works.html">How it works</a></div>
-      <div class="navitem"><a href="demo.html">Demo</a></div>
-
-      <div class="navitem">
-        <button type="button">
-          Topics <span class="caret">▾</span>
-        </button>
-        <div class="dropdown" role="menu" aria-label="Topics">
-          <a href="how-it-works.html#attention">
-            Attention as currency
-            <span class="hint">Ads, time-spent, incentives</span>
-          </a>
-          <a href="how-it-works.html#algorithms">
-            Algorithms + AI ranking
-            <span class="hint">What the feed “learns”</span>
-          </a>
-          <a href="how-it-works.html#loops">
-            Habit loops
-            <span class="hint">Variable rewards, scroll, refresh</span>
-          </a>
-        </div>
+    <header class="navbar">
+      <div class="nav-left">
+        <a href="index.html" class="logo">Pilates with Patricia</a>
       </div>
 
-      <div class="navitem"><a href="take-action.html">Take action</a></div>
-      <div class="navitem"><a href="resources.html">Resources</a></div>
-    </nav>
+      <nav class="nav-center" aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="index.html" class="active" aria-current="page">Home</a></li>
+          <li><a href="classes.html">Classes</a></li>
+          <li><a href="videos.html">Videos</a></li>
+          <li><a href="wellness.html">Wellness</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
 
-    <!-- Tools -->
-    <div class="navtools">
-      <button class="iconbtn" id="searchBtn" type="button" aria-label="Search">🔍</button>
-      <a class="cta" href="take-action.html">Start here</a>
-      <button class="iconbtn burger" id="burger" type="button" aria-label="Menu" aria-expanded="false">☰</button>
-    </div>
+      <div class="nav-right">
+        <button
+          class="hamburger"
+          type="button"
+          onclick="toggleMenu()"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+        >
+          ☰
+        </button>
+        <a href="book.html" class="book-btn">Book a Class</a>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="hero">
+        <div class="hero-text">
+          <h1>Move With Intention</h1>
+          <p>
+            Personalized Pilates sessions designed to help you build strength,
+            improve alignment, and reconnect with your body.
+          </p>
+          <a href="classes.html" class="cta-btn">Explore Classes</a>
+        </div>
+      </section>
+
+      <section class="about">
+        <div class="about-content">
+          <img
+            src="assets/img/patricia-2.jpg"
+            alt="Pilates instructor Patricia in the studio"
+          />
+
+          <div class="about-text">
+            <h2>Meet Patricia</h2>
+            <p>
+              Hi, I’m Patricia — a certified Pilates instructor passionate about
+              helping people move better, feel stronger, and build confidence in
+              their bodies.
+            </p>
+            <p>
+              My teaching style blends strong fundamentals with a modern,
+              approachable feel. Whether you’re completely new to Pilates or
+              looking to deepen your practice, each session is designed to meet
+              you where you are.
+            </p>
+            <p>
+              From mat work to reformer sessions, my goal is simple: help you
+              leave class feeling supported, challenged, and proud of yourself.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="classes">
+        <div class="classes-header">
+          <h2>Class Offerings</h2>
+          <p>
+            Choose the experience that fits your goals, energy, and lifestyle.
+          </p>
+        </div>
+
+        <div class="class-cards">
+          <article class="class-card">
+            <h3>Mat Pilates</h3>
+            <p>
+              Build core strength, stability, and flexibility through focused,
+              low-impact movement that works for all levels.
+            </p>
+            <a href="book.html" class="book-now">Book Now</a>
+          </article>
+
+          <article class="class-card">
+            <h3>Reformer Pilates</h3>
+            <p>
+              Challenge your body with controlled resistance training designed
+              to improve posture, strength, and total-body coordination.
+            </p>
+            <a href="book.html" class="book-now">Book Now</a>
+          </article>
+
+          <article class="class-card">
+            <h3>Private Sessions</h3>
+            <p>
+              Get one-on-one support with a personalized session tailored to
+              your movement goals, experience level, and needs.
+            </p>
+            <a href="book.html" class="book-now">Book Now</a>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; 2026 Pilates with Patricia. All rights reserved.</p>
+    </footer>
   </div>
-</header>
 
-<!-- Mobile menu panel -->
-<div class="mobilepanel" id="mobilePanel" aria-label="Mobile menu">
-  <div class="container">
-    <a href="how-it-works.html">How it works</a>
-    <a href="demo.html">Demo</a>
-    <a href="take-action.html">Take action</a>
-    <a href="resources.html">Resources</a>
-  </div>
-</div>
+  <script>
+    function toggleMenu() {
+      const nav = document.querySelector(".nav-center");
+      const button = document.querySelector(".hamburger");
 
-<!-- Search modal -->
-<div class="modal" id="searchModal" aria-hidden="true">
-  <div class="modal-card" role="dialog" aria-modal="true" aria-label="Search this site">
-    <div class="searchrow">
-      <input id="searchInput" type="search" placeholder="Search: addiction, algorithms, attention, privacy…" />
-      <button class="iconbtn" id="closeSearch" type="button">Close</button>
-    </div>
-    <div class="searchhint">Press Enter to jump to the first matching heading.</div>
-  </div>
-</div>
+      nav.classList.toggle("active");
 
-<section class="hero">
-  <div class="hero-card">
-    <h1>If it’s free, you’re the product.</h1>
-    <p class="lead">
-      Social media platforms don’t sell subscriptions — they sell attention.
-      Your time, clicks, and behavior become monetized through engagement-driven systems.
-    </p>
-    <a class="btn" href="how-it-works.html">Start Learning</a>
-  </div>
-
-  <div class="hero-card">
-    <img src="images/hero-phone.jpg" alt="Person scrolling phone" />
-    <p class="lead">The feed isn’t neutral. It’s ranked.</p>
-  </div>
-</section>
-
-<section class="wrap section">
-  <div class="grid2">
-    <div class="card">
-      <h3>What is the attention economy?</h3>
-      <p>Human attention is limited. Platforms compete for it because attention equals revenue.</p>
-    </div>
-    <div class="card">
-      <h3>Why this matters</h3>
-      <p>Algorithms shape what we see, how we interact, and how long we stay.</p>
-    </div>
-  </div>
-</section>
-
-<footer class="footer">
-  Built by Patricia Frogoso • Independent Study
-</footer>
-
+      const isOpen = nav.classList.contains("active");
+      button.setAttribute("aria-expanded", isOpen);
+    }
+  </script>
 </body>
 </html>

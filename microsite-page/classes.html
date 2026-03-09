@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Classes | Pilates with Patricia</title>
+  <meta
+    name="description"
+    content="Explore mat Pilates, reformer Pilates, and private sessions with Pilates with Patricia."
+  />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="site-wrapper">
+    <header class="navbar">
+      <div class="nav-left">
+        <a href="index.html" class="logo">Pilates with Patricia</a>
+      </div>
+
+      <nav class="nav-center" aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="classes.html" class="active" aria-current="page">Classes</a></li>
+          <li><a href="videos.html">Videos</a></li>
+          <li><a href="wellness.html">Wellness</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-right">
+        <button
+          class="hamburger"
+          type="button"
+          onclick="toggleMenu()"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+        >
+          ☰
+        </button>
+        <a href="book.html" class="book-btn">Book a Class</a>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="class-hero">
+        <div class="hero-text">
+          <h1>Find Your Flow</h1>
+          <p>
+            Explore class options designed to help you build strength, improve
+            posture, and move with more confidence.
+          </p>
+        </div>
+      </section>
+
+      <section class="page-header">
+        <p>
+          Whether you want a strong foundation, a full-body challenge, or more
+          personalized support, there’s a session designed for you.
+        </p>
+      </section>
+
+      <section class="class-menu">
+        <article class="class-type">
+          <div class="class-type-content">
+            <img
+              src="assets/img/mat-pilates.jpeg"
+              alt="Mat Pilates session focused on core strength and alignment"
+            />
+            <div>
+              <h2>Mat Pilates</h2>
+              <p>
+                A grounded, low-impact class that uses controlled movement to
+                strengthen your core, improve flexibility, and support better
+                posture.
+              </p>
+              <p>
+                <em>
+                  Best for beginners, busy students, desk workers, and anyone
+                  building a strong movement foundation.
+                </em>
+              </p>
+              <p class="price">$20 per class · $160 for a 10-class pass</p>
+              <a href="contact.html?topic=mat-pilates" class="book-now">Book Mat Pilates</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="class-type">
+          <div class="class-type-content">
+            <img
+              src="assets/img/pilates-reformer.jpeg"
+              alt="Reformer Pilates machine used in a full-body strength session"
+            />
+            <div>
+              <h2>Reformer Pilates</h2>
+              <p>
+                A dynamic, equipment-based class that adds spring resistance for
+                a deeper challenge while improving balance, coordination, and
+                total-body strength.
+              </p>
+              <p>
+                <em>
+                  Best for clients who want a more advanced workout, stronger
+                  posture, and a full-body burn.
+                </em>
+              </p>
+              <p class="price">$35 per class · $300 for a 10-class pass</p>
+              <a href="contact.html?topic=reformer-pilates" class="book-now">Book Reformer</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="class-type">
+          <div class="class-type-content">
+            <img
+              src="assets/img/pilates-reformer.webp"
+              alt="Private Pilates session with one-on-one instruction"
+            />
+            <div>
+              <h2>Private Sessions</h2>
+              <p>
+                A one-on-one experience tailored to your specific needs, goals,
+                and experience level. Ideal for clients who want focused support
+                and customized guidance.
+              </p>
+              <p>
+                <em>
+                  Best for personalized coaching, recovery-focused movement, and
+                  clients who want a fully customized plan.
+                </em>
+              </p>
+              <p class="price">$65 per session · $600 for a 10-session pack</p>
+              <a href="contact.html?topic=private-session" class="book-now">Book a Private Session</a>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; 2026 Pilates with Patricia. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.querySelector(".nav-center");
+      const button = document.querySelector(".hamburger");
+
+      nav.classList.toggle("active");
+
+      const isOpen = nav.classList.contains("active");
+      button.setAttribute("aria-expanded", isOpen);
+    }
+  </script>
+</body>
+</html>

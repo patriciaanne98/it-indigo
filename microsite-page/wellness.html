@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wellness Blog – Pilates with Patricia</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/wellness.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="site-wrapper">
+    <header class="navbar">
+      <div class="nav-left">
+        <a href="index.html" class="logo">Pilates with Patricia</a>
+      </div>
+      <nav class="nav-center">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="classes.html">Classes</a></li>
+          <li><a href="videos.html">Videos</a></li>
+          <li><a href="wellness.html" class="active">Wellness</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav-right">
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+        <a href="classes.html" class="book-btn">Book a Class</a>
+      </div>
+    </header>
+
+    <section class="wellness-hero">
+      <div class="wellness-text">
+        <h1>Wellness Blog</h1>
+        <p>Tips, reflections, and movement musings for a balanced, feel-good life.</p>
+      </div>
+    </section>
+
+    <div class="blog-filter">
+      <button class="filter-btn active" onclick="filterPosts('all')">All</button>
+      <button class="filter-btn" onclick="filterPosts('movement')">Movement</button>
+      <button class="filter-btn" onclick="filterPosts('nutrition')">Nutrition</button>
+      <button class="filter-btn" onclick="filterPosts('mindset')">Mindset</button>
+    </div>
+
+    <section class="blog-posts">
+      <div class="blog-article" data-category="movement">
+        <img src="assets/img/morning-stretch.jpeg" alt="Morning Stretch" width="300px" height="400px">
+        <h2>Start Your Day with Intention</h2>
+        <p class="blog-date">April 22, 2025</p>
+        <p class="excerpt">A 5-minute morning flow can change the way you show up in your day...</p>
+        <div class="full-text">Here's my favorite routine to wake up with breath, core, and gratitude. It’s perfect before your coffee or after brushing your teeth — just roll out the mat and breathe.</div>
+        <span class="read-more" onclick="toggleText(this)">Read More</span>
+      </div>
+
+      <div class="blog-article" data-category="nutrition">
+        <img src="assets/img/healthy-snacks.jpg" alt="Healthy Snacks">
+        <h2>Feel-Good Snacks That Fuel You</h2>
+        <p class="blog-date">April 15, 2025</p>
+        <p class="excerpt">Here are my favorite snacks that keep me light, focused, and energized...</p>
+        <div class="full-text">These snacks are quick, portable, and trainer-approved. I love light cheese, fruit, almonds, and herbal tea mid-morning. Fueling well means moving well!</div>
+        <span class="read-more" onclick="toggleText(this)">Read More</span>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <p>&copy; 2025 Pilates with Patricia. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.querySelector('.nav-center');
+      nav.classList.toggle('active');
+    }
+
+    function toggleText(el) {
+      const fullText = el.previousElementSibling;
+      const isExpanded = fullText.style.display === 'block';
+      fullText.style.display = isExpanded ? 'none' : 'block';
+      el.innerText = isExpanded ? 'Read More' : 'Show Less';
+    }
+
+    function filterPosts(category) {
+      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      document.querySelectorAll('.blog-article').forEach(article => {
+        if (category === 'all' || article.dataset.category === category) {
+          article.style.display = 'flex';
+        } else {
+          article.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
