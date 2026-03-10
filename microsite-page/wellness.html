@@ -3,96 +3,145 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Wellness Blog – Pilates with Patricia</title>
+  <title>Wellness | Pilates with Patricia</title>
+  <meta
+    name="description"
+    content="Explore wellness articles on movement, mindset, nutrition, recovery, and everyday habits from Pilates with Patricia."
+  />
   <link rel="stylesheet" href="assets/css/style.css" />
-  <link rel="stylesheet" href="assets/css/wellness.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <div class="site-wrapper">
     <header class="navbar">
       <div class="nav-left">
         <a href="index.html" class="logo">Pilates with Patricia</a>
       </div>
-      <nav class="nav-center">
+
+      <nav class="nav-center" aria-label="Main navigation">
         <ul class="nav-links">
           <li><a href="index.html">Home</a></li>
           <li><a href="classes.html">Classes</a></li>
           <li><a href="videos.html">Videos</a></li>
-          <li><a href="wellness.html" class="active">Wellness</a></li>
+          <li><a href="wellness.html" class="active" aria-current="page">Wellness</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
+
       <div class="nav-right">
-        <div class="hamburger" onclick="toggleMenu()">☰</div>
-        <a href="classes.html" class="book-btn">Book a Class</a>
+        <button
+          class="hamburger"
+          type="button"
+          onclick="toggleMenu()"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+        >
+          ☰
+        </button>
+        <a href="book.html" class="book-btn">Book a Class</a>
       </div>
     </header>
 
-    <section class="wellness-hero">
-      <div class="wellness-text">
-        <h1>Wellness Blog</h1>
-        <p>Tips, reflections, and movement musings for a balanced, feel-good life.</p>
-      </div>
-    </section>
+    <main id="main-content">
+      <section class="wellness-hero editorial-hero">
+        <div class="wellness-text">
+          <h1>Wellness Journal</h1>
+          <p>Movement, recovery, nourishment, and mindset — all in one place.</p>
+        </div>
+      </section>
 
-    <div class="blog-filter">
-      <button class="filter-btn active" onclick="filterPosts('all')">All</button>
-      <button class="filter-btn" onclick="filterPosts('movement')">Movement</button>
-      <button class="filter-btn" onclick="filterPosts('nutrition')">Nutrition</button>
-      <button class="filter-btn" onclick="filterPosts('mindset')">Mindset</button>
-    </div>
+      <section class="wellness-category-bar" aria-label="Wellness categories">
+        <div class="wellness-category-inner">
+          <button class="wellness-tab active" type="button" data-filter="all">View All</button>
+          <button class="wellness-tab" type="button" data-filter="movement">Movement</button>
+          <button class="wellness-tab" type="button" data-filter="nutrition">Nutrition</button>
+          <button class="wellness-tab" type="button" data-filter="mindset">Mindset</button>
+          <button class="wellness-tab" type="button" data-filter="recovery">Recovery</button>
+          <button class="wellness-tab" type="button" data-filter="habits">Habits</button>
+        </div>
+      </section>
 
-    <section class="blog-posts">
-      <div class="blog-article" data-category="movement">
-        <img src="assets/img/morning-stretch.jpeg" alt="Morning Stretch" width="300px" height="400px">
-        <h2>Start Your Day with Intention</h2>
-        <p class="blog-date">April 22, 2025</p>
-        <p class="excerpt">A 5-minute morning flow can change the way you show up in your day...</p>
-        <div class="full-text">Here's my favorite routine to wake up with breath, core, and gratitude. It’s perfect before your coffee or after brushing your teeth — just roll out the mat and breathe.</div>
-        <span class="read-more" onclick="toggleText(this)">Read More</span>
-      </div>
+      <section class="editorial-grid" aria-label="Wellness articles">
+        <article class="editorial-card" data-category="movement">
+          <a href="blog-start-your-day.html" class="editorial-link">
+            <img src="assets/img/morning-stretch.jpeg" alt="Woman stretching on a mat in the morning" />
+            <div class="editorial-content">
+              <p class="editorial-tag">Movement</p>
+              <h2>Start Your Day with Intention</h2>
+              <p class="editorial-author">By Patricia Frogoso</p>
+            </div>
+          </a>
+        </article>
 
-      <div class="blog-article" data-category="nutrition">
-        <img src="assets/img/healthy-snacks.jpg" alt="Healthy Snacks">
-        <h2>Feel-Good Snacks That Fuel You</h2>
-        <p class="blog-date">April 15, 2025</p>
-        <p class="excerpt">Here are my favorite snacks that keep me light, focused, and energized...</p>
-        <div class="full-text">These snacks are quick, portable, and trainer-approved. I love light cheese, fruit, almonds, and herbal tea mid-morning. Fueling well means moving well!</div>
-        <span class="read-more" onclick="toggleText(this)">Read More</span>
-      </div>
-    </section>
+        <article class="editorial-card" data-category="nutrition">
+          <a href="blog-feel-good-snacks.html" class="editorial-link">
+            <img src="assets/img/healthy-snacks.jpg" alt="Healthy snacks arranged on a table" />
+            <div class="editorial-content">
+              <p class="editorial-tag">Nutrition</p>
+              <h2>Feel-Good Snacks That Fuel You</h2>
+              <p class="editorial-author">By Patricia Frogoso</p>
+            </div>
+          </a>
+        </article>
+
+        <article class="editorial-card" data-category="mindset">
+          <a href="blog-progress-not-perfection.html" class="editorial-link">
+            <img src="assets/img/wellness-mindset.jpg" alt="Journal, tea, and calm reflection setup" />
+            <div class="editorial-content">
+              <p class="editorial-tag">Mindset</p>
+              <h2>Progress Feels Better Than Perfection</h2>
+              <p class="editorial-author">By Patricia Frogoso</p>
+            </div>
+          </a>
+        </article>
+
+        <article class="editorial-card" data-category="recovery">
+          <a href="blog-recovery-days.html" class="editorial-link">
+            <img src="assets/img/recovery-day.jpg" alt="Recovery day setup with yoga mat and towel" />
+            <div class="editorial-content">
+              <p class="editorial-tag">Recovery</p>
+              <h2>Why Recovery Days Matter</h2>
+              <p class="editorial-author">By Patricia Frogoso</p>
+            </div>
+          </a>
+        </article>
+
+        <article class="editorial-card" data-category="habits">
+          <a href="blog-small-habits.html" class="editorial-link">
+            <img src="assets/img/water-bottle.jpg" alt="Water bottle and wellness essentials" />
+            <div class="editorial-content">
+              <p class="editorial-tag">Habits</p>
+              <h2>Small Habits That Make You Feel Better</h2>
+              <p class="editorial-author">By Patricia Frogoso</p>
+            </div>
+          </a>
+        </article>
+
+        <article class="editorial-card" data-category="movement">
+          <a href="blog-stretch-breaks.html" class="editorial-link">
+            <img src="assets/img/stretch-break.jpg" alt="Woman doing a quick stretch break indoors" />
+            <div class="editorial-content">
+              <p class="editorial-tag">Movement</p>
+              <h2>The Power of a 5-Minute Stretch Break</h2>
+              <p class="editorial-author">By Patricia Frogoso</p>
+            </div>
+          </a>
+        </article>
+      </section>
+    </main>
 
     <footer class="site-footer">
-      <p>&copy; 2025 Pilates with Patricia. All rights reserved.</p>
+      <p>&copy; 2026 Pilates with Patricia. All rights reserved.</p>
     </footer>
   </div>
 
-  <script>
-    function toggleMenu() {
-      const nav = document.querySelector('.nav-center');
-      nav.classList.toggle('active');
-    }
-
-    function toggleText(el) {
-      const fullText = el.previousElementSibling;
-      const isExpanded = fullText.style.display === 'block';
-      fullText.style.display = isExpanded ? 'none' : 'block';
-      el.innerText = isExpanded ? 'Read More' : 'Show Less';
-    }
-
-    function filterPosts(category) {
-      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-      event.target.classList.add('active');
-
-      document.querySelectorAll('.blog-article').forEach(article => {
-        if (category === 'all' || article.dataset.category === category) {
-          article.style.display = 'flex';
-        } else {
-          article.style.display = 'none';
-        }
-      });
-    }
-  </script>
+  <script src="assets/js/script.js"></script>
 </body>
 </html>

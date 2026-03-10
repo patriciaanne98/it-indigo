@@ -209,6 +209,7 @@ textarea:focus-visible {
 ========================= */
 .hero,
 .class-hero,
+.video-hero,
 .wellness-hero,
 .contact-hero,
 .schedule-hero,
@@ -233,6 +234,10 @@ textarea:focus-visible {
   background-image: url("https://images.pexels.com/photos/3823039/pexels-photo-3823039.jpeg?auto=compress&cs=tinysrgb&w=1600");
 }
 
+.video-hero {
+  background-image: url("https://images.pexels.com/photos/4056535/pexels-photo-4056535.jpeg?auto=compress&cs=tinysrgb&w=1600");
+}
+
 .wellness-hero {
   background-image: url("https://images.pexels.com/photos/1028599/pexels-photo-1028599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
 }
@@ -248,6 +253,7 @@ textarea:focus-visible {
 
 .hero::before,
 .class-hero::before,
+.video-hero::before,
 .wellness-hero::before,
 .contact-hero::before,
 .schedule-hero::before,
@@ -260,13 +266,14 @@ textarea:focus-visible {
 
 .hero-text,
 .wellness-text,
+.video-hero .hero-text,
 .class-hero .hero-text,
 .contact-hero .hero-text,
 .schedule-hero .hero-text,
 .booking-hero .hero-text {
   position: relative;
   z-index: 1;
-  max-width: 720px;
+  width: min(720px, 100%);
   background: rgba(0, 0, 0, 0.55);
   color: #ffffff;
   padding: 2.5rem 3rem;
@@ -275,36 +282,58 @@ textarea:focus-visible {
 
 .hero h1,
 .class-hero h1,
+.video-hero h1,
 .wellness-hero h1,
 .contact-hero h1,
 .schedule-hero h1,
 .booking-hero h1 {
   margin: 0 0 1rem;
-  font-size: 2.5rem;
-  line-height: 1.15;
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
 .hero p,
 .class-hero p,
+.video-hero p,
 .wellness-hero p,
 .contact-hero p,
 .schedule-hero p,
 .booking-hero p {
   margin: 0 0 1.25rem;
-  font-size: 1rem;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  font-weight: 400;
 }
 
 .cta-btn {
   display: inline-block;
+  margin-top: 0.5rem;
   background-color: #ffffff;
   color: #111111;
-  padding: 0.85rem 1.5rem;
+  padding: 0.95rem 1.7rem;
   border-radius: 999px;
   font-weight: 700;
+  font-size: 1rem;
+  line-height: 1;
+  text-decoration: none;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
 }
 
 .cta-btn:hover {
   background-color: #efe8df;
+  color: #111111;
+}
+
+.hero .cta-btn,
+.class-hero .cta-btn,
+.video-hero .cta-btn,
+.wellness-hero .cta-btn,
+.contact-hero .cta-btn,
+.schedule-hero .cta-btn,
+.booking-hero .cta-btn {
+  display: inline-block;
 }
 
 /* =========================
@@ -453,10 +482,10 @@ textarea:focus-visible {
 }
 
 .class-type-content img {
-  width: 260px;
-  height: 180px;
+  width: 300px;
+  height: 250px;
   object-fit: cover;
-  border-radius: 14px;
+  border-radius: 10px;
   flex-shrink: 0;
 }
 
@@ -477,35 +506,6 @@ textarea:focus-visible {
 .class-type-content .price {
   font-weight: 700;
   color: #7d5a31;
-}
-
-/* =========================
-   VIDEO HERO
-========================= */
-.video-hero {
-  min-height: 50vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 4rem 2rem;
-  position: relative;
-  background-image: url("https://images.pexels.com/photos/4056535/pexels-photo-4056535.jpeg?auto=compress&cs=tinysrgb&w=1600");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.video-hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.45);
-}
-
-.video-hero .hero-text {
-  position: relative;
-  z-index: 1;
 }
 
 /* =========================
@@ -554,10 +554,10 @@ textarea:focus-visible {
 
 .featured-video-card {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 1.5rem;
+  grid-template-columns: 2fr 1fr;
+  gap: 4rem;
   background: #ffffff;
-  border-radius: 18px;
+  border-radius: 22px;
   padding: 1.5rem;
   box-shadow: 0 10px 26px rgba(0, 0, 0, 0.07);
 }
@@ -565,7 +565,7 @@ textarea:focus-visible {
 .featured-video-embed {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 16 / 12;
   overflow: hidden;
   border-radius: 14px;
   background: #000;
@@ -927,93 +927,108 @@ textarea:focus-visible {
 }
 
 /* =========================
-   WELLNESS PAGE
+   WELLNESS EDITORIAL PAGE
 ========================= */
-.wellness-text {
-  font-size: 1.15rem;
+
+.wellness-category-bar {
+  border-top: 1px solid #d9d2c9;
+  border-bottom: 1px solid #d9d2c9;
+  background: #f5f1eb;
 }
 
-.blog-filter {
-  width: min(900px, 92%);
-  margin: 3rem auto 2rem;
+.wellness-category-inner {
+  width: min(1400px, 94%);
+  margin: 0 auto;
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  gap: 1.75rem;
   flex-wrap: wrap;
+  padding: 1rem 0;
 }
 
-.filter-btn {
-  background-color: #ffffff;
-  color: #2b2b2b;
-  border: 1px solid #a67c49;
-  border-radius: 999px;
-  padding: 0.65rem 1.4rem;
+.wellness-tab {
+  background: none;
+  border: none;
+  color: #1f1f1f;
+  font: inherit;
   font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   cursor: pointer;
+  padding: 0.25rem 0 0.75rem;
+  border-bottom: 4px solid transparent;
+  transition: color 0.25s ease, border-color 0.25s ease;
 }
 
-.filter-btn.active,
-.filter-btn:hover {
-  background-color: #a67c49;
-  color: #ffffff;
+.wellness-tab:hover,
+.wellness-tab.active {
+  color: #000;
+  border-bottom-color: #1f1f1f;
 }
 
-.blog-posts {
-  width: min(900px, 92%);
-  margin: 0 auto 4rem;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+.editorial-grid {
+  width: min(1400px, 94%);
+  margin: 3.5rem auto 4rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 3rem 2.5rem;
 }
 
-.blog-article {
-  background-color: #ffffff;
-  border-radius: 16px;
-  padding: 2rem 2.5rem;
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+.editorial-card {
+  background: transparent;
 }
 
-.blog-article:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.09);
+.editorial-link {
+  display: block;
 }
 
-.blog-article img {
+.editorial-link img {
   width: 100%;
-  max-height: 280px;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
-  border-radius: 12px;
+  display: block;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-.blog-article h2 {
+.editorial-link:hover img {
+  transform: translateY(-3px);
+  opacity: 0.96;
+}
+
+.editorial-content {
+  padding-top: 1rem;
+}
+
+.editorial-tag {
+  margin: 0 0 0.5rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #1f1f1f;
+}
+
+.editorial-content h2 {
+  margin: 0 0 1rem;
+  font-size: 2rem;
+  line-height: 1.15;
+  font-weight: 600;
+  color: #121212;
+}
+
+.editorial-author {
   margin: 0;
-  font-size: 1.7rem;
+  font-size: 0.95rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #2f2f2f;
+  font-weight: 600;
 }
 
-.blog-date {
-  font-size: 0.9rem;
-  color: #8c857c;
-}
-
-.excerpt,
-.full-text {
-  color: #4e4a45;
-}
-
-.full-text {
+.editorial-card[hidden] {
   display: none;
 }
 
-.read-more {
-  color: #a67c49;
-  font-weight: 700;
-  cursor: pointer;
-  align-self: flex-start;
-}
 
 /* =========================
    CONTACT PAGE
@@ -1229,6 +1244,15 @@ textarea:focus-visible {
   .carousel-item iframe {
     height: 420px;
   }
+
+  .editorial-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2.5rem 2rem;
+  }
+
+  .editorial-content h2 {
+    font-size: 1.7rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -1279,33 +1303,46 @@ textarea:focus-visible {
     font-weight: 600;
   }
 
-  .hero,
-  .class-hero,
-  .wellness-hero,
-  .contact-hero,
-  .schedule-hero,
-  .booking-hero {
-    min-height: auto;
-    padding: 4rem 1rem;
-  }
+ .hero,
+.class-hero,
+.video-hero,
+.wellness-hero,
+.contact-hero,
+.schedule-hero,
+.booking-hero {
+  min-height: auto;
+  padding: 4rem 1rem;
+}
 
-  .hero-text,
-  .wellness-text,
-  .class-hero .hero-text,
-  .contact-hero .hero-text,
-  .schedule-hero .hero-text,
-  .booking-hero .hero-text {
-    padding: 2rem;
-  }
+.hero-text,
+.wellness-text,
+.video-hero .hero-text,
+.class-hero .hero-text,
+.contact-hero .hero-text,
+.schedule-hero .hero-text,
+.booking-hero .hero-text {
+  padding: 2rem;
+}
 
-  .hero h1,
-  .class-hero h1,
-  .wellness-hero h1,
-  .contact-hero h1,
-  .schedule-hero h1,
-  .booking-hero h1 {
-    font-size: 1.95rem;
-  }
+.hero h1,
+.class-hero h1,
+.video-hero h1,
+.wellness-hero h1,
+.contact-hero h1,
+.schedule-hero h1,
+.booking-hero h1 {
+  font-size: clamp(1.9rem, 7vw, 2.4rem);
+}
+
+.hero p,
+.class-hero p,
+.video-hero p,
+.wellness-hero p,
+.contact-hero p,
+.schedule-hero p,
+.booking-hero p {
+  font-size: 1rem;
+}
 
   .about,
   .classes,
@@ -1354,33 +1391,153 @@ textarea:focus-visible {
   .featured-video-card {
     grid-template-columns: 1fr;
   }
+
+  .blog-article {
+    grid-template-columns: 1fr;
+  }
+
+  .blog-article img {
+    height: 240px;
+  }
+
+  .blog-content {
+    padding: 1.5rem;
+  }
+
+  .blog-content h2 {
+    font-size: 1.4rem;
+  }
+
+   .wellness-category-inner {
+    justify-content: flex-start;
+    gap: 1rem 1.25rem;
+    padding: 0.9rem 1rem;
+  }
+
+  .editorial-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    width: min(1000px, 92%);
+  }
+
+  .editorial-content h2 {
+    font-size: 1.45rem;
+  }
+
+/* =========================
+   VIDEO SIDEBAR MOBILE
+========================= */
+
+.video-sidebar {
+  position: static;
+  margin-bottom: 2rem;
+  text-align: center;
 }
+
+.video-sidebar h2 {
+  margin-bottom: 1rem;
+}
+
+.video-sidebar-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.video-sidebar-nav a {
+  padding: 0.65rem 1rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.video-sidebar {
+  background: #efe6da;
+  border-radius: 16px;
+  padding: 1.25rem;
+}
+
+/* =========================
+   VIDEO CARD TEXT
+========================= */
+
+.video-overlay {
+  justify-content: flex-end;
+  padding: 0.75rem;
+}
+
+.video-hover-info {
+  transform: none;
+}
+
+.video-hover-info h3 {
+  font-size: 0.95rem;
+  line-height: 1.2;
+}
+
+.video-hover-info p {
+  font-size: 0.8rem;
+}
+
+.video-tags {
+  gap: 0.3rem;
+}
+
+.video-tags span {
+  font-size: 0.7rem;
+  padding: 0.25rem 0.55rem;
+}
+
+.play-button {
+  width: 44px;
+  height: 44px;
+  font-size: 1.1rem;
+}
+
+.netflix-card:hover,
+  .netflix-card:focus-visible {
+    transform: none;
+  }
+}
+
 
 @media (max-width: 480px) {
   .logo {
     font-size: 1rem;
   }
 
-  .hero-text,
-  .wellness-text,
-  .class-hero .hero-text,
-  .contact-hero .hero-text,
-  .schedule-hero .hero-text,
-  .booking-hero .hero-text {
-    padding: 1.5rem;
-  }
+ .hero-text,
+.wellness-text,
+.video-hero .hero-text,
+.class-hero .hero-text,
+.contact-hero .hero-text,
+.schedule-hero .hero-text,
+.booking-hero .hero-text {
+  padding: 1.5rem;
+}
 
-  .hero h1,
-  .class-hero h1,
-  .wellness-hero h1,
-  .contact-hero h1,
-  .schedule-hero h1,
-  .booking-hero h1,
-  .classes-header h2,
-  .carousel-title,
-  .schedule-day h2 {
-    font-size: 1.5rem;
-  }
+.hero h1,
+.class-hero h1,
+.video-hero h1,
+.wellness-hero h1,
+.contact-hero h1,
+.schedule-hero h1,
+.booking-hero h1,
+.classes-header h2,
+.schedule-day h2 {
+  font-size: 1.6rem;
+}
+
+.hero p,
+.class-hero p,
+.video-hero p,
+.wellness-hero p,
+.contact-hero p,
+.schedule-hero p,
+.booking-hero p {
+  font-size: 0.95rem;
+}
 
   .page-header {
     font-size: 1rem;
@@ -1418,5 +1575,5 @@ textarea:focus-visible {
   .netflix-card:focus-visible {
     transform: none;
   }
-
 }
+
