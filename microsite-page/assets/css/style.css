@@ -575,6 +575,7 @@ textarea:focus-visible {
   width: 100%;
   height: 100%;
   border: 0;
+  display: block;
 }
 
 .featured-content {
@@ -682,83 +683,147 @@ textarea:focus-visible {
 
 .video-category-card {
   position: relative;
+  overflow: visible;
 }
 
-.video-thumbnail {
+.netflix-card {
   position: relative;
   border-radius: 18px;
   overflow: hidden;
   cursor: pointer;
   background: #000;
   box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transform-origin: center center;
+  transition:
+    transform 0.32s ease,
+    box-shadow 0.32s ease,
+    z-index 0.32s ease;
 }
 
-.video-thumbnail img {
+.thumbnail-image {
   width: 100%;
   display: block;
   aspect-ratio: 16 / 9;
   object-fit: cover;
-  transition: transform 0.35s ease;
+  transition: transform 0.4s ease, filter 0.35s ease;
 }
 
-.video-thumbnail:hover,
-.video-thumbnail:focus-visible {
-  transform: scale(1.04);
-  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.18);
-  z-index: 10;
+.netflix-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.82) 8%,
+    rgba(0, 0, 0, 0.35) 45%,
+    rgba(0, 0, 0, 0.08) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
-.video-thumbnail:hover img,
-.video-thumbnail:focus-visible img {
-  transform: scale(1.08);
+.netflix-card:hover,
+.netflix-card:focus-visible {
+  transform: scale(1.06) translateY(-6px);
+  box-shadow: 0 24px 44px rgba(0, 0, 0, 0.22);
+  z-index: 20;
+}
+
+.netflix-card:hover::after,
+.netflix-card:focus-visible::after {
+  opacity: 1;
+}
+
+.netflix-card:hover .thumbnail-image,
+.netflix-card:focus-visible .thumbnail-image {
+  transform: scale(1.09);
+  filter: brightness(0.88);
 }
 
 .video-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.82), rgba(0, 0, 0, 0.18));
+  z-index: 2;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   padding: 1rem;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.28s ease;
 }
 
-.video-thumbnail:hover .video-overlay,
-.video-thumbnail:focus-visible .video-overlay {
+.netflix-card:hover .video-overlay,
+.netflix-card:focus-visible .video-overlay {
   opacity: 1;
 }
 
 .play-button {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 62px;
-  height: 62px;
+  bottom: 16px;
+  right: 16px;
+  top: auto;
+  left: auto;
+  width: 56px;
+  height: 56px;
+  transform: none;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255,255,255,0.95);
   color: #111;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   font-weight: 700;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  transition: transform 0.25s ease, background-color 0.25s ease;
+  z-index: 4;
+}
+
+.netflix-card:hover .play-button,
+.netflix-card:focus-visible .play-button {
+  transform: scale(1.08);
+}
+
+.video-hover-info {
+  transform: translateY(18px);
+  transition: transform 0.3s ease;
+}
+
+.netflix-card:hover .video-hover-info,
+.netflix-card:focus-visible .video-hover-info {
+  transform: translateY(0);
 }
 
 .video-hover-info h3 {
   margin: 0 0 0.35rem;
   color: #fff;
-  font-size: 1.15rem;
+  font-size: 1.12rem;
+  line-height: 1.2;
 }
 
 .video-hover-info p {
-  margin: 0;
+  margin: 0 0 0.7rem;
   color: #f1e9df;
   font-size: 0.92rem;
+}
+
+.video-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.video-tags span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 600;
+  backdrop-filter: blur(6px);
 }
 
 .video-meta {
@@ -772,31 +837,40 @@ textarea:focus-visible {
 .video-modal {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(8, 8, 8, 0.88);
   display: none;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
+  padding: 1.25rem;
   z-index: 3000;
+  opacity: 0;
+  transition: opacity 0.22s ease;
 }
 
 .video-modal.active {
   display: flex;
+  opacity: 1;
 }
 
 .video-modal-content {
-  width: min(1000px, 95vw);
+  width: min(1050px, 95vw);
   position: relative;
+  transform: scale(0.96);
+  transition: transform 0.22s ease;
+}
+
+.video-modal.active .video-modal-content {
+  transform: scale(1);
 }
 
 .video-container {
   position: relative;
   width: 100%;
   padding-bottom: 56.25%;
-  border-radius: 16px;
+  border-radius: 18px;
   overflow: hidden;
   background: #000;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.36);
 }
 
 .video-container iframe {
@@ -809,61 +883,49 @@ textarea:focus-visible {
 
 .video-close {
   position: absolute;
-  top: -48px;
+  top: -52px;
   right: 0;
-  background: transparent;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
   border: none;
   color: #fff;
-  font-size: 2rem;
+  font-size: 1.6rem;
   cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
-@media (max-width: 1024px) {
-  .video-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .video-sidebar {
-    position: static;
-  }
-
-  .video-sidebar-nav {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-
-  .featured-video-card {
-    grid-template-columns: 1fr;
-  }
+.video-close:hover {
+  background: rgba(255, 255, 255, 0.22);
+  transform: scale(1.06);
 }
 
-@media (max-width: 768px) {
-  .featured-carousel {
-    gap: 0.5rem;
-  }
-
-  .featured-btn {
-    width: 44px;
-    height: 44px;
-    font-size: 1.2rem;
-  }
-
-  .video-library {
-    grid-template-columns: 1fr;
-  }
-
-  .video-sidebar-nav {
-    flex-direction: column;
-  }
-
-  .video-thumbnail:hover,
-  .video-thumbnail:focus-visible {
-    transform: none;
-  }
+.video-card-embed {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
 }
+
+.video-card-embed iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.netflix-card {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.video-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
 /* =========================
    WELLNESS PAGE
 ========================= */
@@ -1275,6 +1337,23 @@ textarea:focus-visible {
   .blog-article h2 {
     font-size: 1.4rem;
   }
+
+  .video-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .video-sidebar {
+    position: static;
+  }
+
+  .video-sidebar-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .featured-video-card {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 480px) {
@@ -1316,5 +1395,28 @@ textarea:focus-visible {
   .booking-form {
     padding: 1.25rem;
   }
-}
 
+  .featured-carousel {
+    gap: 0.5rem;
+  }
+
+  .featured-btn {
+    width: 44px;
+    height: 44px;
+    font-size: 1.2rem;
+  }
+
+  .video-library {
+    grid-template-columns: 1fr;
+  }
+
+  .video-sidebar-nav {
+    flex-direction: column;
+  }
+
+  .netflix-card:hover,
+  .netflix-card:focus-visible {
+    transform: none;
+  }
+
+}
