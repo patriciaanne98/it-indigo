@@ -181,13 +181,18 @@ textarea:focus-visible {
 }
 
 .book-btn {
-  display: inline-block;
-  background-color: #a67c49;
-  color: #ffffff;
-  padding: 0.7rem 1.15rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #a97c45;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 18px;
   border-radius: 999px;
-  font-size: 0.9rem;
   font-weight: 600;
+
+  width: fit-content;
+  max-width: fit-content;
 }
 
 .book-btn:hover {
@@ -417,6 +422,7 @@ textarea:focus-visible {
 
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 .class-card:hover {
@@ -986,7 +992,8 @@ textarea:focus-visible {
 }
 
 .editorial-card {
-  background: transparent;
+  display: flex;
+  flex-direction: column;
 }
 
 .editorial-link {
@@ -1008,6 +1015,9 @@ textarea:focus-visible {
 
 .editorial-content {
   padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 .editorial-tag {
@@ -1021,6 +1031,7 @@ textarea:focus-visible {
 
 .editorial-content h2 {
   margin: 0 0 1rem;
+  min-height: 3.2rem;
   font-size: 2rem;
   line-height: 1.15;
   font-weight: 600;
@@ -1028,7 +1039,7 @@ textarea:focus-visible {
 }
 
 .editorial-author {
-  margin: 0;
+  margin-top: auto;
   font-size: 0.95rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -1290,9 +1301,48 @@ textarea:focus-visible {
     display: block;
   }
 
-  .book-btn {
-    display: none;
-  }
+ .book-btn {
+  display: inline-block;
+  background: #b3874a;
+  color: #fff;
+  text-decoration: none;
+  padding: 14px 28px;
+  border-radius: 999px;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  font-weight: 600;
+}
+
+.book-btn:visited,
+.book-btn:focus,
+.book-btn:active,
+.book-btn:hover {
+  color: #fff;
+  text-decoration: none;
+  outline: none;
+  box-shadow: none;
+}
+
+.offer-card .book-btn {
+  display: inline-block;
+  background: #b3874a;
+  color: white;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  border-radius: 999px;
+}
+
+.offer-card .book-btn:focus,
+.offer-card .book-btn:active,
+.offer-card .book-btn:visited {
+  color: white;
+  outline: none;
+  box-shadow: none;
+  border: none;
+}
 
   .nav-center {
     display: none;
