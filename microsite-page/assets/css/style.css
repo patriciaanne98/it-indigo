@@ -310,6 +310,63 @@ body.theme-page.dark-mode .video-meta {
   color: #d4c9bd;
 }
 
+/* --- WELLNESS PAGE CATEGORY BAR --- */
+body.theme-page.dark-mode .wellness-category-bar {
+  background-color: #121212;
+  border-top: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+}
+
+body.theme-page.dark-mode .wellness-category-inner {
+  background-color: transparent;
+}
+
+body.theme-page.dark-mode .wellness-tab {
+  color: #d8d2c8;
+}
+
+body.theme-page.dark-mode .wellness-tab:hover,
+body.theme-page.dark-mode .wellness-tab.active {
+  color: #ffffff;
+  border-bottom-color: #c79a63;
+}
+
+/* --- CONTACT PAGE MAIN BACKGROUND --- */
+body.theme-page.dark-mode .contact-section {
+  background-color: #121212;
+}
+
+/* --- CONTACT FORM CARD --- */
+body.theme-page.dark-mode .contact-form-container {
+  background-color: #1d1d1d;
+  color: #f4f1eb;
+}
+
+/* --- CONTACT FORM LABELS --- */
+body.theme-page.dark-mode .contact-form label {
+  color: #f4f1eb;
+}
+
+/* --- CONTACT FORM INPUTS --- */
+body.theme-page.dark-mode .contact-form input,
+body.theme-page.dark-mode .contact-form textarea,
+body.theme-page.dark-mode .contact-form select {
+  background-color: #2a2a2a;
+  color: #f4f1eb;
+  border: 1px solid #444444;
+}
+
+/* Placeholder text in dark mode */
+body.theme-page.dark-mode .contact-form input::placeholder,
+body.theme-page.dark-mode .contact-form textarea::placeholder {
+  color: #b8afa5;
+}
+
+/* Dropdown option styling */
+body.theme-page.dark-mode .contact-form option {
+  background-color: #2a2a2a;
+  color: #f4f1eb;
+}
 /* =========================
    HERO SECTIONS
 ========================= */
