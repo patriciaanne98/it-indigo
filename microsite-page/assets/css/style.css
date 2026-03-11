@@ -455,6 +455,31 @@ textarea:focus-visible {
   background-color: #2b2b2b;
 }
 
+.site-footer a {
+  color: #d8d2c8;
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+.site-footer a:hover {
+  color: #ffffff;
+}
+
+.site-footer a {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  background: #a67c49;
+  color: white;
+  font-size: 0.85rem;
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  background: #8c6639;
+}
+
 /* =========================
    CLASSES PAGE
 ========================= */
