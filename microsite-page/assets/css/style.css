@@ -657,6 +657,13 @@ textarea:focus-visible {
   transform: translateX(3px);
 }
 
+
+  .video-sidebar-nav a.active {
+  background-color: #a67c49;
+  color: #ffffff;
+  transform: translateX(3px);
+}
+
 .video-sections {
   display: flex;
   flex-direction: column;
@@ -1253,6 +1260,14 @@ textarea:focus-visible {
   .editorial-content h2 {
     font-size: 1.7rem;
   }
+
+
+  .video-sidebar-nav a.active {
+  background-color: #a67c49;
+  color: #ffffff;
+  transform: translateX(3px);
+}
+
 }
 
 @media (max-width: 768px) {
@@ -1387,6 +1402,13 @@ textarea:focus-visible {
     flex-direction: row;
     flex-wrap: wrap;
   }
+
+
+  .video-sidebar-nav a.active {
+  background-color: #a67c49;
+  color: #ffffff;
+  transform: translateX(3px);
+}
 
   .featured-video-card {
     grid-template-columns: 1fr;
@@ -1571,6 +1593,11 @@ textarea:focus-visible {
     flex-direction: column;
   }
 
+  .video-sidebar-nav a.active {
+  background-color: #a67c49;
+  color: #ffffff;
+  transform: translateX(3px);
+}
   .netflix-card:hover,
   .netflix-card:focus-visible {
     transform: none;

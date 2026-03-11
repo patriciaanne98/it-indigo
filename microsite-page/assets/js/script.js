@@ -82,3 +82,19 @@ wellnessTabs.forEach((tab) => {
     });
   });
 });
+
+/* =========================
+   VIDEO CATEGORY ACTIVE STATE
+========================= */
+
+const categoryLinks = document.querySelectorAll(".video-sidebar-nav a");
+
+categoryLinks.forEach(link => {
+  link.addEventListener("click", function () {
+
+    categoryLinks.forEach(item => item.classList.remove("active"));
+
+    this.classList.add("active");
+
+  });
+});
