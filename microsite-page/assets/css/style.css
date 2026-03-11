@@ -480,6 +480,22 @@ textarea:focus-visible {
   background: #8c6639;
 }
 
+.email-link {
+  display: inline-block;
+  margin-top: 0.75rem;
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
+  background: black;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.email-link:hover {
+  background: #8c6639;
+}
+
 /* =========================
    CLASSES PAGE
 ========================= */
