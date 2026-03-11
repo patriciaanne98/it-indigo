@@ -361,3 +361,39 @@ window.addEventListener("load", () => {
     weatherForm.requestSubmit();
   }
 });
+
+// =========================
+// FAQ ACCORDION
+// Shows and hides answers when a question is clicked
+// =========================
+
+document.addEventListener("DOMContentLoaded", () => {
+  const faqToggles = document.querySelectorAll(".faq-toggle");
+
+  if (faqToggles.length === 0) return;
+
+  faqToggles.forEach((toggle) => {
+    toggle.addEventListener("click", () => {
+
+      const answer = toggle.nextElementSibling;
+      const isOpen = toggle.getAttribute("aria-expanded") === "true";
+
+      // close all FAQ answers first
+      faqToggles.forEach((item) => {
+        item.setAttribute("aria-expanded", "false");
+
+        const otherAnswer = item.nextElementSibling;
+        if (otherAnswer && otherAnswer.classList.contains("faq-answer")) {
+          otherAnswer.classList.remove("open");
+        }
+      });
+
+      // open the clicked one
+      if (!isOpen && answer) {
+        toggle.setAttribute("aria-expanded", "true");
+        answer.classList.add("open");
+      }
+
+    });
+  });
+});
