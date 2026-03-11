@@ -670,8 +670,21 @@ body.theme-page.dark-mode .faq-toggle:hover {
    RESPONSIVE
 ========================= */
 @media (max-width: 900px) {
+
   .contact-page-grid {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .weather-container,
+  .contact-form-container {
+    max-width: 100%;
+    width: 100%;
+    padding: 2rem;
+  }
+
+  .faq-container {
+    width: min(100%, 92%);
   }
 }
 
@@ -2481,7 +2494,80 @@ body.dark-mode input {
     padding: 0.4rem 0.65rem;
     font-size: 0.9rem;
   }
+
+   .weather-section,
+  .faq-section {
+    padding: 3rem 1rem;
+  }
+
+  .weather-container,
+  .contact-form-container {
+    padding: 1.5rem;
+    border-radius: 14px;
+  }
+
+  .weather-container h2,
+  .faq-container h2 {
+    font-size: 1.5rem;
+  }
+
+  .weather-intro,
+  .faq-answer p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .weather-form input {
+    font-size: 16px;
+  }
+
+  .weather-buttons {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .weather-buttons button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .location-info {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .weather-table-wrapper {
+    margin-top: 1.25rem;
+  }
+
+  .weather-table {
+    min-width: 560px;
+  }
+
+  .weather-chart-wrapper {
+    margin-top: 1.25rem;
+    padding: 0.75rem;
+    overflow-x: auto;
+  }
+
+  .faq-toggle {
+    padding: 0.95rem 1rem;
+    font-size: 0.95rem;
+    align-items: flex-start;
+  }
+
+  .faq-icon {
+    width: 30px;
+    height: 30px;
+    font-size: 0.9rem;
+  }
+
+  .faq-answer {
+    padding: 0.95rem 1rem 1rem 3.25rem;
+  }
 }
+
 
 @media (max-width: 640px) {
   .class-cards {
@@ -2825,5 +2911,65 @@ body.dark-mode input {
   .cta-btn:hover,
   .book-now:hover {
     transform: none !important;
+  }
+
+   .weather-section,
+  .faq-section {
+    padding: 2.5rem 1rem;
+  }
+
+  .weather-container,
+  .contact-form-container {
+    padding: 1.25rem;
+    border-radius: 12px;
+  }
+
+  .weather-container h2,
+  .faq-container h2 {
+    font-size: 1.35rem;
+  }
+
+  .weather-intro,
+  .location-info,
+  .faq-answer p {
+    font-size: 0.92rem;
+  }
+
+  .weather-form label {
+    font-size: 0.95rem;
+  }
+
+  .weather-form input {
+    padding: 0.85rem 0.95rem;
+  }
+
+  .weather-buttons button {
+    padding: 0.85rem 1rem;
+    font-size: 0.95rem;
+  }
+
+  .weather-table {
+    min-width: 500px;
+  }
+
+  .weather-table th,
+  .weather-table td {
+    padding: 0.65rem;
+    font-size: 0.9rem;
+  }
+
+  .faq-toggle {
+    gap: 0.7rem;
+    font-size: 0.92rem;
+  }
+
+  .faq-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 0.85rem;
+  }
+
+  .faq-answer {
+    padding: 0.9rem 0.95rem 1rem 3rem;
   }
 }
