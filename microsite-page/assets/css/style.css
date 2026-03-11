@@ -126,6 +126,21 @@ textarea:focus-visible {
   padding: 1rem 2rem;
 }
 
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo img {
+  height: 28px;
+  width: auto;
+}
+
+.logo span {
+  font-weight: 700;
+}
+
 .nav-left,
 .nav-right {
   display: flex;
