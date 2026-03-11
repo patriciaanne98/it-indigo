@@ -310,6 +310,62 @@ body.theme-page.dark-mode .video-meta {
   color: #d4c9bd;
 }
 
+/* =========================
+   INDEX PAGE DARK MODE
+========================= */
+
+/* Meet Patricia section background */
+body.theme-page.dark-mode .about {
+  background-color: #121212;
+}
+
+/* Text inside Meet Patricia */
+body.theme-page.dark-mode .about-text h2,
+body.theme-page.dark-mode .about-text p {
+  color: #f4f1eb;
+}
+
+/* Email Patricia button */
+body.theme-page.dark-mode .about-text .cta-btn,
+body.theme-page.dark-mode .about-text a {
+  background-color: #c79a63;
+  color: #ffffff;
+}
+
+/* Class offerings section */
+body.theme-page.dark-mode .classes {
+  background-color: #121212;
+}
+
+/* Section title */
+body.theme-page.dark-mode .classes-header h2,
+body.theme-page.dark-mode .classes-header p {
+  color: #f4f1eb;
+}
+
+/* Class cards */
+body.theme-page.dark-mode .class-card {
+  background-color: #1e1e1e;
+  color: #f4f1eb;
+  border: 1px solid #333333;
+}
+
+/* Card headings */
+body.theme-page.dark-mode .class-card h3 {
+  color: #ffffff;
+}
+
+/* Card text */
+body.theme-page.dark-mode .class-card p {
+  color: #d6d0c8;
+}
+
+/* Book now button inside cards */
+body.theme-page.dark-mode .class-card .book-btn {
+  background-color: #c79a63;
+  color: #ffffff;
+}
+
 /* --- WELLNESS PAGE CATEGORY BAR --- */
 body.theme-page.dark-mode .wellness-category-bar {
   background-color: #121212;
