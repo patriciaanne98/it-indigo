@@ -83,6 +83,22 @@ textarea:focus-visible {
 }
 
 /* =========================
+   SCROLL PROGRESS BAR
+   Shows how far the user has scrolled on the page
+========================= */
+
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 4px;
+  background: #c79a63;
+  z-index: 9999;
+  transition: width 0.1s ease;
+}
+
+/* =========================
    REUSABLE
 ========================= */
 .section-width {

@@ -181,3 +181,21 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+/* =========================
+   SCROLL PROGRESS BAR
+   Updates width based on page scroll
+========================= */
+
+const progressBar = document.getElementById("scroll-progress");
+
+if (progressBar) {
+  window.addEventListener("scroll", () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+
+    const scrollPercent = (scrollTop / docHeight) * 100;
+
+    progressBar.style.width = scrollPercent + "%";
+  });
+}
