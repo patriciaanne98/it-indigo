@@ -1,41 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Defines the document as HTML5 -->
   <meta charset="UTF-8" />
+
+  <!-- Ensures the layout scales correctly on mobile devices -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Title shown in the browser tab -->
   <title>Classes | Pilates with Patricia</title>
+
+  <!-- SEO description to help search engines understand the page -->
   <meta
     name="description"
     content="Explore mat Pilates, reformer Pilates, and private sessions with Pilates with Patricia."
   />
+
+  <!-- Main stylesheet for all site styling -->
   <link rel="stylesheet" href="assets/css/style.css" />
+
+  <!-- Improves font loading speed -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Imports Montserrat font used across the site -->
   <link
     href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   />
 </head>
 <body>
+
+  <!-- Accessibility feature: allows keyboard users to skip directly to main content -->
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
+  <!-- Wrapper helps keep layout structured and footer positioned correctly -->
   <div class="site-wrapper">
+
+    <!-- Top navigation bar -->
     <header class="navbar">
+
+      <!-- Left side: site branding/logo -->
       <div class="nav-left">
         <a href="index.html" class="logo">Pilates with Patricia</a>
       </div>
 
+      <!-- Center navigation links -->
       <nav class="nav-center" aria-label="Main navigation">
         <ul class="nav-links">
+
+          <!-- Active class indicates the current page -->
           <li><a href="index.html">Home</a></li>
           <li><a href="classes.html" class="active" aria-current="page">Classes</a></li>
           <li><a href="videos.html">Videos</a></li>
           <li><a href="wellness.html">Wellness</a></li>
           <li><a href="contact.html">Contact</a></li>
+
         </ul>
       </nav>
 
+      <!-- Right side: hamburger menu for mobile + main CTA button -->
       <div class="nav-right">
+
+        <!-- Hamburger button toggles the navigation menu on smaller screens -->
         <button
           class="hamburger"
           type="button"
@@ -45,11 +72,17 @@
         >
           ☰
         </button>
+
+        <!-- Primary call-to-action encouraging users to book a class -->
         <a href="../microsite-page/classes.html" class="book-btn">Book a Class</a>
+
       </div>
     </header>
 
+    <!-- Main content begins -->
     <main id="main-content">
+
+      <!-- Hero section introducing the purpose of the page -->
       <section class="class-hero">
         <div class="hero-text">
           <h1>Find Your Flow</h1>
@@ -60,6 +93,7 @@
         </div>
       </section>
 
+      <!-- Short introductory section explaining the class options -->
       <section class="page-header">
         <p>
           Whether you want a strong foundation, a full-body challenge, or more
@@ -67,99 +101,151 @@
         </p>
       </section>
 
+      <!-- Main class listing section -->
       <section class="class-menu">
+
+        <!-- Class card for Mat Pilates -->
         <article class="class-type">
+
+          <!-- Flex container allows the image and text to sit side-by-side -->
           <div class="class-type-content">
+
+            <!-- Image visually represents the class -->
             <img
               src="assets/img/mat-pilates.jpeg"
               alt="Mat Pilates session focused on core strength and alignment"
             />
+
+            <!-- Text description area -->
             <div>
+
               <h2>Mat Pilates</h2>
+
+              <!-- Description explaining what the class focuses on -->
               <p>
                 A grounded, low-impact class that uses controlled movement to
                 strengthen your core, improve flexibility, and support better
                 posture.
               </p>
+
+              <!-- Target audience explanation -->
               <p>
                 <em>
                   Best for beginners, busy students, desk workers, and anyone
                   building a strong movement foundation.
                 </em>
               </p>
+
+              <!-- Pricing information -->
               <p class="price">$20 per class · $160 for a 10-class pass</p>
-              <a href="https://patriciaanne98.wufoo.com/forms/m1sjkqeu0q22mom/" class="book-now">Book Mat Pilates</a>
+
+              <!-- Booking button linking to external booking form -->
+              <a href="https://patriciaanne98.wufoo.com/forms/m1sjkqeu0q22mom/" class="book-now">
+                Book Mat Pilates
+              </a>
+
             </div>
           </div>
         </article>
 
+        <!-- Reformer Pilates class -->
         <article class="class-type">
           <div class="class-type-content">
+
             <img
               src="assets/img/pilates-reformer.jpeg"
               alt="Reformer Pilates machine used in a full-body strength session"
             />
+
             <div>
+
               <h2>Reformer Pilates</h2>
+
               <p>
                 A dynamic, equipment-based class that adds spring resistance for
                 a deeper challenge while improving balance, coordination, and
                 total-body strength.
               </p>
+
               <p>
                 <em>
                   Best for clients who want a more advanced workout, stronger
                   posture, and a full-body burn.
                 </em>
               </p>
+
               <p class="price">$35 per class · $300 for a 10-class pass</p>
-              <a href="https://patriciaanne98.wufoo.com/forms/m1sjkqeu0q22mom/" class="book-now">Book Reformer</a>
+
+              <a href="https://patriciaanne98.wufoo.com/forms/m1sjkqeu0q22mom/" class="book-now">
+                Book Reformer
+              </a>
+
             </div>
           </div>
         </article>
 
+        <!-- Private one-on-one session -->
         <article class="class-type">
           <div class="class-type-content">
+
             <img
               src="assets/img/pilates-reformer.webp"
               alt="Private Pilates session with one-on-one instruction"
             />
+
             <div>
+
               <h2>Private Sessions</h2>
+
               <p>
                 A one-on-one experience tailored to your specific needs, goals,
                 and experience level. Ideal for clients who want focused support
                 and customized guidance.
               </p>
+
               <p>
                 <em>
                   Best for personalized coaching, recovery-focused movement, and
                   clients who want a fully customized plan.
                 </em>
               </p>
+
               <p class="price">$65 per session · $600 for a 10-session pack</p>
-              <a href="https://patriciaanne98.wufoo.com/forms/m1sjkqeu0q22mom/" class="book-now">Book a Private Session</a>
+
+              <a href="https://patriciaanne98.wufoo.com/forms/m1sjkqeu0q22mom/" class="book-now">
+                Book a Private Session
+              </a>
+
             </div>
           </div>
         </article>
+
       </section>
     </main>
 
+    <!-- Footer at the bottom of every page -->
     <footer class="site-footer">
       <p>&copy; 2026 Pilates with Patricia. All rights reserved.</p>
     </footer>
+
   </div>
 
   <script>
+    // Function toggles the mobile navigation menu when the hamburger icon is clicked
     function toggleMenu() {
+
+      // Selects the navigation menu and hamburger button
       const nav = document.querySelector(".nav-center");
       const button = document.querySelector(".hamburger");
 
+      // Adds or removes the "active" class to show/hide the mobile menu
       nav.classList.toggle("active");
 
+      // Updates accessibility state for screen readers
       const isOpen = nav.classList.contains("active");
       button.setAttribute("aria-expanded", isOpen);
     }
   </script>
+
 </body>
 </html>

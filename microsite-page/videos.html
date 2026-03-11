@@ -1,40 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Defines the document as HTML5 -->
   <meta charset="UTF-8" />
+
+  <!-- Makes the layout responsive on phones and tablets -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Browser tab title -->
   <title>Videos | Pilates with Patricia</title>
+
+  <!-- Helps search engines understand the purpose of the page -->
   <meta
     name="description"
     content="Explore Pilates videos by category including glutes, abs, stretching, arms, full body, and beginner flows."
   />
+
+  <!-- Main stylesheet -->
   <link rel="stylesheet" href="assets/css/style.css" />
+
+  <!-- Improves loading speed for Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Imports Montserrat font -->
   <link
     href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   />
 </head>
 <body>
+
+  <!-- Accessibility link for keyboard and screen-reader users -->
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
+  <!-- Wrapper helps control page structure and footer placement -->
   <div class="site-wrapper">
+
+    <!-- Top navigation shared across pages -->
     <header class="navbar">
       <div class="nav-left">
         <a href="index.html" class="logo">Pilates with Patricia</a>
       </div>
 
+      <!-- Main page navigation -->
       <nav class="nav-center" aria-label="Main navigation">
         <ul class="nav-links">
           <li><a href="index.html">Home</a></li>
           <li><a href="classes.html">Classes</a></li>
+
+          <!-- Active link shows the user which page they are currently on -->
           <li><a href="videos.html" class="active" aria-current="page">Videos</a></li>
+
           <li><a href="wellness.html">Wellness</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
 
+      <!-- Right side of navbar: hamburger for mobile + booking CTA -->
       <div class="nav-right">
         <button
           class="hamburger"
@@ -45,11 +68,16 @@
         >
           ☰
         </button>
+
+        <!-- Main booking call-to-action -->
         <a href="../microsite-page/classes.html" class="book-btn">Book a Class</a>
       </div>
     </header>
 
+    <!-- Main page content -->
     <main id="main-content">
+
+      <!-- Hero section introduces the purpose of the page -->
       <section class="video-hero">
         <div class="hero-text">
           <h1>Pilates Video Library</h1>
@@ -60,23 +88,31 @@
         </div>
       </section>
 
+      <!-- Featured carousel section highlights a few key videos first -->
       <section class="featured-carousel-section">
         <div class="featured-carousel-header">
           <h2>Featured Videos</h2>
           <p>Press play and explore a few favorite Pilates categories.</p>
         </div>
 
+        <!-- Carousel wrapper allows featured videos to slide left and right -->
         <div class="featured-carousel">
+
+          <!-- Previous slide button -->
           <button class="featured-btn prev" type="button" aria-label="Previous featured video">
             &#10094;
           </button>
 
+          <!-- Track container hides the extra slides off-screen -->
           <div class="featured-track-container">
             <div class="featured-track" id="featuredTrack">
+
+              <!-- Featured video 1 -->
               <article class="featured-slide">
                 <div class="featured-video-card">
                   <div class="featured-video-embed">
-               <iframe width="560" height="315" src="https://www.youtube.com/embed/MPS3DwNUgj0?si=ygGOLiaKgKxip65w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <!-- Embedded YouTube video -->
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/MPS3DwNUgj0?si=ygGOLiaKgKxip65w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                   </div>
                   <div class="featured-content">
                     <h3>Booty &amp; Glutes Focus</h3>
@@ -89,6 +125,7 @@
                 </div>
               </article>
 
+              <!-- Featured video 2 -->
               <article class="featured-slide">
                 <div class="featured-video-card">
                   <div class="featured-video-embed">
@@ -105,6 +142,7 @@
                 </div>
               </article>
 
+              <!-- Featured video 3 -->
               <article class="featured-slide">
                 <div class="featured-video-card">
                   <div class="featured-video-embed">
@@ -121,10 +159,11 @@
                 </div>
               </article>
 
+              <!-- Featured video 4 -->
               <article class="featured-slide">
                 <div class="featured-video-card">
                   <div class="featured-video-embed">
-                   <iframe width="560" height="315" src="https://www.youtube.com/embed/oiToJsf_SQ4?si=QhOlWoqCO2fMZIOo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/oiToJsf_SQ4?si=QhOlWoqCO2fMZIOo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                   </div>
                   <div class="featured-content">
                     <h3>Arms &amp; Upper Body</h3>
@@ -135,16 +174,21 @@
                   </div>
                 </div>
               </article>
+
             </div>
           </div>
 
+          <!-- Next slide button -->
           <button class="featured-btn next" type="button" aria-label="Next featured video">
             &#10095;
           </button>
         </div>
       </section>
 
+      <!-- Main video layout with sidebar + content area -->
       <section class="video-layout">
+
+        <!-- Sidebar helps users jump to categories quickly -->
         <aside class="video-sidebar" aria-label="Video categories">
           <h2>Browse Categories</h2>
           <nav class="video-sidebar-nav">
@@ -157,7 +201,10 @@
           </nav>
         </aside>
 
+        <!-- Main category sections -->
         <div class="video-sections">
+
+          <!-- BOOTY CATEGORY -->
           <section id="booty" class="video-category-section">
             <h2>Booty &amp; Glutes</h2>
             <p class="video-category-intro">
@@ -165,6 +212,8 @@
             </p>
 
             <div class="video-library">
+
+              <!-- Each card links directly to YouTube in a new tab -->
               <article class="video-category-card">
                 <a
                   href="https://www.youtube.com/watch?v=vELfo3PbGhE"
@@ -173,11 +222,14 @@
                   class="video-thumbnail netflix-card"
                   aria-label="Watch Pilates Booty Burn on YouTube"
                 >
+                  <!-- YouTube thumbnail image -->
                   <img
                     class="thumbnail-image"
                     src="https://img.youtube.com/vi/vELfo3PbGhE/hqdefault.jpg"
                     alt="Pilates Booty Burn thumbnail"
                   />
+
+                  <!-- Hover overlay gives the card a Netflix-style interaction on desktop -->
                   <div class="video-overlay">
                     <div class="play-button">▶</div>
                     <div class="video-hover-info">
@@ -220,9 +272,11 @@
                   </div>
                 </a>
               </article>
+
             </div>
           </section>
 
+          <!-- ABS CATEGORY -->
           <section id="abs" class="video-category-section">
             <h2>Abs &amp; Core</h2>
             <p class="video-category-intro">
@@ -288,6 +342,7 @@
             </div>
           </section>
 
+          <!-- STRETCH CATEGORY -->
           <section id="stretch" class="video-category-section">
             <h2>Stretching &amp; Mobility</h2>
             <p class="video-category-intro">
@@ -353,6 +408,7 @@
             </div>
           </section>
 
+          <!-- ARMS CATEGORY -->
           <section id="arms" class="video-category-section">
             <h2>Arms &amp; Upper Body</h2>
             <p class="video-category-intro">
@@ -418,6 +474,7 @@
             </div>
           </section>
 
+          <!-- FULL BODY CATEGORY -->
           <section id="fullbody" class="video-category-section">
             <h2>Full Body Pilates</h2>
             <p class="video-category-intro">
@@ -441,7 +498,7 @@
                   <div class="video-overlay">
                     <div class="play-button">▶</div>
                     <div class="video-hover-info">
-                      <h3>Classic Full Body Flow </h3>
+                      <h3>Classic Full Body Flow</h3>
                       <p>Full Body • Strength • Control</p>
                       <div class="video-tags">
                         <span>40 min</span>
@@ -483,6 +540,7 @@
             </div>
           </section>
 
+          <!-- BEGINNER CATEGORY -->
           <section id="beginner" class="video-category-section">
             <h2>Beginner Pilates</h2>
             <p class="video-category-intro">
@@ -547,15 +605,18 @@
               </article>
             </div>
           </section>
+
         </div>
       </section>
     </main>
 
+    <!-- Footer appears across all pages for consistency -->
     <footer class="site-footer">
       <p>&copy; 2026 Pilates with Patricia. All rights reserved.</p>
     </footer>
   </div>
 
+  <!-- External JavaScript file handles mobile menu, carousel movement, and active states -->
   <script src="assets/js/script.js"></script>
 </body>
 </html>

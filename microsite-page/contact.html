@@ -1,41 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Defines document as HTML5 -->
   <meta charset="UTF-8" />
+
+  <!-- Ensures layout scales properly on phones and tablets -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Title displayed in the browser tab -->
   <title>Contact | Pilates with Patricia</title>
+
+  <!-- Short SEO description explaining the purpose of the page -->
   <meta
     name="description"
     content="Contact Pilates with Patricia for questions about classes, private sessions, bookings, and wellness support."
   />
+
+  <!-- Main stylesheet that controls layout, colors, and responsive behavior -->
   <link rel="stylesheet" href="assets/css/style.css" />
+
+  <!-- Improves loading performance for Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Imports the Montserrat font used across the site -->
   <link
     href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   />
 </head>
+
 <body>
+
+  <!-- Accessibility link allowing keyboard users to jump to the main content -->
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
+  <!-- Wrapper keeps the layout structured and pushes footer to the bottom -->
   <div class="site-wrapper">
+
+    <!-- Navigation bar used across all pages for consistent site navigation -->
     <header class="navbar">
+
+      <!-- Left side of navigation: brand/logo -->
       <div class="nav-left">
         <a href="index.html" class="logo">Pilates with Patricia</a>
       </div>
 
+      <!-- Main navigation menu -->
       <nav class="nav-center" aria-label="Main navigation">
         <ul class="nav-links">
+
+          <!-- Active class indicates the current page -->
           <li><a href="index.html">Home</a></li>
           <li><a href="classes.html">Classes</a></li>
           <li><a href="videos.html">Videos</a></li>
           <li><a href="wellness.html">Wellness</a></li>
           <li><a href="contact.html" class="active" aria-current="page">Contact</a></li>
+
         </ul>
       </nav>
 
+      <!-- Right side of navbar: mobile hamburger menu + main booking CTA -->
       <div class="nav-right">
+
+        <!-- Hamburger button toggles the mobile navigation menu -->
         <button
           class="hamburger"
           type="button"
@@ -45,11 +73,17 @@
         >
           ☰
         </button>
+
+        <!-- Main call-to-action button encouraging users to book a class -->
         <a href="../microsite-page/classes.html" class="book-btn">Book a Class</a>
+
       </div>
     </header>
 
+    <!-- Main page content -->
     <main id="main-content">
+
+      <!-- Hero section introducing the purpose of the page -->
       <section class="contact-hero">
         <div class="hero-text">
           <h1>Contact Patricia</h1>
@@ -60,19 +94,27 @@
         </div>
       </section>
 
+      <!-- Contact form section where users can send messages -->
       <section class="contact-section">
+
+        <!-- Container helps control width and spacing for better readability -->
         <div class="contact-form-container">
+
+          <!-- Form sends submissions to Formspree so messages can be emailed without a backend -->
           <form
             class="contact-form"
             action="https://formspree.io/f/xojkjvka"
             method="post"
           >
+
+            <!-- Hidden field customizes the email subject line when the form is submitted -->
             <input
               type="hidden"
               name="_subject"
               value="New Contact Form Submission - Pilates with Patricia"
             />
 
+            <!-- Name field -->
             <label for="name">Full Name</label>
             <input
               type="text"
@@ -83,6 +125,7 @@
               required
             />
 
+            <!-- Email field -->
             <label for="email">Email Address</label>
             <input
               type="email"
@@ -93,6 +136,7 @@
               required
             />
 
+            <!-- Dropdown allows users to select the topic of their message -->
             <label for="topic">What are you reaching out about?</label>
             <select id="topic" name="topic" required>
               <option value="">Select one</option>
@@ -103,6 +147,7 @@
               <option value="general-question">General Question</option>
             </select>
 
+            <!-- Message textarea allows users to write a longer message -->
             <label for="message">Message</label>
             <textarea
               id="message"
@@ -112,28 +157,36 @@
               required
             ></textarea>
 
+            <!-- Submit button sends the form -->
             <button type="submit">Send Message</button>
+
           </form>
         </div>
       </section>
     </main>
 
+    <!-- Footer displayed at the bottom of every page -->
     <footer class="site-footer">
       <p>&copy; 2026 Pilates with Patricia. All rights reserved.</p>
     </footer>
+
   </div>
 
   <script>
+  // Toggles the mobile navigation menu when the hamburger button is clicked
   function toggleMenu() {
     const nav = document.querySelector(".nav-center");
     const button = document.querySelector(".hamburger");
 
     nav.classList.toggle("active");
 
+    // Updates accessibility state so screen readers know if the menu is open
     const isOpen = nav.classList.contains("active");
     button.setAttribute("aria-expanded", isOpen);
   }
 
+  // This script reads URL parameters so the form can pre-select a topic
+  // Example: contact.html?topic=private-session
   const params = new URLSearchParams(window.location.search);
   const topic = params.get("topic");
   const topicSelect = document.getElementById("topic");
@@ -142,5 +195,6 @@
     topicSelect.value = topic;
   }
 </script>
+
 </body>
 </html>

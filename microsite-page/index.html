@@ -1,32 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- This tells the browser the page is written in HTML5 -->
   <meta charset="UTF-8" />
+
+  <!-- This helps the website scale properly on phones and tablets -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- This is the title that shows in the browser tab -->
   <title>Pilates with Patricia</title>
+
+  <!-- This short description helps with SEO and explains the page to search engines -->
   <meta
     name="description"
     content="Pilates with Patricia offers mindful movement, private sessions, mat Pilates, and reformer classes designed to help you feel stronger and more connected to your body."
   />
+
+  <!-- This connects the page to the main stylesheet for all design/styling -->
   <link rel="stylesheet" href="assets/css/style.css" />
+
+  <!-- These two lines help Google Fonts load faster -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- This imports the Montserrat font family used across the site -->
   <link
     href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   />
 </head>
 <body>
+  <!-- Skip link improves accessibility by letting keyboard users jump straight to the main content -->
   <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Site wrapper helps structure the whole page and keeps the footer at the bottom -->
   <div class="site-wrapper">
 
+    <!-- Header contains the navigation/logo area at the top of the page -->
     <header class="navbar">
+
+      <!-- Left side of navbar: website logo/name -->
       <div class="nav-left">
         <a href="index.html" class="logo">Pilates with Patricia</a>
       </div>
 
+      <!-- Main navigation links in the center -->
       <nav class="nav-center" aria-label="Main navigation">
         <ul class="nav-links">
+          <!-- aria-current shows this is the page the user is currently on -->
           <li><a href="index.html" class="active" aria-current="page">Home</a></li>
           <li><a href="classes.html">Classes</a></li>
           <li><a href="videos.html">Videos</a></li>
@@ -35,7 +56,9 @@
         </ul>
       </nav>
 
+      <!-- Right side of navbar: mobile hamburger icon + main call-to-action button -->
       <div class="nav-right">
+        <!-- This button only really appears on smaller screens for mobile navigation -->
         <button
           class="hamburger"
           type="button"
@@ -45,11 +68,16 @@
         >
           ☰
         </button>
+
+        <!-- Main CTA button that encourages users to book a class -->
         <a href="../microsite-page/classes.html" class="book-btn">Book a Class</a>
       </div>
     </header>
 
+    <!-- Main content of the page begins here -->
     <main id="main-content">
+
+      <!-- Hero section: first visual section users see, introduces the brand clearly -->
       <section class="hero">
         <div class="hero-text">
           <h1>Move With Intention</h1>
@@ -57,17 +85,23 @@
             Personalized Pilates sessions designed to help you build strength,
             improve alignment, and reconnect with your body.
           </p>
+
+          <!-- Secondary CTA inside the hero section -->
           <a href="../microsite-page/classes.html" class="cta-btn">Explore Classes</a>
         </div>
       </section>
 
+      <!-- About section: gives users a personal introduction to Patricia -->
       <section class="about">
         <div class="about-content">
+
+          <!-- Instructor image helps personalize the brand and build trust -->
           <img
             src="assets/img/patricia-2.jpg"
             alt="Pilates instructor Patricia in the studio"
           />
 
+          <!-- Text section explains Patricia's teaching style and purpose -->
           <div class="about-text">
             <h2>Meet Patricia</h2>
             <p>
@@ -89,6 +123,7 @@
         </div>
       </section>
 
+      <!-- Classes section: highlights the three main types of offerings -->
       <section class="classes">
         <div class="classes-header">
           <h2>Class Offerings</h2>
@@ -97,18 +132,24 @@
           </p>
         </div>
 
+        <!-- Class cards organize the offerings into clean, easy-to-scan boxes -->
         <div class="class-cards">
+
+          <!-- Mat Pilates card -->
           <article class="class-card">
             <h3>Mat Pilates</h3>
             <p>
               Build core strength, stability, and flexibility through focused,
               low-impact movement that works for all levels.
             </p>
-           <a href="https://patriciaanne98.wufoo.com/forms/m1sjkqeu0q22mom/" class="book-btn" target="_blank">
-  Book Now
-</a>
+
+            <!-- External booking link opens in a new tab -->
+            <a href="https://patriciaanne98.wufoo.com/forms/m1sjkqeu0q22mom/" class="book-btn" target="_blank">
+              Book Now
+            </a>
           </article>
 
+          <!-- Reformer Pilates card -->
           <article class="class-card">
             <h3>Reformer Pilates</h3>
             <p>
@@ -116,10 +157,11 @@
               to improve posture, strength, and total-body coordination.
             </p>
             <a href="https://patriciaanne98.wufoo.com/forms/m1sjkqeu0q22mom/" class="book-btn" target="_blank">
-  Book Now
-</a>
+              Book Now
+            </a>
           </article>
 
+          <!-- Private Sessions card -->
           <article class="class-card">
             <h3>Private Sessions</h3>
             <p>
@@ -127,25 +169,29 @@
               your movement goals, experience level, and needs.
             </p>
             <a href="https://patriciaanne98.wufoo.com/forms/m1sjkqeu0q22mom/" class="book-btn" target="_blank">
-  Book Now
-</a>
+              Book Now
+            </a>
           </article>
         </div>
       </section>
     </main>
 
+    <!-- Footer sits at the bottom of the page and gives basic copyright info -->
     <footer class="site-footer">
       <p>&copy; 2026 Pilates with Patricia. All rights reserved.</p>
     </footer>
   </div>
 
   <script>
+    // This function opens and closes the mobile menu when the hamburger icon is clicked
     function toggleMenu() {
       const nav = document.querySelector(".nav-center");
       const button = document.querySelector(".hamburger");
 
+      // Toggles the "active" class on the nav menu
       nav.classList.toggle("active");
 
+      // Updates accessibility state so screen readers know if the menu is open
       const isOpen = nav.classList.contains("active");
       button.setAttribute("aria-expanded", isOpen);
     }

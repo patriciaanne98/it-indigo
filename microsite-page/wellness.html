@@ -1,40 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Defines the document as HTML5 -->
   <meta charset="UTF-8" />
+
+  <!-- Makes the layout responsive on mobile devices -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Title shown in the browser tab -->
   <title>Wellness | Pilates with Patricia</title>
+
+  <!-- Helps search engines understand the purpose of the page -->
   <meta
     name="description"
     content="Explore wellness articles on movement, mindset, nutrition, recovery, and everyday habits from Pilates with Patricia."
   />
+
+  <!-- Main stylesheet for the site -->
   <link rel="stylesheet" href="assets/css/style.css" />
+
+  <!-- Helps Google Fonts load faster -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Imports the Montserrat font used across the site -->
   <link
     href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   />
 </head>
 <body>
+
+  <!-- Accessibility feature that lets keyboard users skip directly to the main content -->
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
+  <!-- Wrapper keeps the page organized and helps keep the footer at the bottom -->
   <div class="site-wrapper">
+
+    <!-- Main navigation bar -->
     <header class="navbar">
       <div class="nav-left">
         <a href="index.html" class="logo">Pilates with Patricia</a>
       </div>
 
+      <!-- Main navigation links -->
       <nav class="nav-center" aria-label="Main navigation">
         <ul class="nav-links">
           <li><a href="index.html">Home</a></li>
           <li><a href="classes.html">Classes</a></li>
           <li><a href="videos.html">Videos</a></li>
+
+          <!-- Active class shows this is the current page -->
           <li><a href="wellness.html" class="active" aria-current="page">Wellness</a></li>
+
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
 
+      <!-- Right side of navbar: mobile menu button + booking CTA -->
       <div class="nav-right">
         <button
           class="hamburger"
@@ -45,11 +68,16 @@
         >
           ☰
         </button>
+
+        <!-- Main call-to-action button -->
         <a href="../microsite-page/classes.html" class="book-btn">Book a Class</a>
       </div>
     </header>
 
+    <!-- Main page content -->
     <main id="main-content">
+
+      <!-- Hero section introduces the purpose of the page -->
       <section class="wellness-hero editorial-hero">
         <div class="wellness-text">
           <h1>Wellness Journal</h1>
@@ -57,18 +85,25 @@
         </div>
       </section>
 
+      <!-- Category bar allows users to filter wellness articles by topic -->
       <section class="wellness-category-bar" aria-label="Wellness categories">
         <div class="wellness-category-inner">
+
+          <!-- These buttons are used by JavaScript to filter articles dynamically -->
           <button class="wellness-tab active" type="button" data-filter="all">View All</button>
           <button class="wellness-tab" type="button" data-filter="movement">Movement</button>
           <button class="wellness-tab" type="button" data-filter="nutrition">Nutrition</button>
           <button class="wellness-tab" type="button" data-filter="mindset">Mindset</button>
           <button class="wellness-tab" type="button" data-filter="recovery">Recovery</button>
           <button class="wellness-tab" type="button" data-filter="habits">Habits</button>
+
         </div>
       </section>
 
+      <!-- Editorial grid displays the wellness content in a magazine-style layout -->
       <section class="editorial-grid" aria-label="Wellness articles">
+
+        <!-- Each article card has a category so JavaScript can filter it -->
         <article class="editorial-card" data-category="movement">
           <a href="https://www.mindbodygreen.com/articles/these-routines-will-help-you-feel-your-best-this-fall" class="editorial-link">
             <img src="assets/img/morning-stretch.jpeg" alt="Woman stretching on a mat in the morning" />
@@ -85,7 +120,7 @@
             <img src="assets/img/healthy-snacks.jpg" alt="Healthy snacks arranged on a table" />
             <div class="editorial-content">
               <p class="editorial-tag">Nutrition</p>
-              <h2>Eating More Cruciferous Vegetables Can Cut Colon Cancer Risk by 20%, Study Shows </h2>
+              <h2>Eating More Cruciferous Vegetables Can Cut Colon Cancer Risk by 20%, Study Shows</h2>
               <p class="editorial-author">By Molly Knudsen, M.S., RDN</p>
             </div>
           </a>
@@ -134,14 +169,17 @@
             </div>
           </a>
         </article>
+
       </section>
     </main>
 
+    <!-- Footer used across all pages for consistency -->
     <footer class="site-footer">
       <p>&copy; 2026 Pilates with Patricia. All rights reserved.</p>
     </footer>
   </div>
 
+  <!-- External JavaScript handles the mobile menu and category filtering -->
   <script src="assets/js/script.js"></script>
 </body>
 </html>
