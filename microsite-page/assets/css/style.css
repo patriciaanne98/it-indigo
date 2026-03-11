@@ -2156,3 +2156,26 @@ textarea:focus-visible {
   font-size: 1rem;
 }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .netflix-card:hover,
+  .netflix-card:focus-visible,
+  .class-card:hover,
+  .featured-btn:hover,
+  .book-btn:hover,
+  .cta-btn:hover,
+  .book-now:hover {
+    transform: none !important;
+  }
+}
