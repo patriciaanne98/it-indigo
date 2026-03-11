@@ -1,0 +1,55 @@
+/* ---------------Box Sizing----------------- */
+    html {
+      box-sizing: border-box;
+    }
+    *,
+    *:before,
+    *:after {
+      box-sizing: inherit;
+    }
+    body {
+      background-color: #ECECEC;
+      font-weight: bold;
+      font-family: Tahoma, Geneva, sans-serif;
+      color: #FFF;
+      text-align: center;
+      line-height: 24px;
+    }
+    #wrapper {
+      background-color: #FFF;
+      border: 1px solid #c0c0c0;
+      width: 800px;
+      margin-right: auto;
+      margin-left: auto;
+      text-shadow: 2px 2px #000;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;              /* white space between boxes */
+      padding: 30px;          /* white frame inside wrapper */
+    }
+    #navy {
+      background-color: #001f3f;
+      height: 150px;
+    }
+    #teal {
+      background-color: #39CCCC;
+      height: 150px;
+    }
+    #blue {
+      background-color: #0074D9;
+      height: 150px;
+    }
+    #aqua {
+      background-color: #7FDBFF;
+      height: 150px;
+    }
+    #footer {
+      background-color: #666;
+      grid-column: 1 / -1; /* Make the footer span across the whole row */
+    }
+
+    h1 {
+      color: #000;
+      font-weight: normal;
+      padding: 50px;
+    }
