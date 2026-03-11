@@ -414,7 +414,9 @@ textarea:focus-visible {
   padding: 2rem;
   text-align: left;
   box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+  display: flex;
+  flex-direction: column;
 }
 
 .class-card:hover {
@@ -434,13 +436,21 @@ textarea:focus-visible {
 }
 
 .book-now {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: fit-content;        /* keeps button tight */
+  align-self: flex-start;    /* prevents stretching in flex column */
+
   background-color: #0d0d0d;
   color: #ffffff;
-  padding: 0.7rem 1.25rem;
+  padding: 0.65rem 1.25rem;
   border-radius: 999px;
   font-size: 0.9rem;
   font-weight: 600;
+
+  margin-top: auto;
 }
 
 .book-now:hover {
@@ -657,12 +667,6 @@ textarea:focus-visible {
   transform: translateX(3px);
 }
 
-
-  .video-sidebar-nav a.active {
-  background-color: #a67c49;
-  color: #ffffff;
-  transform: translateX(3px);
-}
 
 .video-sections {
   display: flex;
