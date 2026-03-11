@@ -221,3 +221,143 @@ function revealOnScroll() {
 window.addEventListener("scroll", revealOnScroll);
 window.addEventListener("load", revealOnScroll);
 
+// =========================
+// WEATHER WIDGET
+// Uses Open-Meteo geocoding + forecast APIs
+// Default location is 72211 (Little Rock, AR)
+// =========================
+const weatherForm = document.getElementById("weatherForm");
+const weatherMessage = document.getElementById("weatherMessage");
+const locationInfo = document.getElementById("locationInfo");
+const weatherTable = document.getElementById("weatherTable");
+const clearWeatherBtn = document.getElementById("clearWeather");
+const chartCanvas = document.getElementById("weatherChart");
+
+if (weatherForm && weatherMessage && locationInfo && weatherTable && chartCanvas) {
+  weatherForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const locationInput = document.getElementById("location");
+    const location = locationInput.value.trim() || "72211";
+
+    weatherMessage.textContent = "";
+    locationInfo.innerHTML = "";
+    weatherTable.innerHTML = "";
+
+    if (window.weatherLineChart) {
+      window.weatherLineChart.destroy();
+    }
+
+    if (!location) {
+      weatherMessage.textContent = "Please enter a location.";
+      return;
+    }
+
+    try {
+      weatherMessage.textContent = "Looking up location...";
+
+      const geoUrl = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(location)}&count=1&language=en&format=json`;
+      const geoResponse = await fetch(geoUrl);
+      const geoData = await geoResponse.json();
+
+      if (!geoData.results || geoData.results.length === 0) {
+        weatherMessage.textContent = "No matching location was found.";
+        return;
+      }
+
+      const place = geoData.results[0];
+      const { name, admin1, country, latitude, longitude } = place;
+
+      locationInfo.innerHTML = `
+        <p><strong>Location:</strong> ${name}, ${admin1 || "N/A"}, ${country || "N/A"}</p>
+        <p><strong>Latitude:</strong> ${latitude}</p>
+        <p><strong>Longitude:</strong> ${longitude}</p>
+      `;
+
+      weatherMessage.textContent = "Loading forecast...";
+
+      const forecastUrl =
+        `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}` +
+        `&hourly=temperature_2m&temperature_unit=fahrenheit&timezone=auto&forecast_days=7`;
+
+      const forecastResponse = await fetch(forecastUrl);
+      const forecastData = await forecastResponse.json();
+
+      const times = forecastData.hourly.time;
+      const temps = forecastData.hourly.temperature_2m;
+
+      let tableRows = `
+        <thead>
+          <tr>
+            <th>Date & Time</th>
+            <th>Temperature</th>
+          </tr>
+        </thead>
+        <tbody>
+      `;
+
+      for (let i = 0; i < 24; i++) {
+        const formattedDate = new Date(times[i]).toLocaleString();
+        tableRows += `
+          <tr>
+            <td>${formattedDate}</td>
+            <td>${temps[i]}°F</td>
+          </tr>
+        `;
+      }
+
+      tableRows += `</tbody>`;
+      weatherTable.innerHTML = tableRows;
+
+      // Create chart using first 24 hours
+      const labels = times.slice(0, 24).map((time) =>
+        new Date(time).toLocaleString()
+      );
+      const chartTemps = temps.slice(0, 24);
+
+      window.weatherLineChart = new Chart(chartCanvas, {
+        type: "line",
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: "Temperature (°F)",
+              data: chartTemps,
+              borderWidth: 2,
+              fill: false,
+              tension: 0.3
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true
+        }
+      });
+
+      weatherMessage.textContent = "Forecast loaded.";
+    } catch (error) {
+      weatherMessage.textContent = "Something went wrong while loading the forecast.";
+      console.error(error);
+    }
+  });
+
+  if (clearWeatherBtn) {
+    clearWeatherBtn.addEventListener("click", () => {
+      weatherMessage.textContent = "";
+      locationInfo.innerHTML = "";
+      weatherTable.innerHTML = "";
+      document.getElementById("location").value = "72211";
+
+      if (window.weatherLineChart) {
+        window.weatherLineChart.destroy();
+      }
+    });
+  }
+}
+
+window.addEventListener("load", () => {
+  if (weatherForm) {
+    weatherForm.requestSubmit();
+  }
+});

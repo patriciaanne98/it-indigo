@@ -439,6 +439,242 @@ body.theme-page.dark-mode .contact-form option {
   background-color: #2a2a2a;
   color: #f4f1eb;
 }
+
+/* =========================
+   CONTACT PAGE TWO-COLUMN LAYOUT
+========================= */
+.contact-page-grid {
+  width: min(1200px, 92%);
+  margin: 4rem auto 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.contact-page-grid .contact-section,
+.contact-page-grid .weather-section {
+  padding: 0;
+  background: transparent;
+}
+
+/* =========================
+   WEATHER SECTION
+========================= */
+.weather-container {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
+}
+
+.weather-container h2 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1.8rem;
+}
+
+.weather-intro {
+  margin-bottom: 1.5rem;
+  color: #6f675f;
+}
+
+.weather-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.weather-form label {
+  font-weight: 600;
+}
+
+.weather-form input {
+  width: 100%;
+  padding: 0.95rem 1rem;
+  border: 1px solid #d2cbc2;
+  border-radius: 10px;
+  font: inherit;
+  background-color: #fffdfb;
+}
+
+.weather-buttons {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.weather-buttons button {
+  border: none;
+  background-color: #a67c49;
+  color: #ffffff;
+  padding: 0.9rem 1.25rem;
+  border-radius: 999px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.weather-buttons button:hover {
+  background-color: #8c6639;
+}
+
+.weather-message {
+  margin-top: 1rem;
+  font-weight: 600;
+  color: #7d5a31;
+}
+
+.location-info {
+  margin-top: 1rem;
+  color: #4e4a45;
+  line-height: 1.6;
+}
+
+.weather-table-wrapper {
+  margin-top: 1.5rem;
+  overflow-x: auto;
+}
+
+.weather-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.weather-table th,
+.weather-table td {
+  padding: 0.75rem;
+  border-bottom: 1px solid #e4ddd4;
+  text-align: left;
+}
+
+.weather-table th {
+  font-weight: 700;
+}
+
+.weather-chart-wrapper {
+  margin-top: 1.5rem;
+  background-color: #f8f4ef;
+  border-radius: 14px;
+  padding: 1rem;
+}
+
+/* =========================
+   FAQ ACCORDION
+========================= */
+.faq-section {
+  padding: 4rem 2rem;
+  background-color: #f8f4ef;
+}
+
+.faq-container {
+  width: min(1000px, 92%);
+  margin: 0 auto;
+}
+
+.faq-container h2 {
+  margin-top: 0;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+.faq-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.faq-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  text-align: left;
+  background-color: #ffffff;
+  color: #2b2b2b;
+  border: none;
+  border-radius: 14px;
+  padding: 1rem 1.25rem;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
+}
+
+.faq-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background-color: #a67c49;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.faq-answer {
+  display: none;
+  background-color: #ffffff;
+  padding: 1rem 1.25rem 1.25rem 4rem;
+  border-radius: 0 0 14px 14px;
+  margin-top: -0.5rem;
+}
+
+.faq-answer.open {
+  display: block;
+}
+
+/* =========================
+   DARK MODE SUPPORT
+========================= */
+body.theme-page.dark-mode .weather-container,
+body.theme-page.dark-mode .faq-toggle,
+body.theme-page.dark-mode .faq-answer {
+  background-color: #1d1d1d;
+  color: #f4f1eb;
+}
+
+body.theme-page.dark-mode .weather-intro,
+body.theme-page.dark-mode .location-info,
+body.theme-page.dark-mode .faq-answer p,
+body.theme-page.dark-mode .weather-message {
+  color: #d4c9bd;
+}
+
+body.theme-page.dark-mode .weather-form input {
+  background-color: #2a2a2a;
+  color: #f4f1eb;
+  border-color: #444444;
+}
+
+body.theme-page.dark-mode .weather-chart-wrapper {
+  background-color: #222222;
+}
+
+body.theme-page.dark-mode .weather-table th,
+body.theme-page.dark-mode .weather-table td {
+  border-bottom-color: #333333;
+}
+
+body.theme-page.dark-mode .faq-section {
+  background-color: #121212;
+}
+
+body.theme-page.dark-mode .faq-toggle:hover {
+  background-color: #252525;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 900px) {
+  .contact-page-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* =========================
    HERO SECTIONS
 ========================= */
@@ -1343,6 +1579,94 @@ body.theme-page.dark-mode .contact-form option {
 }
 
 /* =========================
+   WEATHER SECTION
+========================= */
+
+.weather-section {
+  padding: 4rem 2rem;
+  background-color: #efe6da;
+}
+
+.weather-container {
+  max-width: 850px;
+  margin: auto;
+  background: white;
+  padding: 2.5rem;
+  border-radius: 18px;
+  box-shadow: 0 12px 25px rgba(0,0,0,0.08);
+}
+
+.weather-intro {
+  margin-bottom: 2rem;
+}
+
+.weather-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.weather-form input {
+  padding: 0.9rem;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.weather-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.weather-buttons button {
+  background: #c79a63;
+  border: none;
+  padding: 0.8rem 1.4rem;
+  border-radius: 999px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.weather-buttons button:hover {
+  background: #a87c45;
+}
+
+.weather-table-wrapper {
+  margin-top: 2rem;
+  overflow-x: auto;
+}
+
+.weather-table-wrapper table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.weather-table-wrapper th,
+.weather-table-wrapper td {
+  border-bottom: 1px solid #eee;
+  padding: 0.75rem;
+}
+
+.weather-chart-wrapper {
+  margin-top: 2rem;
+}
+
+body.dark-mode .weather-section {
+  background: #121212;
+}
+
+body.dark-mode .weather-container {
+  background: #1e1e1e;
+  color: #f4f1eb;
+}
+
+body.dark-mode input {
+  background: #2a2a2a;
+  color: white;
+  border: 1px solid #444;
+}
+
+/* =========================
    SCHEDULE PAGE
 ========================= */
 .schedule-grid {
@@ -1779,6 +2103,10 @@ body.theme-page.dark-mode .contact-form option {
 .netflix-card:focus-visible {
   transform: none !important;
 }
+
+  .contact-page-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 768px) {

@@ -103,86 +103,152 @@
     <!-- Main page content -->
     <main id="main-content">
 
-      <!-- Hero section introducing the purpose of the page -->
-      <section class="contact-hero">
-        <div class="hero-text">
-          <h1>Contact Patricia</h1>
-          <p>
-            Have a question about classes, private sessions, or scheduling?
-            I’d love to hear from you.
-          </p>
+      <section class="contact-page-grid">
+
+  <!-- Left side: contact form -->
+  <section class="contact-section reveal reveal-left">
+    <div class="contact-form-container">
+      <h2>Send a Message</h2>
+
+      <form
+        class="contact-form"
+        action="https://formspree.io/f/xojkjvka"
+        method="post"
+      >
+        <input
+          type="hidden"
+          name="_subject"
+          value="New Contact Form Submission - Pilates with Patricia"
+        />
+
+        <label for="name">Full Name</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Your full name"
+          autocomplete="name"
+          required
+        />
+
+        <label for="email">Email Address</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="you@example.com"
+          autocomplete="email"
+          required
+        />
+
+        <label for="topic">What are you reaching out about?</label>
+        <select id="topic" name="topic" required>
+          <option value="">Select one</option>
+          <option value="mat-pilates">Mat Pilates</option>
+          <option value="reformer-pilates">Reformer Pilates</option>
+          <option value="private-session">Private Session</option>
+          <option value="booking-question">Booking Question</option>
+          <option value="general-question">General Question</option>
+        </select>
+
+        <label for="message">Message</label>
+        <textarea
+          id="message"
+          name="message"
+          rows="6"
+          placeholder="Tell me a little about what you need help with."
+          required
+        ></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Right side: weather widget -->
+  <section class="weather-section reveal reveal-right">
+    <div class="weather-container">
+      <h2>Plan Your Session</h2>
+      <p class="weather-intro">
+        Check the local forecast before heading to your Pilates class.
+      </p>
+
+      <form id="weatherForm" class="weather-form">
+        <label for="location">Enter Location</label>
+        <input
+          type="text"
+          id="location"
+          name="location"
+          placeholder="72211"
+          value="72211"
+          required
+        />
+
+        <div class="weather-buttons">
+          <button type="submit" id="displayTemp">Check Weather</button>
+          <button type="button" id="clearWeather">Clear</button>
         </div>
-      </section>
+      </form>
 
-      <!-- Contact form section where users can send messages -->
-      <section class="contact-section">
+      <div id="weatherMessage" class="weather-message" aria-live="polite"></div>
+      <div id="weatherResult"></div>
+      <div id="locationInfo" class="location-info"></div>
 
-        <!-- Container helps control width and spacing for better readability -->
-       <div class="contact-form-container reveal reveal-zoom">
+      <div class="weather-table-wrapper">
+        <table id="weatherTable" class="weather-table"></table>
+      </div>
 
-          <!-- Form sends submissions to Formspree so messages can be emailed without a backend -->
-          <form
-            class="contact-form"
-            action="https://formspree.io/f/xojkjvka"
-            method="post"
-          >
+      <div class="weather-chart-wrapper">
+        <canvas id="weatherChart"></canvas>
+      </div>
+    </div>
+  </section>
 
-            <!-- Hidden field customizes the email subject line when the form is submitted -->
-            <input
-              type="hidden"
-              name="_subject"
-              value="New Contact Form Submission - Pilates with Patricia"
-            />
+</section>
 
-            <!-- Name field -->
-            <label for="name">Full Name</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              placeholder="Your full name"
-              autocomplete="name"
-              required
-            />
+<!-- FAQ accordion underneath both sections -->
+<section class="faq-section reveal reveal-up">
+  <div class="faq-container">
+    <h2>FAQs</h2>
 
-            <!-- Email field -->
-            <label for="email">Email Address</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="you@example.com"
-              autocomplete="email"
-              required
-            />
+    <div class="faq-accordion">
 
-            <!-- Dropdown allows users to select the topic of their message -->
-            <label for="topic">What are you reaching out about?</label>
-            <select id="topic" name="topic" required>
-              <option value="">Select one</option>
-              <option value="mat-pilates">Mat Pilates</option>
-              <option value="reformer-pilates">Reformer Pilates</option>
-              <option value="private-session">Private Session</option>
-              <option value="booking-question">Booking Question</option>
-              <option value="general-question">General Question</option>
-            </select>
+      <button class="faq-toggle" type="button" aria-expanded="false">
+        <span class="faq-icon">⌄</span>
+        <span>What should I wear to class?</span>
+      </button>
+      <div class="faq-answer">
+        <p>
+          Wear comfortable movement-friendly clothing that allows you to stretch,
+          breathe, and move easily.
+        </p>
+      </div>
 
-            <!-- Message textarea allows users to write a longer message -->
-            <label for="message">Message</label>
-            <textarea
-              id="message"
-              name="message"
-              rows="6"
-              placeholder="Tell me a little about what you need help with."
-              required
-            ></textarea>
+      <button class="faq-toggle" type="button" aria-expanded="false">
+        <span class="faq-icon">⌄</span>
+        <span>Do I need to bring anything?</span>
+      </button>
+      <div class="faq-answer">
+        <p>
+          Just bring water and arrive ready to move. If a mat or special equipment
+          is needed, Patricia will let you know ahead of time.
+        </p>
+      </div>
 
-            <!-- Submit button sends the form -->
-            <button type="submit">Send Message</button>
+      <button class="faq-toggle" type="button" aria-expanded="false">
+        <span class="faq-icon">⌄</span>
+        <span>Can I still come if I’m a beginner?</span>
+      </button>
+      <div class="faq-answer">
+        <p>
+          Absolutely. Classes and sessions are designed to meet you where you are,
+          whether you’re brand new or more experienced.
+        </p>
+      </div>
 
-          </form>
-        </div>
-      </section>
+    </div>
+  </div>
+</section>
     </main>
 
     <!-- Footer displayed at the bottom of every page -->
@@ -196,7 +262,8 @@
 
   </div>
 
-   <script src="assets/js/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="assets/js/script.js"></script>
 
 </body>
 </html>
