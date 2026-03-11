@@ -232,6 +232,85 @@ textarea:focus-visible {
 }
 
 /* =========================
+   THEME TOGGLE BUTTON
+========================= */
+.theme-toggle {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #ffffff;
+  border-radius: 999px;
+  padding: 0.45rem 0.75rem;
+  font: inherit;
+  cursor: pointer;
+}
+
+/* =========================
+   DARK MODE TEST
+========================= */
+body.theme-page.dark-mode {
+  background-color: #121212;
+  color: #f4f1eb;
+}
+
+body.theme-page.dark-mode .navbar {
+  background-color: #000000;
+}
+
+body.theme-page.dark-mode .site-footer {
+  background-color: #000000;
+}
+
+body.theme-page.dark-mode .page-header,
+body.theme-page.dark-mode .class-menu,
+body.theme-page.dark-mode .contact-section,
+body.theme-page.dark-mode .featured-carousel-section,
+body.theme-page.dark-mode .video-layout,
+body.theme-page.dark-mode .editorial-grid {
+  color: #f4f1eb;
+}
+
+body.theme-page.dark-mode .featured-video-card,
+body.theme-page.dark-mode .contact-form-container,
+body.theme-page.dark-mode .booking-form,
+body.theme-page.dark-mode .schedule-day {
+  background-color: #1d1d1d;
+  color: #f4f1eb;
+}
+
+body.theme-page.dark-mode .video-sidebar,
+body.theme-page.dark-mode .wellness-category-bar {
+  background-color: #181818;
+}
+
+body.theme-page.dark-mode .video-sidebar-nav a {
+  background-color: #242424;
+  color: #f4f1eb;
+}
+
+body.theme-page.dark-mode .video-sidebar-nav a.active,
+body.theme-page.dark-mode .video-sidebar-nav a:hover {
+  background-color: #a67c49;
+  color: #ffffff;
+}
+
+body.theme-page.dark-mode .class-type-content h2,
+body.theme-page.dark-mode .video-category-section h2,
+body.theme-page.dark-mode .featured-content h3,
+body.theme-page.dark-mode .editorial-content h2,
+body.theme-page.dark-mode .contact-form label {
+  color: #f4f1eb;
+}
+
+body.theme-page.dark-mode .class-type-content p,
+body.theme-page.dark-mode .video-category-intro,
+body.theme-page.dark-mode .featured-content p,
+body.theme-page.dark-mode .page-header,
+body.theme-page.dark-mode .editorial-author,
+body.theme-page.dark-mode .video-meta {
+  color: #d4c9bd;
+}
+
+/* =========================
    HERO SECTIONS
 ========================= */
 .hero,
@@ -1848,6 +1927,12 @@ textarea:focus-visible {
 .featured-btn.next {
   right: 0.35rem;
 }
+
+/* Mobile: hide toggle button if nav gets too crowded */
+  .theme-toggle {
+    padding: 0.4rem 0.65rem;
+    font-size: 0.9rem;
+  }
 }
 
 @media (max-width: 640px) {

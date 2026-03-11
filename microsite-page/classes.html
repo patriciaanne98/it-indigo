@@ -37,7 +37,7 @@
     rel="stylesheet"
   />
 </head>
-<body>
+<body class="theme-page">
 
   <!-- Accessibility feature: allows keyboard users to skip directly to main content -->
   <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -51,7 +51,7 @@
       <!-- Left side: site branding/logo -->
       <div class="nav-left">
       <a href="index.html" class="logo">
-  <img src="assets/img/Lotus Flower Logo.png" alt="Pilates icon">
+  <img src="assets/img/lotus -flower-logo.png" alt="Pilates icon">
   <span>Pilates with Patricia</span>
 </a>
       </div>
@@ -73,6 +73,15 @@
       <!-- Right side: hamburger menu for mobile + main CTA button -->
       <div class="nav-right">
 
+      <button
+  id="themeToggle"
+  class="theme-toggle"
+  type="button"
+  aria-label="Toggle dark mode"
+>
+  🌙
+</button>
+
         <!-- Hamburger button toggles the navigation menu on smaller screens -->
         <button
           class="hamburger"
@@ -85,7 +94,7 @@
         </button>
 
         <!-- Primary call-to-action encouraging users to book a class -->
-        <a href="../microsite-page/classes.html" class="book-btn">Book a Class</a>
+        <a href="classes.html" class="book-btn">Book a Class</a>
 
       </div>
     </header>
@@ -239,28 +248,13 @@
   <p>&copy; 2026 Pilates with Patricia. All rights reserved.</p>
   <p>
     <a href="contact.html">Contact</a> |
-    <a href="mailto:psfrogoso@ualr.edu">Email</a>
+    <a href="mailto:psfrogoso@ualr.edu">Email Patricia</a>
   </p>
 </footer>
 
   </div>
 
-  <script>
-    // Function toggles the mobile navigation menu when the hamburger icon is clicked
-    function toggleMenu() {
+   <script src="assets/js/script.js"></script>
 
-      // Selects the navigation menu and hamburger button
-      const nav = document.querySelector(".nav-center");
-      const button = document.querySelector(".hamburger");
-
-      // Adds or removes the "active" class to show/hide the mobile menu
-      nav.classList.toggle("active");
-
-      // Updates accessibility state for screen readers
-      const isOpen = nav.classList.contains("active");
-      button.setAttribute("aria-expanded", isOpen);
-    }
-    
-  </script>
 </body>
 </html>
