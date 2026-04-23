@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Us | Buffalo River</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<section class="contact-section">
+  <h2>Contact Us</h2>
+  <p class="contact-intro">
+    Have questions about your Buffalo River trip? Send us a message and we’ll get back to you within 24 hours.
+  </p>
+
+  <div class="contact-info">
+    <p>📧 info@buffaloriver.com</p>
+    <p>📞 (870) 555-1234</p>
+    <p>📍 Ponca, Arkansas</p>
+  </div>
+
+  <form action="https://formspree.io/f/xnjllqek" method="POST" class="contact-form">
+    
+    <label for="name">Name *</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="email">Email *</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="phone">Phone (optional)</label>
+    <input type="tel" id="phone" name="phone">
+
+    <label for="reason">Reason for Contact </label>
+    <select id="reason" name="reason">
+      <option value="general">General Question</option>
+      <option value="booking">Booking Inquiry</option>
+      <option value="group">Group Trip</option>
+      <option value="other">Other</option>
+    </select>
+
+    <label for="message">Message</label>
+    <textarea id="message" name="message" rows="5" required></textarea>
+
+    <button type="submit">Send Message</button>
+  </form>
+</section>
+
+</body>
+</html>
