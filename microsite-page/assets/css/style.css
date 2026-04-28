@@ -1369,7 +1369,7 @@ body.theme-page.dark-mode .faq-toggle:hover {
   display: none;
   align-items: center;
   justify-content: center;
-  padding: 1.25rem;
+  padding: 1.25rem
   z-index: 3000;
   opacity: 0;
   transition: opacity 0.22s ease;
