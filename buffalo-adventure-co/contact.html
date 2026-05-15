@@ -1,21 +1,20 @@
 <!doctype html>
-<html lang="en">
+<html class="no-js" lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="author" content="Harrison Moss, Patricia Frogoso, Jonas Mikeal">
-  <meta name="robots" content="noindex">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Buffalo Advenure Co. content site">
-  <meta name="theme-color" content="#fafafa">
-  <link rel="stylesheet" href="assets/css/homepage.css">
+    <meta charset="utf-8">
+    <meta name="author" content="Harrison Moss, Patricia Frogoso, Jonas Mikeal">
+    <meta name="robots" content="noindex">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Buffalo Advenure Co. content site">
+    <title>Contact - Buffalo Adventure Co.</title>
+    <meta name="theme-color" content="#fafafa">
+    <link rel="stylesheet" href="assets/css/contact.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:wght@700&family=Barlow+Semi+Condensed:wght@700&display=swap" rel="stylesheet">
-  <title>Buffalo Adventure Co.</title>
-  </head>
+</head>
 <body>
-
-<nav class="main-nav">
+  <nav class="main-nav">
   <h1>
   <a href="index.html">
     <img src="assets/img/buffalo-adventure-co-logo.png" alt="Buffalo Adventure Co. Logo" class="logo">
@@ -31,7 +30,7 @@
     <li><a href="water-data.html">How's the River?</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
- <ul class="nav-cta">
+  <ul class="nav-cta">
     <li>
   <a href="https://patriciaanne98.wufoo.com/forms/zr04mpq1sx1z2a/" 
      class="book-now-btn" 
@@ -42,39 +41,60 @@
   </ul>
 </nav>
 
-<header class="hero">
-  <div class="hero-text">
-    <h2><a href="adventure.html">Plan Your Adventure</a></h2>
-  </div>
-</header>
-
-<section class="action-bar">
-  <ul id="boxes">
-    <li class="box-explore">
-        <a href="adventure.html">EXPLORE</a>
-    </li>
-    <li class="box-stay">
-        <a href="adventure.html#rentals">STAY</a>
-    </li>
-    <li class="box-fun">
-        <a href="about.html#fun">FUN</a>
-    </li>
-  </ul>
-</section>
-
-<main class="sub-sections">
-  <section class="explore-section">
-    <h2 class="section-title">EXPLORE</h2>
+<main>
+  <section class="contact-hero-split">
     
-    <div class="explore-grid">
-        <a href="adventure.html#rentals" class="ex-card card-rentals"><span>RENTALS</span></a>
-        <a href="adventure.html#getaways" class="ex-card card-lodging"><span>LODGING</span></a>
-        <a href="adventure.html" class="ex-card card-adventures"><span>ADVENTURES</span></a>
-        <a href="about.html#culture" class="ex-card card-events"><span>EVENTS</span></a>
-        <a href="water-data.html" class="ex-card card-water"><span>WATER LEVELS</span></a>
-        <a href="adventure.html#rentals" class="ex-card card-canoes"><span>CANOES</span></a>
+    <div class="contact-left-side">
+      <h2>Contact Us</h2>
+      <p class="contact-intro">
+        Have questions about your Buffalo River trip? Send us a message and we’ll get back to you within 24 hours.
+      </p>
+
+      <form action="https://formspree.io/f/xnjllqek" method="POST" class="contact-form">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="phone">Phone (optional)</label>
+        <input type="tel" id="phone" name="phone">
+
+        <label for="reason">Reason for Contact</label>
+        <select id="reason" name="reason">
+          <option value="general">General Question</option>
+          <option value="booking">Booking Inquiry</option>
+          <option value="group">Group Trip</option>
+        </select>
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
     </div>
-</section>
+
+    <div class="contact-right-side">
+      <div class="info-block">
+        <h3>📍 Ponca, Arkansas</h3>
+        <p>123 River Road<br>Ponca, AR 72670</p>
+      </div>
+
+      <div class="info-block">
+        <h3>📧 info@buffaloriver.com</h3>
+      </div>
+
+      <div class="info-block">
+        <h3>📞 (870) 555-1234</h3>
+      </div>
+
+      <div class="info-block">
+        <h3>Hours of Operation</h3>
+        <p>Mon-Fri: 8am - 6pm<br>Sat-Sun: 7am - 7pm</p>
+      </div>
+    </div>
+  </section>
+
 <section class="location-background">
     <div class="location-box">
         <div class="location-content">
@@ -93,7 +113,9 @@
         </div>
     </div>
 </section>
+
 </main>
+
 <footer class="main-footer">
     <div class="footer-container">
         <div class="footer-left">
@@ -105,7 +127,7 @@
         </div>
 
         <nav class="footer-nav">
-            <a href="contact.html">CONTACT</a>
+            <a href="#">CONTACT</a>
             <a href="cancel.html">FAQ</a>
             <a href="cancel.html">CANCELLATION POLICY</a>
             <a href="water-data.html">WATER LEVELS</a>
